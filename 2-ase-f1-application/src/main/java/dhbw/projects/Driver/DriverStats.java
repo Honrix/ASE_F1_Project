@@ -29,10 +29,7 @@ public class DriverStats {
     }
 
     private boolean validatePosition(int position) {
-        if(position > 20 || position < 1) {
-            return false;
-        }
-        return true;
+        return (0 < position && position < 21);
     }
 
     private boolean validateFastestLap(double time) {
