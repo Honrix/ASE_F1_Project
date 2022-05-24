@@ -9,6 +9,8 @@ import dhbw.projects.driver.DriverRepositoryImpl;
 import dhbw.projects.nation.NationRepositoryImpl;
 import dhbw.projects.team.TeamRepositoryImpl;
 import dhbw.projects.track.TrackRepositoryImpl;
+import dhbw.projects.user.IOController;
+import dhbw.projects.user.Message;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,16 +20,26 @@ import java.util.UUID;
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        DriverRepository repository = new DriverRepositoryImpl();
 
         loadTracks();
-        loadNations();
-        loadTeams();
 
-        Driver verstappen = new Driver(33, "Max Verstappen", )
-        repository.insert();
+        NationRepository nations = new NationRepositoryImpl();
+        nations = loadNations();
 
-        DriverStats driver1 = new DriverStats(Driver.VERSTAPPEN, 3, 1, 87.354);
+        TeamRepository teams = new TeamRepositoryImpl();
+        teams = loadTeams();
+
+        loadDrivers(teams, nations);
+
+        IOController newDialogue = new IOController(UUID.randomUUID());
+        Message helloMessage = new Message("Willkommen zu diesem Test", UUID.randomUUID());
+        newDialogue.createNewMessage(helloMessage);
+        Message auswahl = new Message("Was willst du machen? \n" + "[1] Neues Rennen anlegen  [2] Bestehendes Rennen anschauen", UUID.randomUUID());
+                newDialogue.createNewMessage(auswahl);
+        newDialogue.newInput();
+
+
+        /*DriverStats driver1 = new DriverStats(Driver.VERSTAPPEN, 3, 1, 87.354);
         DriverStats test1 = new DriverStats(Driver.HAMILTON, 1, 5, 90.525);
         DriverStats test2 = new DriverStats(Driver.ALONSO, 2, 3, 49.948);
 
@@ -41,7 +53,7 @@ public class Main {
         controller.getDriverStats().forEach(driverStat -> System.out.println(driverStat.getName() + " - " + driverStat.getFinalPosition()));
 
         Date date2 = new Date(2022, 05, 23);
-        System.out.println(date2.toString());
+        System.out.println(date2.toString());*/
 
 
 
@@ -102,7 +114,7 @@ public class Main {
         repository.insert(singapore);
     }
 
-    public static void loadNations(){
+    public static NationRepository loadNations(){
 
         NationRepository repository = new NationRepositoryImpl();
 
@@ -133,9 +145,11 @@ public class Main {
         repository.insert(mon);
         repository.insert(ned);
         repository.insert(rus);
+
+        return repository;
     }
 
-    public static void loadTeams(){
+    public static TeamRepository loadTeams(){
 
         TeamRepository repository = new TeamRepositoryImpl();
 
@@ -160,6 +174,17 @@ public class Main {
         repository.insert(ALFA_ROMEO);
         repository.insert(HAAS);
         repository.insert(WILLIAMS);
+
+        return repository;
+    }
+
+    public static void loadDrivers(TeamRepository teams, NationRepository nations){
+        DriverRepository repository = new DriverRepositoryImpl();
+
+        //Driver verstappen = new Driver(33, "Max Verstappen", )
+
+        //repository.insert();
+
     }
 
 }
