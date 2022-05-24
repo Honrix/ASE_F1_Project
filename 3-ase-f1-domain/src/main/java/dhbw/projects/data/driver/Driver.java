@@ -1,6 +1,6 @@
 package dhbw.projects.data.driver;
 
-import dhbw.projects.data.Nation;
+import dhbw.projects.data.nation.Nation;
 import dhbw.projects.data.Team;
 
 public class Driver {

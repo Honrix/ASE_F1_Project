@@ -2,7 +2,11 @@ package dhbw.projects;
 
 import dhbw.projects.data.Date;
 import dhbw.projects.data.driver.Driver;
+import dhbw.projects.data.nation.Nation;
 import dhbw.projects.data.track.Track;
+import dhbw.projects.driver.DriverRepositoryImpl;
+import dhbw.projects.nation.NationRepositoryImpl;
+import dhbw.projects.track.TrackRepositoryImpl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +19,7 @@ public class Main {
         DriverRepository repository = new DriverRepositoryImpl();
 
         loadTracks();
+        loadNations();
 
         Driver verstappen = new Driver(33, "Max Verstappen", )
         repository.insert();
@@ -92,6 +97,39 @@ public class Main {
         repository.insert(canada);
         repository.insert(china);
         repository.insert(singapore);
+    }
+
+    public static void loadNations(){
+
+        NationRepository repository = new NationRepositoryImpl();
+
+        Nation aus = new Nation(UUID.randomUUID(), "AUS", "Australia");
+        Nation can = new Nation(UUID.randomUUID(), "CAN", "Canada");
+        Nation esp = new Nation(UUID.randomUUID(), "ESP", "Spain");
+        Nation fin = new Nation(UUID.randomUUID(), "FIN", "Finland");
+        Nation fra = new Nation(UUID.randomUUID(), "FRA", "France");
+        Nation gbr = new Nation(UUID.randomUUID(), "GBR", "Great Britain");
+        Nation ger = new Nation(UUID.randomUUID(), "GER", "Germany");
+        Nation ita = new Nation(UUID.randomUUID(), "ITA", "Italy");
+        Nation jpn = new Nation(UUID.randomUUID(), "JPN", "Japan");
+        Nation mex = new Nation(UUID.randomUUID(), "MEX", "Mexico");
+        Nation mon = new Nation(UUID.randomUUID(), "MON", "Monaco");
+        Nation ned = new Nation(UUID.randomUUID(), "NED", "Netherlands");
+        Nation rus = new Nation(UUID.randomUUID(), "RUS", "Russia");
+
+        repository.insert(aus);
+        repository.insert(can);
+        repository.insert(esp);
+        repository.insert(fin);
+        repository.insert(fra);
+        repository.insert(gbr);
+        repository.insert(ger);
+        repository.insert(ita);
+        repository.insert(jpn);
+        repository.insert(mex);
+        repository.insert(mon);
+        repository.insert(ned);
+        repository.insert(rus);
     }
 
 }

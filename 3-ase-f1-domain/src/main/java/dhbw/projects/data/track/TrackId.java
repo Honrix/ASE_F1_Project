@@ -1,10 +1,10 @@
 package dhbw.projects.data.track;
 
-public record TrackId (int id) {
+import java.util.UUID;
+
+public record TrackId (UUID id) {
 
     public TrackId{
-        if(id< 0||id>99){
-        throw new IllegalArgumentException("Illegal TrackId");
-        }
+
     }
 }

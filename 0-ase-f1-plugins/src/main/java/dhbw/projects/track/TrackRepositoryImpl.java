@@ -1,12 +1,13 @@
-package dhbw.projects;
+package dhbw.projects.track;
 
+import dhbw.projects.TrackRepository;
 import dhbw.projects.data.track.Track;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class TrackRepositoryImpl implements TrackRepository{
+public class TrackRepositoryImpl implements TrackRepository {
 
     private final List<Track> tracks = new ArrayList<>();
     @Override

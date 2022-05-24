@@ -1,5 +1,6 @@
-package dhbw.projects;
+package dhbw.projects.driver;
 
+import dhbw.projects.DriverRepository;
 import dhbw.projects.data.driver.Driver;
 import dhbw.projects.data.driver.DriverId;
 
