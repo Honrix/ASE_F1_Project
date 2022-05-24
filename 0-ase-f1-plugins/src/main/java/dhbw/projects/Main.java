@@ -3,9 +3,11 @@ package dhbw.projects;
 import dhbw.projects.data.Date;
 import dhbw.projects.data.driver.Driver;
 import dhbw.projects.data.nation.Nation;
+import dhbw.projects.data.team.Team;
 import dhbw.projects.data.track.Track;
 import dhbw.projects.driver.DriverRepositoryImpl;
 import dhbw.projects.nation.NationRepositoryImpl;
+import dhbw.projects.team.TeamRepositoryImpl;
 import dhbw.projects.track.TrackRepositoryImpl;
 
 import java.util.ArrayList;
@@ -20,6 +22,7 @@ public class Main {
 
         loadTracks();
         loadNations();
+        loadTeams();
 
         Driver verstappen = new Driver(33, "Max Verstappen", )
         repository.insert();
@@ -130,6 +133,33 @@ public class Main {
         repository.insert(mon);
         repository.insert(ned);
         repository.insert(rus);
+    }
+
+    public static void loadTeams(){
+
+        TeamRepository repository = new TeamRepositoryImpl();
+
+        Team MERCEDES = new Team(UUID.randomUUID(), "Mercedes-AMG Petronas");
+        Team FERRARI = new Team(UUID.randomUUID(), "Ferrari");
+        Team RED_BULL = new Team(UUID.randomUUID(), "Red Bull Racing");
+        Team MCLAREN = new Team(UUID.randomUUID(), "McLaren");
+        Team ALPINE = new Team(UUID.randomUUID(), "Alpine");
+        Team ALPHATAURI = new Team(UUID.randomUUID(), "AlphaTauri");
+        Team ASTON_MARTIN = new Team(UUID.randomUUID(), "Aston Martin");
+        Team ALFA_ROMEO = new Team(UUID.randomUUID(), "Alfa Romeo Racing");
+        Team HAAS = new Team(UUID.randomUUID(), "Haas");
+        Team WILLIAMS = new Team(UUID.randomUUID(), "Williams");
+
+        repository.insert(MERCEDES);
+        repository.insert(FERRARI);
+        repository.insert(RED_BULL);
+        repository.insert(MCLAREN);
+        repository.insert(ALPINE);
+        repository.insert(ALPHATAURI);
+        repository.insert(ASTON_MARTIN);
+        repository.insert(ALFA_ROMEO);
+        repository.insert(HAAS);
+        repository.insert(WILLIAMS);
     }
 
 }
