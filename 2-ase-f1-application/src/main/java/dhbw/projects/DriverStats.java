@@ -1,6 +1,6 @@
 package dhbw.projects;
 
-import dhbw.projects.data.Driver;
+import dhbw.projects.data.driver.Driver;
 import domain_code.data.Driver;
 import validators.DriverStatValidator;
 
