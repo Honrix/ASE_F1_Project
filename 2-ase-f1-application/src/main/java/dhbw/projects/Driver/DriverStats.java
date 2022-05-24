@@ -1,4 +1,4 @@
-package dhbw.projects;
+package dhbw.projects.Driver;
 
 import dhbw.projects.data.driver.Driver;
 
@@ -29,20 +29,17 @@ public class DriverStats {
     }
 
     private boolean validatePosition(int position) {
-        if(position > 20){
+        if(position > 20 || position < 1) {
             return false;
-        } else if (position < 1){
-            return false;
-        } else {
-            return true;
         }
+        return true;
     }
 
     private boolean validateFastestLap(double time) {
         if(time <= 0){
             return false;
         } else {
-            return ((int) (time * 1000)) * 10 == (int) (time * 10000);  // Prüfüng: 4. Nachkommastelle = 0 ?
+            return Math.round(time*1000) == time*1000;
         }
     }
 

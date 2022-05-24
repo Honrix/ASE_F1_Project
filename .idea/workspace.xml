@@ -5,12 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6872ced6-8124-4b6a-8f40-13a269cfecb3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/user/IOController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/user/Message.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/race/RaceResultOutput.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1-ase-f1-adapters/src/main/java/dhbw/projects/race/RaceResultResource.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2-ase-f1-application/src/main/java/dhbw/projects/DriverStats.java" beforeDir="false" afterPath="$PROJECT_DIR$/2-ase-f1-application/src/main/java/dhbw/projects/DriverStats.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2-ase-f1-application/src/main/java/dhbw/projects/RaceResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/2-ase-f1-application/src/main/java/dhbw/projects/RaceResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/driver/DriverRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/driver/DriverRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/user/IOController.java" beforeDir="false" afterPath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/user/IOController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/user/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/3-ase-f1-domain/src/main/java/dhbw/projects/data/inputOutput/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1-ase-f1-adapters/src/main/java/dhbw/projects/DriverStatsResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/1-ase-f1-adapters/src/main/java/dhbw/projects/DriverStatsResource.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2-ase-f1-application/src/main/java/dhbw/projects/DriverStats.java" beforeDir="false" afterPath="$PROJECT_DIR$/2-ase-f1-application/src/main/java/dhbw/projects/Driver/DriverStats.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2-ase-f1-application/src/main/java/dhbw/projects/DriverStatsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/2-ase-f1-application/src/main/java/dhbw/projects/Driver/DriverStatsService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2-ase-f1-application/src/main/java/dhbw/projects/RaceResult.java" beforeDir="false" afterPath="$PROJECT_DIR$/2-ase-f1-application/src/main/java/dhbw/projects/newRace/RaceResult.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/3-ase-f1-domain/src/main/java/dhbw/projects/data/driver/Driver.java" beforeDir="false" afterPath="$PROJECT_DIR$/3-ase-f1-domain/src/main/java/dhbw/projects/data/driver/Driver.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/3-ase-f1-domain/src/main/java/dhbw/projects/data/track/Track.java" beforeDir="false" afterPath="$PROJECT_DIR$/3-ase-f1-domain/src/main/java/dhbw/projects/data/track/Track.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,13 +69,13 @@
       <recent name="dhbw.projects.values" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.dhbw.projects.Main">
+    <configuration name="dhbw.projects.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="dhbw.projects.Main" />
       <module name="0-ase-f1_project-plugins" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="dhbw.projects.*" />
+          <option name="PATTERN" value="dhbw.projects.Driver.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -101,7 +108,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.dhbw.projects.Main" />
       </list>
     </recent_temporary>
   </component>

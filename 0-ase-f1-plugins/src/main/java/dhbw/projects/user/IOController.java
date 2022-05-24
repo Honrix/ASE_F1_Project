@@ -1,5 +1,7 @@
 package dhbw.projects.user;
 
+import dhbw.projects.data.inputOutput.Message;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -43,4 +45,7 @@ public class IOController {
         return this.messageHistory;
     }
 
+    public Message getLastMessage() {
+        return messageHistory.get(messageHistory.size()-1);
+    }
 }

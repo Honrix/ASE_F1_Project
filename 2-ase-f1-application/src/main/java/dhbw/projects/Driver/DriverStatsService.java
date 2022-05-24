@@ -1,4 +1,6 @@
-package dhbw.projects;
+package dhbw.projects.Driver;
+
+import dhbw.projects.Driver.DriverStats;
 
 import java.util.Comparator;
 import java.util.List;

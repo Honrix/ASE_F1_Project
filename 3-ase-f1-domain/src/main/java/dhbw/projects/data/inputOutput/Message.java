@@ -1,4 +1,4 @@
-package dhbw.projects.user;
+package dhbw.projects.data.inputOutput;
 
 import java.util.Scanner;
 import java.util.UUID;
