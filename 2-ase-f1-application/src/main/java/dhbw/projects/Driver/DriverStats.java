@@ -50,4 +50,12 @@ public class DriverStats {
     public String getName(){
         return driver.getName();
     }
+
+    public int getStartPosition() {
+        return startPosition;
+    }
+
+    public double getFastestLap() {
+        return fastestLap;
+    }
 }
