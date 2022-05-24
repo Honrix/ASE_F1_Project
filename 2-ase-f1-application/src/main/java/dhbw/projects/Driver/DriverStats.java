@@ -1,16 +1,14 @@
-package dhbw.projects;
+package dhbw.projects.Driver;
 
 import dhbw.projects.data.driver.Driver;
-import domain_code.data.Driver;
-import validators.DriverStatValidator;
 
 public class DriverStats {
 
-    private Driver driver;
-    private int startPosition;        // = Grid-Position
-    private int finalPosition;        // = Position at the end of the race
-    private int positionsGained;      // Difference between Grid-Position to Position after race
-    private double fastestLap;        //Save in seconds and milliseconds (e.g.: "90.684" instead of "1,30.684")
+    private final Driver driver;
+    private final int startPosition;        // = Grid-Position
+    private final int finalPosition;        // = Position at the end of the race
+    private final int positionsGained;      // Difference between Grid-Position to Position after race
+    private final double fastestLap;        //Save in seconds and milliseconds (e.g.: "90.684" instead of "1,30.684")
 
     public DriverStats(Driver driver, int startPosition, int finalPosition, double fastestLap) throws Exception {
         if(!validatePosition(startPosition) || !validatePosition(finalPosition) || !validateFastestLap(fastestLap)) {
@@ -31,20 +29,17 @@ public class DriverStats {
     }
 
     private boolean validatePosition(int position) {
-        if(position > 20){
+        if(position > 20 || position < 1) {
             return false;
-        } else if (position < 1){
-            return false;
-        } else {
-            return true;
         }
+        return true;
     }
 
     private boolean validateFastestLap(double time) {
         if(time <= 0){
             return false;
         } else {
-            return ((int) (time * 1000)) * 10 == (int) (time * 10000);  // Prüfüng: 4. Nachkommastelle = 0 ?
+            return Math.round(time*1000) == time*1000;
         }
     }
 
@@ -54,5 +49,13 @@ public class DriverStats {
 
     public String getName(){
         return driver.getName();
+    }
+
+    public int getStartPosition() {
+        return startPosition;
+    }
+
+    public double getFastestLap() {
+        return fastestLap;
     }
 }

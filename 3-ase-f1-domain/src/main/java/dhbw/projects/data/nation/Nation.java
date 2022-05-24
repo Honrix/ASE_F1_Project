@@ -33,5 +33,11 @@ public class Nation {
         return nationId;
     }
 
+    public String getFullName() {
+        return fullName;
+    }
 
+    public String getShortName() {
+        return shortName;
+    }
 }

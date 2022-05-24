@@ -32,7 +32,7 @@ public class Driver {
     private Nation nation;
     private Team team;
 
-    Driver(DriverId driverId, String name, Nation nation, Team team) {
+    public Driver(DriverId driverId, String name, Nation nation, Team team) {
         this.driverId = driverId;
         this.name = name;
         this.nation = nation;
