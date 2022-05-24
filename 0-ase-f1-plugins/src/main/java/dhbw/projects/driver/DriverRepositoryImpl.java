@@ -1,7 +1,8 @@
-package dhbw.projects;
+package dhbw.projects.driver;
 
-import dhbw.projects.data.Driver;
-import dhbw.projects.data.DriverId;
+import dhbw.projects.DriverRepository;
+import dhbw.projects.data.driver.Driver;
+import dhbw.projects.data.driver.DriverId;
 
 import java.util.ArrayList;
 import java.util.List;
