@@ -35,8 +35,8 @@ public class ShowRaceUseCase {
             output += String.format("%7s", "    " + driverInformations.getFinalPosition() + ".");
             output += String.format("%-24s", "..." + driverInformations.getDriver().getName());
             output += String.format("%10s", fastestLap);
-            output += String.format("%4s", "(" + driverInformations.getStartPosition() + ")");
-            output += String.format("%6s", "|\n");
+            output += String.format("%6s", "  (" + driverInformations.getStartPosition() + ")");
+            output += String.format("%4s", "|\n");
         }
 
         return  output;
@@ -44,9 +44,7 @@ public class ShowRaceUseCase {
     }
 
     private String fastestLapToString(double fastestLap){
-        fastestLap = fastestLap/1000;
         int decimalDigits;
-        String output;
 
         decimalDigits = (int)((fastestLap - Math.floor(fastestLap))*1000);
 

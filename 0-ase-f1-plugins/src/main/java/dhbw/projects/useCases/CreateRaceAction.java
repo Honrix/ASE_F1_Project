@@ -19,6 +19,7 @@ public class CreateRaceAction implements UserOptions {
     private Date date;
     private Track track;
     private int lengthOfRace;
+    private final int[] lengthOptions = {25, 50, 100};
     private String selectedDriverKey;
     private List<DriverInformations> scoreboard = new ArrayList<>();
     private Values values;
@@ -43,16 +44,25 @@ public class CreateRaceAction implements UserOptions {
     private Track enterTrack(){
         System.out.println("Select one of the following tracks:");
         this.values.sortedOutput(this.values.getTrackNames(), "All Tracks");
-        return(this.values.getAllTracks().get(String.valueOf(this.scanner.nextInt()-1)));
+        String input = validateSelection(this.scanner.next(), this.values.getTrackNames().size());
+        return(this.values.getAllTracks().get(String.valueOf(Integer.parseInt(input)-1)));
     }
 
     private int enterLength(){
         System.out.println("Select one of the following Lengths of the Race:");
-        this.lengths.put("1", 25);
-        this.lengths.put("2", 50);
-        this.lengths.put("3", 100);
+        for (int i = 0; i < this.lengthOptions.length; i++) {
+            this.lengths.put(String.valueOf(i+1), this.lengthOptions[i]);
+        }
         this.lengths.forEach((key, value) -> System.out.printf("%-10s", "\n[" + key + "] " + value + "%\n"));
-        return(this.lengths.get(this.scanner.next()));
+        return(this.lengths.get(validateSelection(this.scanner.next(), this.lengthOptions.length)));
+    }
+
+    private String validateSelection(String input, int maxValue){
+        while(!this.createRaceUseCase.validateSelection(input, maxValue)){
+            System.out.println("Select A Number between [1] and [" + maxValue + "]:");
+            input = this.scanner.next();
+        }
+        return input;
     }
 
     private boolean confirmInput(String input) {
@@ -97,18 +107,25 @@ public class CreateRaceAction implements UserOptions {
     private Driver enterDriver(Map<String, String> drivers, int finalPosition){
         System.out.println("Select the Driver with the final Position " + (finalPosition) + ":");
         this.values.sortedOutput(drivers, "All Drivers");
-        selectedDriverKey = String.valueOf(this.scanner.nextInt()-1);
-        return (this.drivers.get(selectedDriverKey));
+        selectedDriverKey = this.scanner.next();
+        selectedDriverKey = validateSelection(selectedDriverKey, drivers.size());
+        return (this.drivers.get(String.valueOf(Integer.parseInt(selectedDriverKey)-1)));
     }
 
-    private int enterStartingPosition(Driver driver){
+    private int enterGridPosition(Driver driver){
         System.out.println("Enter the Grid-Position of " + (driver.getName()) + ":");
-        return this.scanner.nextInt();
+        String input = validateSelection(this.scanner.next(), this.drivers.size());
+        return Integer.parseInt(input);
     }
 
     private double enterFastestLap(Driver driver){
         System.out.println("Enter the Fastest Lap of " + (driver.getName()) + " (Format: XX.XXX):");
-        return this.scanner.nextDouble();
+        String input = this.scanner.next();
+        while(!this.createRaceUseCase.validateLaptime(input)){
+            System.out.println("Please Enter a valide Laptime (Format: XX.XXX)");
+            input = this.scanner.next();
+        }
+        return Double.parseDouble(input);
     }
 
     private void enterScoreboard(){
@@ -121,15 +138,15 @@ public class CreateRaceAction implements UserOptions {
         int startingPosition;
         double fastestLap;
 
-        for (int i = 0; i < 1; i++) {
+        for (int i = 0; i < this.drivers.size(); i++) {
             driver = enterDriver(remainingDrivers, i+1);
             while(!confirmInput(driver.getName())){
                 driver = enterDriver(remainingDrivers, i+1);
             }
 
-            startingPosition = enterStartingPosition(driver);
+            startingPosition = enterGridPosition(driver);
             while(!confirmInput(String.valueOf(startingPosition))){
-                startingPosition = enterStartingPosition(driver);
+                startingPosition = enterGridPosition(driver);
             }
 
             fastestLap = enterFastestLap(driver);
