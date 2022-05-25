@@ -1,35 +1,14 @@
 package dhbw.projects;
 
-import dhbw.projects.Driver.DriverStats;
-import dhbw.projects.Driver.DriverStatsService;
+import dhbw.projects.actionHandler.MainMenu;
 import dhbw.projects.actionHandler.Menu;
-import dhbw.projects.data.Date;
-import dhbw.projects.data.driver.Driver;
-import dhbw.projects.data.driver.DriverId;
-import dhbw.projects.data.nation.Nation;
-import dhbw.projects.data.team.Team;
-import dhbw.projects.data.track.Track;
-import dhbw.projects.driver.DriverRepositoryImpl;
-import dhbw.projects.nation.NationRepositoryImpl;
-import dhbw.projects.newRace.RaceResult;
-import dhbw.projects.race.RaceResultOutput;
-import dhbw.projects.race.RaceResultResource;
-import dhbw.projects.team.TeamRepositoryImpl;
-import dhbw.projects.track.TrackRepositoryImpl;
-import dhbw.projects.user.IOController;
-import dhbw.projects.data.inputOutput.Message;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.UUID;
 
 
 public class Main {
 
     public static void main(String[] args) throws Exception {
 
-        Menu menu = new Menu();
+        MainMenu menu = new MainMenu("MainMenu");
         menu.start();
 
         /*List<String> trackNames = new ArrayList<>();

@@ -32,11 +32,7 @@ public class Date {
 
     }
 
-    public String toString() {
-        return (year + "" + (month < 10? "0" + month : month)  + "" + (day < 10? "0" + day : day));
-    }
-
-    public String toFormatedString() {
-        return (year + "-" + (month < 10? "0" + month : month)  + "-" + (day < 10? "0" + day : day));
+    public String toString(String seperator) {
+        return (year + seperator + (month < 10? "0" + month : month)  + seperator + (day < 10? "0" + day : day));
     }
 }

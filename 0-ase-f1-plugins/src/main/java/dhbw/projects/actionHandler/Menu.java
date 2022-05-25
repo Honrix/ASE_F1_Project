@@ -1,56 +1,59 @@
 package dhbw.projects.actionHandler;
 
-import dhbw.projects.race.RaceResultResource;
-import dhbw.projects.useCases.RaceResultAction;
-import dhbw.projects.user.IOController;
+import dhbw.projects.RaceRepository;
+import dhbw.projects.race.RaceRepositoryImpl;
 
-import java.util.*;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
 
 public class Menu implements Observer {
 
     private final Map<String, UserOptions> userOptions = new HashMap<>();
-    private IOController dialogue;
-    private Scanner scanner;
-    private Values values;
-    private ExampleData exampleData;
+    private final Scanner scanner;
+    private String description;
 
-    public Menu() throws Exception {
-        initializeMenu();
-        this.dialogue = new IOController(UUID.randomUUID());
-        scanner = new Scanner(System.in);
+    public Menu(String descriptionOfMenu){
+        this.scanner = new Scanner(System.in);
+        initializeMenu(descriptionOfMenu);
     }
 
-    private void initializeMenu() throws Exception {
-        this.values = new Values();
-        this.exampleData = new ExampleData(values.getDrivers(), values.getTracks().getAll());
+    private void initializeMenu(String description){
+        this.description = description;
+    }
 
+    public void insertUserOption(String key, UserOptions userOption){
+        this.userOptions.put(key, userOption);
+    }
+
+    private UserOptions getUserOption(String key){
+        return this.userOptions.get(key);
+    }
+
+    private void printUserOptions(){
         addExitOption();
-        System.out.println(
-                "WELCOME TO YOUR PERSONAL F1 2021 RACE MANAGER!" + "\n\n" +
-                "Choose one option to continue your race..."
-        );
-
-
+        this.userOptions.forEach((key, userOptions) -> System.out.println("[" + key + "] " + userOptions.getDescription()));
     }
 
     public void start(){
-        boolean exit = false;
-        while(!exit){
+        while(true){
+            printUserOptions();
             String input = scanner.next();
             if(input.equals("E")){
-                exit = true;
-            } else if (input.equals("1")) {
-                for (int i = 0; i < values.getAllValues().size(); i++) {
-                    this.values.sortedOutput(values.getAllValues().get(i), values.getHeaders().get(i));
-                }
-            } else if (input.equals("2")) {
-                RaceResultAction raceResultAction = new RaceResultAction(exampleData.getRaceResultResource());
+                break;
+            }
+            UserOptions selectedOption = getUserOption(input);
+            if(selectedOption != null){
+                System.out.println("\n\n\n");
+                selectedOption.initializeOption();
             }
         }
     }
 
     @Override
     public void addExitOption() {
-        System.out.println(String.join("", Collections.nCopies(110, "-")) + "[E] for Exit");
+        System.out.println("Select an option" +
+                String.join("", Collections.nCopies(100, "-")) + "[E] for Exit");
     }
 }
