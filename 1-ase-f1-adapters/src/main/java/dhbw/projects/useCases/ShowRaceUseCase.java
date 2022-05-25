@@ -44,6 +44,7 @@ public class ShowRaceUseCase {
     }
 
     private String fastestLapToString(double fastestLap){
+        fastestLap = fastestLap/1000;
         int decimalDigits;
         String output;
 

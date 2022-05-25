@@ -5,28 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6872ced6-8124-4b6a-8f40-13a269cfecb3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/useCases/ShowRaceAction.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/1-ase-f1-adapters/src/main/java/dhbw/projects/useCases/CreateRaceUseCase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/1-ase-f1-adapters/src/main/java/dhbw/projects/useCases/ShowRaceUseCase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/2-ase-f1-application/src/main/java/dhbw/projects/useCases/ShowRaceService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/actionHandler/ExampleData.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/actionHandler/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/actionHandler/MainMenu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/actionHandler/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/actionHandler/Menu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/actionHandler/RaceMenu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/actionHandler/UserOptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/actionHandler/UserOptions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/actionHandler/Values.java" beforeDir="false" afterPath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/actionHandler/Values.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/useCases/CreateRaceAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/useCases/CreateRaceAction.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/useCases/ObjectView.java" beforeDir="false" afterPath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/useCases/ObjectView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1-ase-f1-adapters/src/main/java/dhbw/projects/DriverStatsResource.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/1-ase-f1-adapters/src/main/java/dhbw/projects/race/RaceResultResource.java" beforeDir="false" afterPath="$PROJECT_DIR$/1-ase-f1-adapters/src/main/java/dhbw/projects/race/RaceResultResource.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/1-ase-f1-adapters/src/main/java/dhbw/projects/useCases/ObjectViewUseCase.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2-ase-f1-application/src/main/java/dhbw/projects/Driver/DriverStats.java" beforeDir="false" afterPath="$PROJECT_DIR$/2-ase-f1-application/src/main/java/dhbw/projects/Driver/DriverStats.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/2-ase-f1-application/src/main/java/dhbw/projects/Driver/DriverStatsService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/2-ase-f1-application/src/main/java/dhbw/projects/newRace/RaceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/2-ase-f1-application/src/main/java/dhbw/projects/useCases/RaceService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/useCases/ShowRaceAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/useCases/ShowRaceAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1-ase-f1-adapters/src/main/java/dhbw/projects/useCases/CreateRaceUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/1-ase-f1-adapters/src/main/java/dhbw/projects/useCases/CreateRaceUseCase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/1-ase-f1-adapters/src/main/java/dhbw/projects/useCases/ShowRaceUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/1-ase-f1-adapters/src/main/java/dhbw/projects/useCases/ShowRaceUseCase.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/3-ase-f1-domain/src/main/java/dhbw/projects/data/Date.java" beforeDir="false" afterPath="$PROJECT_DIR$/3-ase-f1-domain/src/main/java/dhbw/projects/data/Date.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3-ase-f1-domain/src/main/java/dhbw/projects/data/driver/DriverInformations.java" beforeDir="false" afterPath="$PROJECT_DIR$/3-ase-f1-domain/src/main/java/dhbw/projects/data/driver/DriverInformations.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/3-ase-f1-domain/src/main/java/dhbw/projects/data/race/Race.java" beforeDir="false" afterPath="$PROJECT_DIR$/3-ase-f1-domain/src/main/java/dhbw/projects/data/race/Race.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

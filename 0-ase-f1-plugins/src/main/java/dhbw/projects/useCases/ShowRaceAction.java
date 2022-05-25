@@ -33,6 +33,7 @@ public class ShowRaceAction implements UserOptions {
             }
             System.out.println("");
             printSelectedRace(getSelectedRace());
+
         }
     }
 

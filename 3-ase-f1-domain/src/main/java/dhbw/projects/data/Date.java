@@ -16,19 +16,14 @@ public class Date {
     }
 
     public Date(String dateAsString){       //YYYYMMDD
-        if(dateAsString.matches("^\\d{8}$")){
-            LocalDate date = LocalDate.of(
-                    Integer.parseInt(dateAsString.substring(0, 4)),
-                    Integer.parseInt(dateAsString.substring(4, 6)),
-                    Integer.parseInt(dateAsString.substring(6, 8))
-            );
-            this.year = date.getYear();
-            this.month = date.getMonthValue();
-            this.day = date.getDayOfMonth();
-
-        } else {
-            throw new IllegalArgumentException("Wrong Date Format: " + dateAsString);
-        }
+        LocalDate date = LocalDate.of(
+                Integer.parseInt(dateAsString.substring(0, 4)),
+                Integer.parseInt(dateAsString.substring(4, 6)),
+                Integer.parseInt(dateAsString.substring(6, 8))
+        );
+        this.year = date.getYear();
+        this.month = date.getMonthValue();
+        this.day = date.getDayOfMonth();
 
     }
 

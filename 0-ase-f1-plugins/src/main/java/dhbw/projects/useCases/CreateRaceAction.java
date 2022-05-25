@@ -32,7 +32,12 @@ public class CreateRaceAction implements UserOptions {
 
     private Date enterDate(){
         System.out.println("Please Enter the Date of the Race (Format: YYYYMMDD):");
-        return new Date(this.scanner.next());
+        String input = this.scanner.next();
+        while(!this.createRaceUseCase.validateDate(input)){
+            System.out.println("Please Enter a valide Date (Format: YYYYMMDD)");
+            input = this.scanner.next();
+        }
+        return new Date(input);
     }
 
     private Track enterTrack(){
@@ -107,6 +112,7 @@ public class CreateRaceAction implements UserOptions {
     }
 
     private void enterScoreboard(){
+        this.scoreboard = new ArrayList<>();
         this.drivers = values.getAllDrivers();
         Map<String, String> remainingDrivers = new HashMap<>();
         remainingDrivers = this.values.getDriverNames();
@@ -115,7 +121,7 @@ public class CreateRaceAction implements UserOptions {
         int startingPosition;
         double fastestLap;
 
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 1; i++) {
             driver = enterDriver(remainingDrivers, i+1);
             while(!confirmInput(driver.getName())){
                 driver = enterDriver(remainingDrivers, i+1);
@@ -133,8 +139,8 @@ public class CreateRaceAction implements UserOptions {
 
             driverInformations = new DriverInformations(
                     driver,
-                    i+1,
                     startingPosition,
+                    i+1,
                     startingPosition-i+1,
                     fastestLap
             );
