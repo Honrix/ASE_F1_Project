@@ -1,40 +1,35 @@
 package dhbw.projects.race;
 
 import dhbw.projects.Driver.DriverStats;
-import dhbw.projects.newRace.RaceResult;
+import dhbw.projects.newRace.RaceService;
 
-import java.text.Format;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class RaceResultResource {
 
-    private List<RaceResult> raceResults = new ArrayList<>();
+    private RaceService raceService;
     private List<String> raceResultOutputs = new ArrayList<>();
 
-    public RaceResultResource(RaceResult raceResult){
-        insertResult(raceResult);
-        raceResultOutputs = generateOutput(raceResult);
+    public RaceResultResource(RaceService raceService){
+        this.raceService = raceService;
+        //raceResultOutputs = generateOutput(raceService);
     }
 
-    public void insertResult(RaceResult raceResult){
-        raceResults.add(raceResult);
-    }
-
-    public List<String> getRaceResultOutputs() {
+    /*public List<String> getRaceResultOutputs() {
         return raceResultOutputs;
     }
 
-    public List<String> generateOutput(RaceResult raceResult){
+    private List<String> generateOutput(RaceService raceService){
         List<String> strings = new ArrayList<>();
 
-        String title = raceResult.getDate().toString() + ", " + raceResult.getLengthTime() + "% " + raceResult.getTrackName();
+        String title = raceResult.getRace().getDate().toString() + ", " + raceResult.getRace().getLengthTime() + "% " + raceResult.getRace().getTrackName();
         String output = " " + String.join("", Collections.nCopies(49, "_")) + "\n";
 
         output += "|  " +
-                String.format("%-47s", raceResult.getDate().toFormatedString() + ", " + raceResult.getLengthTime()
-                        + "% " + raceResult.getTrackName() + ": ") +
+                String.format("%-47s", raceResult.getRace().getDate().toFormatedString() + ", " + raceResult.getRace().getLengthTime()
+                        + "% " + raceResult.getRace().getTrackName() + ": ") +
                 "|";
 
         String dateAsString = "";
@@ -70,6 +65,6 @@ public class RaceResultResource {
         strings.add(output);
 
         return strings;
-    }
+    }*/
 
 }

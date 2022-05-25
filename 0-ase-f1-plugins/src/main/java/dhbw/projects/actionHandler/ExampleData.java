@@ -7,7 +7,7 @@ import dhbw.projects.data.driver.Driver;
 import dhbw.projects.data.track.Track;
 import dhbw.projects.data.driver.DriverId;
 import dhbw.projects.driver.DriverRepositoryImpl;
-import dhbw.projects.newRace.RaceResult;
+import dhbw.projects.newRace.RaceService;
 import dhbw.projects.race.RaceResultResource;
 
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ import java.util.UUID;
 public class ExampleData {
 
     private final RaceResultResource raceResultResource;
-    private final RaceResult raceResult;
+    private final RaceService raceResult;
 
     public ExampleData(List<Driver> allDrivers, List<Track> tracks) throws Exception {
         raceResult = generateDate(allDrivers, tracks);
@@ -29,7 +29,7 @@ public class ExampleData {
         return raceResultResource;
     }
 
-    private RaceResult generateDate(List<Driver> allDrivers, List<Track> tracks) throws Exception {
+    private RaceService generateDate(List<Driver> allDrivers, List<Track> tracks) throws Exception {
         DriverRepositoryImpl drivers = new DriverRepositoryImpl();
         for (Driver driver : allDrivers){
             drivers.insert(driver);
@@ -48,13 +48,13 @@ public class ExampleData {
 
         DriverStatsService service = new DriverStatsService(stats);
 
-        RaceResult raceResult = new RaceResult(
+        /*RaceService raceService = new RaceService(
                 tracks.get(0),
                 service.getDriverStats(),
                 50,
                 new Date("20220524"),
                 UUID.randomUUID()
-        );
+        );*/
 
         return raceResult;
     }

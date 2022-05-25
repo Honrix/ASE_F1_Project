@@ -1,5 +1,6 @@
 package dhbw.projects.actionHandler;
 
+import dhbw.projects.Driver.DriverStats;
 import dhbw.projects.DriverRepository;
 import dhbw.projects.NationRepository;
 import dhbw.projects.TeamRepository;
@@ -23,49 +24,53 @@ public class Values {
     private final TeamRepository teams;
     private final DriverRepository drivers;
 
-    private List<String> trackNames = new ArrayList<>();
-    private List<String> nationalities = new ArrayList<>();
-    private List<String> teamNames = new ArrayList<>();
-    private List<String> driverNames = new ArrayList<>();
+    private Map<String, String> trackNames = new HashMap<>();
+    private Map<String, Track> allTracks = new HashMap<>();
+    private Map<String, String> nationalities = new HashMap<>();
+    private Map<String, Nation> allNations = new HashMap<>();
+    private Map<String, String> teamNames = new HashMap<>();
+    private Map<String, Team> allTeams = new HashMap<>();
+    private Map<String, String> driverNames = new HashMap<>();
+    private Map<String, Driver> allDrivers = new HashMap<>();
 
-    private List<List<String>> allValues = new ArrayList<>();
+    //private List<Map<String, Object>> allValues = new ArrayList<>();
     private List<String> headers = new ArrayList<>();
 
-    public Values(){
+    public Values() {
         this.tracks = loadTracks();
         this.nations = loadNations();
         this.teams = loadTeams();
         this.drivers = loadDrivers(teams, nations);
 
-        headers.add("Alle Strecken");
-        headers.add("Alle Nationalitäten");
-        headers.add("Alle Teams");
-        headers.add("Alle Fahrer");
-
-        allValues.add(trackNames);
+        /*allValues.add(trackNames);
         allValues.add(nationalities);
         allValues.add(teamNames);
-        allValues.add(driverNames);
+        allValues.add(driverNames);*/
 
     }
 
-    public List<List<String>> getAllValues() {
+    /*public List<List<String>> getAllValues() {
         return allValues;
-    }
+    }*/
 
     public List<String> getHeaders() {
         return headers;
     }
 
-    public TrackRepository getTracks() {
-        return tracks;
+
+    public Map<String, String> getTrackNames() {
+        return trackNames;
+    }
+
+    public Map<String, Track> getAllTracks() {
+        return allTracks;
     }
 
     public List<Driver> getDrivers() {
         return drivers.getAll();
     }
 
-    public void sortedOutput(List<String> strings, String outputName) {
+    public void sortedOutput(Map<String, String> strings, String outputName) {
         StringBuilder header = new StringBuilder(outputName);
         while (header.length() < 123) {
             header = new StringBuilder("=" + header + "=");
@@ -79,13 +84,22 @@ public class Values {
         int maxColumn = (int) Math.floor(value) + 1;
         int endObj = strings.size() % 5;
 
+        /*Set<String> keys = strings.keySet();
+        List<String> allKeys = new ArrayList<>(keys);
+        allKeys.sort();
+        for (String string: allKeys
+             ) {
+            System.out.println(string);
+        }*/
+
         for (int i = 0; i < (Math.min(strings.size(), 5)); i++) {
-            if(i == endObj){
+            if (i == endObj) {
                 maxColumn--;
             }
             for (int j = 0; j < maxColumn; j++) {
                 System.out.printf("%5s", "[" + (i + 1 + (5 * j)) + "] ");
-                System.out.printf("%-21s", strings.get(i + (5 * j)));
+                System.out.printf("%-21s", strings.get(String.valueOf(i + (5 * j))));
+                //System.out.printf("%-21s", allKeys.get(i + (5 * j))+ ", " + strings.get(String.valueOf(allKeys.get(i + (5 * j)))));
             }
             if (i < (Math.min(strings.size(), 5) - 1)) {
                 System.out.println("");
@@ -95,29 +109,32 @@ public class Values {
     }
 
 
-    private TrackRepository loadTracks(){
+    private TrackRepository loadTracks() {
 
         TrackRepository repository = new TrackRepositoryImpl();
 
         String[] trackNamesStr = {"Bahrain", "Imola", "Portugal", "Spain", "Monaco", "Azerbaijan", "Canada", "France",
-            "Austria", "Great Britain", "Hungary", "Belgium", "Netherlands", "Italy", "Russia", "Singapore", "Japan",
+                "Austria", "Great Britain", "Hungary", "Belgium", "Netherlands", "Italy", "Russia", "Singapore", "Japan",
                 "USA", "Mexico", "Brazil", "Australia", "Saudi Arabia", "Abu Dhabi", "China"};
 
-        for(int i = 0; i < trackNamesStr.length; i++){
+        for (int i = 0; i < trackNamesStr.length; i++) {
             repository.insert(new Track(UUID.randomUUID(), trackNamesStr[i]));
         }
 
-        List<String> trackNames = new ArrayList<>();
+        Map<String, String> trackNames = new HashMap<>();
+        Map<String, Track> allTracks = new HashMap<>();
 
-        for (Track track: repository.getAll()) {
-            trackNames.add(track.toString());
+        for (int i = 0; i < repository.getAll().size(); i++) {
+            trackNames.put(String.valueOf(i), repository.getAll().get(i).toString());
+            allTracks.put(String.valueOf(i), repository.getAll().get(i));
         }
 
         this.trackNames = trackNames;
+        this.allTracks = allTracks;
         return repository;
     }
 
-    private NationRepository loadNations(){
+    private NationRepository loadNations() {
 
         NationRepository repository = new NationRepositoryImpl();
 
@@ -136,42 +153,49 @@ public class Values {
                 {"NED", "Netherlands"},
                 {"RUS", "Russia"}};
 
-        for(int i = 0; i < nationalitiesStr.length; i++){
+        for (int i = 0; i < nationalitiesStr.length; i++) {
             repository.insert(new Nation(UUID.randomUUID(), nationalitiesStr[i][0], nationalitiesStr[i][1]));
         }
 
-        List<String> nationalities = new ArrayList<>();
+        HashMap<String, String> nationalities = new HashMap<>();
+        Map<String, Nation> allNations = new HashMap<>();
 
-        for (Nation nation: repository.getAll()) {
-            nationalities.add(nation.getShortName() + " (" + nation.getFullName() + ")");
+        for (int i = 0; i < repository.getAll().size(); i++) {
+            nationalities.put(String.valueOf(i + 1), repository.getAll().get(i).toString());
+            allNations.put(String.valueOf(i + 1), repository.getAll().get(i));
         }
 
+
         this.nationalities = nationalities;
+        this.allNations = allNations;
         return repository;
     }
 
-    private TeamRepository loadTeams(){
+    private TeamRepository loadTeams() {
 
         TeamRepository repository = new TeamRepositoryImpl();
 
         String[] teamNamesStr = {"Mercedes-AMG Petronas", "Ferrari", "Red Bull Racing", "McLaren", "Alpine",
                 "AlphaTauri", "Aston Martin", "Alfa Romeo Racing", "Haas", "Williams"};
 
-        for(int i = 0; i < teamNamesStr.length; i++){
+        for (int i = 0; i < teamNamesStr.length; i++) {
             repository.insert(new Team(UUID.randomUUID(), teamNamesStr[i]));
         }
 
-        List<String> teamNames = new ArrayList<>();
+        HashMap<String, String> teamNames = new HashMap<>();
+        HashMap<String, Team> allTeams = new HashMap<>();
 
-        for (Team team: repository.getAll()) {
-            teamNames.add(team.toString());
+        for (int i = 0; i < repository.getAll().size(); i++) {
+            teamNames.put(String.valueOf(i + 1), repository.getAll().get(i).toString());
+            allTeams.put(String.valueOf(i + 1), repository.getAll().get(i));
         }
 
         this.teamNames = teamNames;
+        this.allTeams = allTeams;
         return repository;
     }
 
-    private DriverRepository loadDrivers(TeamRepository teams, NationRepository nations){
+    private DriverRepository loadDrivers(TeamRepository teams, NationRepository nations) {
         DriverRepository repository = new DriverRepositoryImpl();
         List<Team> allTeams = teams.getAll();
         List<Nation> allNations = nations.getAll();
@@ -198,21 +222,40 @@ public class Values {
                 new Driver(new DriverId(63), "George Russell", allNations.get(5), allTeams.get(9)),
                 new Driver(new DriverId(6), "Nicholas Latifi", allNations.get(1), allTeams.get(9))};
 
-        for (Driver driver: driverInfos){
+        for (Driver driver : driverInfos) {
             repository.insert(driver);
         }
 
-        List<String> driverNames = new ArrayList<>();
+        HashMap<String, String> driverNames = new HashMap<>();
+        HashMap<String, Driver> allDrivers = new HashMap<>();
 
-        for (Driver driver: repository.getAll()) {
-            driverNames.add(driver.getName());
+        for (int i = 0; i < repository.getAll().size(); i++) {
+            driverNames.put(String.valueOf(i), repository.getAll().get(i).getName());
+            allDrivers.put(String.valueOf(i), repository.getAll().get(i));
         }
 
         this.driverNames = driverNames;
+        this.allDrivers = allDrivers;
 
         return repository;
 
     }
 
+    public Map<String, String> getNationalities() {
+        return nationalities;
+    }
 
+    public Map<String, String> getTeamNames() {
+        return teamNames;
+    }
+
+    public Map<String, String> getDriverNames() {
+        return driverNames;
+    }
+
+    public Map<String, Driver> getAllDrivers() {
+        return allDrivers;
+    }
 }
+
+
