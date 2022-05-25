@@ -45,7 +45,7 @@ public class Menu implements Observer {
             }
             UserOptions selectedOption = getUserOption(input);
             if(selectedOption != null){
-                System.out.println("\n\n\n");
+                System.out.println("\n");
                 selectedOption.initializeOption();
             }
         }
