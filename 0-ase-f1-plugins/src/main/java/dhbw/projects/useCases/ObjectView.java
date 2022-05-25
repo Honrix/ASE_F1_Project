@@ -22,6 +22,11 @@ public class ObjectView implements UserOptions {
 
     @Override
     public String getDescription() {
-        return "Show Race";
+        return "Show All Objects";
+    }
+
+    @Override
+    public void closeAction() {
+
     }
 }

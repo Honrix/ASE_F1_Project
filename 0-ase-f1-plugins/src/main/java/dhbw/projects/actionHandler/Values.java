@@ -153,16 +153,16 @@ public class Values {
                 {"NED", "Netherlands"},
                 {"RUS", "Russia"}};
 
-        for (int i = 0; i < nationalitiesStr.length; i++) {
-            repository.insert(new Nation(UUID.randomUUID(), nationalitiesStr[i][0], nationalitiesStr[i][1]));
+        for (String[] strings : nationalitiesStr) {
+            repository.insert(new Nation(UUID.randomUUID(), strings[0], strings[1]));
         }
 
-        HashMap<String, String> nationalities = new HashMap<>();
+        Map<String, String> nationalities = new HashMap<>();
         Map<String, Nation> allNations = new HashMap<>();
 
         for (int i = 0; i < repository.getAll().size(); i++) {
-            nationalities.put(String.valueOf(i + 1), repository.getAll().get(i).toString());
-            allNations.put(String.valueOf(i + 1), repository.getAll().get(i));
+            nationalities.put(String.valueOf(i), repository.getAll().get(i).getShortName() + " (" + repository.getAll().get(i).getFullName() +")");
+            allNations.put(String.valueOf(i), repository.getAll().get(i));
         }
 
 
@@ -186,8 +186,8 @@ public class Values {
         HashMap<String, Team> allTeams = new HashMap<>();
 
         for (int i = 0; i < repository.getAll().size(); i++) {
-            teamNames.put(String.valueOf(i + 1), repository.getAll().get(i).toString());
-            allTeams.put(String.valueOf(i + 1), repository.getAll().get(i));
+            teamNames.put(String.valueOf(i), repository.getAll().get(i).toString());
+            allTeams.put(String.valueOf(i), repository.getAll().get(i));
         }
 
         this.teamNames = teamNames;

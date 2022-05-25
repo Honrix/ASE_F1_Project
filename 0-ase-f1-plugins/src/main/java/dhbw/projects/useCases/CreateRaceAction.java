@@ -8,13 +8,12 @@ import dhbw.projects.data.driver.Driver;
 import dhbw.projects.data.driver.DriverInformations;
 import dhbw.projects.data.race.Race;
 import dhbw.projects.data.track.Track;
-import dhbw.projects.race.RaceRepositoryImpl;
 
 import java.util.*;
 
 public class CreateRaceAction implements UserOptions {
 
-    private final RaceRepository raceRepository = new RaceRepositoryImpl();
+    private final CreateRaceUseCase createRaceUseCase;
     private final Scanner scanner = new Scanner(System.in);
     private Race race;
     private Date date;
@@ -27,7 +26,8 @@ public class CreateRaceAction implements UserOptions {
     private Map<String, Driver> drivers = new HashMap<>();
     private Map<String, Integer> lengths = new HashMap<>();
 
-    public CreateRaceAction(){
+    public CreateRaceAction(RaceRepository raceRepository){
+        this.createRaceUseCase = new CreateRaceUseCase(raceRepository);
     }
 
     private Date enterDate(){
@@ -73,7 +73,7 @@ public class CreateRaceAction implements UserOptions {
 
     private void enterHeader(){
         this.date = enterDate();
-        while(!confirmInput(date.toString())){
+        while(!confirmInput(date.toString(""))){
             date = enterDate();
         }
 
@@ -152,12 +152,20 @@ public class CreateRaceAction implements UserOptions {
         enterHeader();
         enterScoreboard();
 
-        System.out.println("You have entered all information. Your race of " + this.date.toString() + " has been saved!\n\n\n");
+        this.race = new Race(this.track, this.scoreboard, this.lengthOfRace, this.date, UUID.randomUUID());
+
+        this.createRaceUseCase.insert(this.race);
+        System.out.println("You have entered all information. Your race of " + this.date.toString("") + " has been saved!\n\n\n");
 
     }
 
     @Override
     public String getDescription() {
         return "Create A New Race";
+    }
+
+    @Override
+    public void closeAction() {
+        scanner.close();
     }
 }

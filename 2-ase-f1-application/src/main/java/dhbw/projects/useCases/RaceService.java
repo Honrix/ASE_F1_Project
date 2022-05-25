@@ -1,4 +1,4 @@
-package dhbw.projects.newRace;
+package dhbw.projects.useCases;
 
 import dhbw.projects.Driver.DriverStats;
 import dhbw.projects.data.Date;

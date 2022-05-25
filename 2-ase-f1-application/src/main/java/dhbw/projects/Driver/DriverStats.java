@@ -24,10 +24,6 @@ public class DriverStats {
         this.fastestLap = fastestLap;
     }
 
-    public String toCSVEntry() {
-        return startPosition + ", " + driver + ", " + finalPosition + ", " + fastestLap;
-    }
-
     private boolean validatePosition(int position) {
         return (0 < position && position < 21);
     }
@@ -42,17 +38,5 @@ public class DriverStats {
 
     public int getFinalPosition() {
         return finalPosition;
-    }
-
-    public String getName(){
-        return driver.getName();
-    }
-
-    public int getStartPosition() {
-        return startPosition;
-    }
-
-    public double getFastestLap() {
-        return fastestLap;
     }
 }

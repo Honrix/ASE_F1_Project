@@ -23,6 +23,22 @@ public class Race {
         this.raceId = uuid;
     }
 
+    public Track getTrackName() {
+        return trackName;
+    }
+
+    public List<DriverInformations> getScoreboard() {
+        return scoreboard;
+    }
+
+    public int getLengthTime() {
+        return lengthTime;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
     public UUID getRaceId() {
         return this.raceId;
     }

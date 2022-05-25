@@ -15,4 +15,24 @@ public class DriverInformations {
         this.positionsGained = positionsGained;
         this.fastestLap = fastestLap;
     }
+
+    public Driver getDriver() {
+        return driver;
+    }
+
+    public int getStartPosition() {
+        return startPosition;
+    }
+
+    public int getFinalPosition() {
+        return finalPosition;
+    }
+
+    public int getPositionsGained() {
+        return positionsGained;
+    }
+
+    public double getFastestLap() {
+        return fastestLap;
+    }
 }
