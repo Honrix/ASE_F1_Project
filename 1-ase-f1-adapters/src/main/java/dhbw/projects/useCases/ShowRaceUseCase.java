@@ -8,21 +8,25 @@ import java.util.*;
 
 public class ShowRaceUseCase {
 
-    private final ShowRaceService raceService;
+    private final ShowRaceService showRaceService;
 
     public ShowRaceUseCase(RaceRepository raceRepository) {
-        this.raceService = new ShowRaceService(raceRepository);
+        this.showRaceService = new ShowRaceService(raceRepository);
     }
 
     public Map<Integer, Race> getExistingRaces(){
 
-        List<Race> races = raceService.getExistingRaces();
+        List<Race> races = showRaceService.getExistingRaces();
         Map<Integer, Race> allRaces = new HashMap<>();
         for (int i = 0; i < races.size(); i++) {
             allRaces.put(i, races.get(i));
         }
 
         return allRaces;
+    }
+
+    public ShowRaceService getShowRaceService() {
+        return showRaceService;
     }
 
     public String scoreboardToString(Race race){
@@ -73,5 +77,13 @@ public class ShowRaceUseCase {
 
 
         System.out.println(output);
+    }
+
+    public boolean validateSelection(String input, int maxValue){
+        if(input.matches("^\\d+$")) {
+            return (0 < Integer.parseInt(input) && Integer.parseInt(input) <= maxValue);
+        } else {
+            return false;
+        }
     }
 }

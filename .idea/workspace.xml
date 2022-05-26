@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6872ced6-8124-4b6a-8f40-13a269cfecb3" name="Changes" comment="" />
+    <list default="true" id="6872ced6-8124-4b6a-8f40-13a269cfecb3" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/useCases/GetReportAction.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/1-ase-f1-adapters/src/main/java/dhbw/projects/useCases/GetReportUseCase.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/2-ase-f1-application/src/main/java/dhbw/projects/useCases/GetReportService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/actionHandler/MainMenu.java" beforeDir="false" afterPath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/actionHandler/MainMenu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/useCases/ShowRaceAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/useCases/ShowRaceAction.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/2-ase-f1-application/src/main/java/dhbw/projects/useCases/RaceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/2-ase-f1-application/src/main/java/dhbw/projects/useCases/CreateRaceService.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -58,9 +66,10 @@
   <component name="RunManager" selected="Application.dhbw.projects.Main">
     <configuration name="dhbw.projects.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="dhbw.projects.Main" />
+      <module name="0-ase-f1_project-plugins" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="dhbw.projects.Driver.*" />
+          <option name="PATTERN" value="dhbw.projects.driver.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>

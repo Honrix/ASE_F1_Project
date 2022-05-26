@@ -39,7 +39,7 @@ public class Menu implements Observer {
     public void start(){
         while(true){
             printUserOptions();
-            String input = scanner.next();
+            String input = this.scanner.next();
             if(input.equals("E")){
                 break;
             }
