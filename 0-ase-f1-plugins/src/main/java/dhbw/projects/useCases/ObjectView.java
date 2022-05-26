@@ -24,9 +24,4 @@ public class ObjectView implements UserOptions {
     public String getDescription() {
         return "Show All Objects";
     }
-
-    @Override
-    public void closeAction() {
-
-    }
 }

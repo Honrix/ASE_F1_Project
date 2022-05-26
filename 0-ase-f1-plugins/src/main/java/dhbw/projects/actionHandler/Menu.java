@@ -1,8 +1,5 @@
 package dhbw.projects.actionHandler;
 
-import dhbw.projects.RaceRepository;
-import dhbw.projects.race.RaceRepositoryImpl;
-
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -12,6 +9,7 @@ public class Menu implements Observer {
 
     private final Map<String, UserOptions> userOptions = new HashMap<>();
     private final Scanner scanner;
+    private final String seperator = String.join("", Collections.nCopies(124, "="));
     private String description;
 
     public Menu(String descriptionOfMenu){
@@ -33,19 +31,20 @@ public class Menu implements Observer {
 
     private void printUserOptions(){
         addExitOption();
-        this.userOptions.forEach((key, userOptions) -> System.out.println("[" + key + "] " + userOptions.getDescription()));
+        this.userOptions.forEach((key, userOptions) ->
+                System.out.println("    [" + key + "] " + userOptions.getDescription()));
     }
 
     public void start(){
         while(true){
             printUserOptions();
+            System.out.println(this.seperator);
             String input = this.scanner.next();
             if(input.equals("E")){
                 break;
             }
             UserOptions selectedOption = getUserOption(input);
             if(selectedOption != null){
-                System.out.println("\n");
                 selectedOption.initializeOption();
             }
         }
@@ -53,7 +52,7 @@ public class Menu implements Observer {
 
     @Override
     public void addExitOption() {
-        System.out.println("Select an option" +
-                String.join("", Collections.nCopies(100, "-")) + "[E] for Exit");
+        System.out.println("Select an Option" +
+                String.join("", Collections.nCopies(96, "=")) + "[E] for Exit");
     }
 }

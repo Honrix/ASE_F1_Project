@@ -1,4 +1,4 @@
-package dhbw.projects.data;
+package dhbw.projects.data.date;
 
 import java.time.LocalDate;
 
@@ -8,19 +8,11 @@ public class Date {
     private int month;
     private int day;
 
-    public Date(int year, int month, int day) throws Exception{
-        LocalDate date = LocalDate.of(year, month, day);
-        this.year = date.getYear();
-        this.month = date.getMonthValue();
-        this.day = date.getDayOfMonth();
-    }
-
-    public Date(String dateAsString){       //YYYYMMDD
+    public Date(String dateAsString){
         LocalDate date = LocalDate.of(
                 Integer.parseInt(dateAsString.substring(0, 4)),
                 Integer.parseInt(dateAsString.substring(4, 6)),
-                Integer.parseInt(dateAsString.substring(6, 8))
-        );
+                Integer.parseInt(dateAsString.substring(6, 8)));
         this.year = date.getYear();
         this.month = date.getMonthValue();
         this.day = date.getDayOfMonth();

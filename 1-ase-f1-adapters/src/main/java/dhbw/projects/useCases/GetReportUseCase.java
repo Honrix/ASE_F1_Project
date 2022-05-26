@@ -9,7 +9,7 @@ import java.util.*;
 public class GetReportUseCase {
 
     private final GetReportService getReportService;
-    private List<Race> allRaces;
+    private final List<Race> allRaces;
     private ArrayList<Integer> totalPoints;
     private ArrayList<Driver> driverWithPoints;
 
@@ -21,35 +21,36 @@ public class GetReportUseCase {
     public Object[] getTotalPoints(){
         getPointsOfDrivers();
         Map<String, Integer> totalPoints = new HashMap<>();
-
         for (int i = 0; i < this.driverWithPoints.size(); i++) {
             totalPoints.put(this.driverWithPoints.get(i).getName(), this.totalPoints.get(i));
         }
+        return getSortedList(totalPoints.entrySet().toArray());
+    }
 
-        Object[] a = totalPoints.entrySet().toArray();
-        Arrays.sort(a, (o1, o2) -> ((Map.Entry<String, Integer>) o2).getValue()
+    private Object[] getSortedList(Object[] object){
+        Arrays.sort(object, (o1, o2) -> ((Map.Entry<String, Integer>) o2).getValue()
                 .compareTo(((Map.Entry<String, Integer>) o1).getValue()));
+        return object;
+    }
 
-        return a;
+    private void clearLists(){
+        this.totalPoints = new ArrayList<>();
+        this.driverWithPoints = new ArrayList<>();
     }
 
     private void getPointsOfDrivers(){
-        this.totalPoints = new ArrayList<>();
-        this.driverWithPoints = new ArrayList<>();
+        clearLists();
         for (Race race: this.allRaces) {
             for (int i = 0; i < race.getScoreboard().size(); i++) {
                 Driver driver = race.getScoreboard().get(i).getDriver();
                 int points = getPointsOfPosition(i+1);
                 if(containsDriver(driver)){
-                    System.out.println(driver.getName() + " gefunden");
                     int driverPosition = getDriverPositionInList(driver);
                     this.totalPoints.set(driverPosition, this.totalPoints.get(driverPosition) + points);
                 }   else {
-                    System.out.println(driver.getName() + " nicht gefunden");
                     this.driverWithPoints.add(driver);
                     this.totalPoints.add(points);
                 }
-
             }
         }
     }
@@ -74,11 +75,10 @@ public class GetReportUseCase {
 
     private int getPointsOfPosition(int position){
         int[] points = {25, 18, 15, 12, 10, 8, 6, 4, 2, 1};
-        if(position > 10){
-            return 0;
-        } else {
+        if(position < 11){
             return points[position-1];
         }
+        return 0;
     }
 
 

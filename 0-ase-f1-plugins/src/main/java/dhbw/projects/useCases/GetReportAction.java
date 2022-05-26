@@ -4,7 +4,6 @@ import dhbw.projects.RaceRepository;
 import dhbw.projects.actionHandler.UserOptions;
 import dhbw.projects.actionHandler.Values;
 import dhbw.projects.data.driver.Driver;
-import dhbw.projects.data.race.Race;
 
 import java.util.*;
 
@@ -28,7 +27,6 @@ public class GetReportAction implements UserOptions {
             getTotalPoints();
             printTotalPoints();
         }
-        closeAction();
     }
 
     private void getTotalPoints(){
@@ -65,9 +63,5 @@ public class GetReportAction implements UserOptions {
     @Override
     public String getDescription() {
         return "Get Report";
-    }
-
-    @Override
-    public void closeAction() {
     }
 }

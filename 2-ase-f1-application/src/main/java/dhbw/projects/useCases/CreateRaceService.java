@@ -1,34 +1,23 @@
 package dhbw.projects.useCases;
 
-import dhbw.projects.data.Date;
-import dhbw.projects.data.driver.DriverInformations;
+import dhbw.projects.RaceRepository;
 import dhbw.projects.data.race.Race;
-import dhbw.projects.data.track.Track;
 
 import java.util.List;
-import java.util.UUID;
 
 
 public class CreateRaceService {
+    private final RaceRepository raceRepository;
 
-    private final Race race;
-
-    public CreateRaceService(Track trackName, List<DriverInformations> scoreboard, int lengthTime, Date date, UUID uuid) throws Exception {
-        if(!validateLengthTime(lengthTime)) {
-            throw new IllegalArgumentException("Error by creating the result of a certain race");
-        }
-        this.race = new Race(trackName, scoreboard, lengthTime, date, uuid);
-
+    public CreateRaceService(RaceRepository raceRepository) {
+        this.raceRepository = raceRepository;
     }
 
-    public Race getRace() {
-        return race;
+    public List<Race> getAllRaces() {
+        return this.raceRepository.getAll();
     }
 
-    public boolean validateLengthTime(int length) {
-        if(length != 25 && length != 50 && length != 100){
-            return false;
-        }
-        return true;
+    public void insert(Race race) {
+        this.raceRepository.insert(race);
     }
 }
