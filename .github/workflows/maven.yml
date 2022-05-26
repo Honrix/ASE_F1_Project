@@ -23,4 +23,16 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven
-      run: mvn -B package --file pom.xml
+      run: mvn clean verify -Pjacoco
+    - name: generate report
+      uses: actions/upload-artifact@v3
+      with:
+        name: report
+        path: x-ase-f1-project-codecoverage/target/site/jacoco-aggregate
+    - name: Download Test Reports Folder
+      uses: actions/download-artifact@v2
+      with:
+        name: report
+        path: x-ase-f1-project-codecoverage/target/site/jacoco-aggregate
+    - name: Upload Test Report
+      run: bash <(curl -s https://codecov.io/bash) -f "x-ase-f1-project-codecoverage/target/site/jacoco-aggregate/jacoco.xml"
