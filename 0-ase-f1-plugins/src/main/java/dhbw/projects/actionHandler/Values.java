@@ -31,6 +31,8 @@ public class Values {
 
     private List<String> headers = new ArrayList<>();
 
+    private final ValuesService valuesService;
+
     public Values() {
         this.tracks = loadTracks();
         this.nations = loadNations();

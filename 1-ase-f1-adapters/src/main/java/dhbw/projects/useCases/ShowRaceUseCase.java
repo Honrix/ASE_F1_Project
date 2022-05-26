@@ -94,5 +94,4 @@ public class ShowRaceUseCase {
 
         System.out.println(output);
     }
-
 }

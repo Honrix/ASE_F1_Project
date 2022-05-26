@@ -7,7 +7,6 @@ import java.util.List;
 
 
 public class CreateRaceService {
-
     private final RaceRepository raceRepository;
 
     public CreateRaceService(RaceRepository raceRepository) {
