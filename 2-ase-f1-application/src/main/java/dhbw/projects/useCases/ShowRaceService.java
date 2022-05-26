@@ -11,7 +11,6 @@ public class ShowRaceService {
 
     public ShowRaceService(RaceRepository raceRepository) {
         this.raceRepository = raceRepository;
-
     }
 
     public RaceRepository getRaceRepository() {
