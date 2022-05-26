@@ -1,5 +1,6 @@
 package dhbw.projects.useCases;
 
+import dhbw.projects.InputValidator;
 import dhbw.projects.RaceRepository;
 import dhbw.projects.data.driver.DriverInformations;
 import dhbw.projects.data.race.Race;
@@ -9,49 +10,52 @@ import java.util.*;
 public class ShowRaceUseCase {
 
     private final ShowRaceService showRaceService;
+    private final InputValidator inputValidator = new InputValidator();
 
     public ShowRaceUseCase(RaceRepository raceRepository) {
         this.showRaceService = new ShowRaceService(raceRepository);
     }
 
     public Map<Integer, Race> getExistingRaces(){
-
         List<Race> races = showRaceService.getExistingRaces();
         Map<Integer, Race> allRaces = new HashMap<>();
         for (int i = 0; i < races.size(); i++) {
             allRaces.put(i, races.get(i));
         }
-
         return allRaces;
+    }
+
+    public InputValidator getInputValidator() {
+        return inputValidator;
     }
 
     public ShowRaceService getShowRaceService() {
         return showRaceService;
     }
 
-    public String scoreboardToString(Race race){
+    private String scoreboardToString(Race race){
         List<DriverInformations> scoreboard = race.getScoreboard();
-        String output = "";
-
+        StringBuilder output = new StringBuilder();
         for (DriverInformations driverInformations: scoreboard) {
-            String fastestLap = fastestLapToString(driverInformations.getFastestLap());
-            output += "|";
-            output += String.format("%7s", "    " + driverInformations.getFinalPosition() + ".");
-            output += String.format("%-24s", "..." + driverInformations.getDriver().getName());
-            output += String.format("%10s", fastestLap);
-            output += String.format("%6s", "  (" + driverInformations.getStartPosition() + ")");
-            output += String.format("%4s", "|\n");
+            output.append(driverInformationToString(driverInformations));
         }
-
-        return  output;
-
+        return output.toString();
     }
 
-    private String fastestLapToString(double fastestLap){
+    private String driverInformationToString(DriverInformations driverInformations){
+        String fastestLap = fastestLapToString(driverInformations.getFastestLap());
+        String output = "|";
+        output += String.format("%7s", "    " + driverInformations.getFinalPosition() + ".");
+        output += String.format("%-24s", "..." + driverInformations.getDriver().getName());
+        output += String.format("%10s", fastestLap);
+        output += String.format("%6s", "  (" + driverInformations.getStartPosition() + ")");
+        output += String.format("%4s", "|\n");
+        return output;
+    }
+
+    private int getDecimalDigits(double number){
         int decimalDigits;
-
-        decimalDigits = (int)((fastestLap - Math.floor(fastestLap))*1000);
-
+        decimalDigits = (int)((number - Math.floor(number))*1000);
         if(decimalDigits < 100) {
             if (decimalDigits < 10) {
                 decimalDigits *= 100;
@@ -59,10 +63,22 @@ public class ShowRaceUseCase {
                 decimalDigits *= 10;
             }
         }
+        return decimalDigits;
+    }
 
-        return (int) Math.floor(fastestLap/60) + ":" + (int) (Math.floor(fastestLap) % 60) + "." +
-                (decimalDigits <= 0? "000" : decimalDigits+1);
+    private String fastestLapToString(double fastestLap){
+        String decimalDigits = String.valueOf(getDecimalDigits(fastestLap));
+        String seconds = getSeconds(fastestLap);
+        String minutes = String.valueOf((int) Math.floor(fastestLap/60));
+        return minutes + ":" + seconds + "." + decimalDigits;
+    }
 
+    private String getSeconds(double fastestLap) {
+        int seconds = (int) (Math.floor(fastestLap) % 60);
+        if(seconds < 10){
+            return "0" + seconds;
+        }
+        return String.valueOf(seconds);
     }
 
     public void raceToString(Race race) {
@@ -79,11 +95,4 @@ public class ShowRaceUseCase {
         System.out.println(output);
     }
 
-    public boolean validateSelection(String input, int maxValue){
-        if(input.matches("^\\d+$")) {
-            return (0 < Integer.parseInt(input) && Integer.parseInt(input) <= maxValue);
-        } else {
-            return false;
-        }
-    }
 }

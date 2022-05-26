@@ -28,10 +28,6 @@ public class DriverInformations {
         return finalPosition;
     }
 
-    public int getPositionsGained() {
-        return positionsGained;
-    }
-
     public double getFastestLap() {
         return fastestLap;
     }

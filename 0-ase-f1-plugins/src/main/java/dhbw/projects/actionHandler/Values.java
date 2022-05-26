@@ -1,7 +1,6 @@
 package dhbw.projects.actionHandler;
 
 import dhbw.projects.*;
-import dhbw.projects.Driver.DriverStats;
 import dhbw.projects.data.driver.Driver;
 import dhbw.projects.data.driver.DriverId;
 import dhbw.projects.data.nation.Nation;
@@ -32,19 +31,17 @@ public class Values {
 
     private List<String> headers = new ArrayList<>();
 
-    private final ValuesService valuesService;
-
     public Values() {
         this.tracks = loadTracks();
         this.nations = loadNations();
         this.teams = loadTeams();
         this.drivers = loadDrivers(teams, nations);
-        this.valuesService = new ValuesService();
 
     }
 
     public void sortedOutput(Map<String, String> strings, String outputName){
-        System.out.print(this.valuesService.sortedOutput(strings, outputName));
+        ObjectOutput objectOutput = new ObjectOutput(strings, outputName);
+        System.out.print(objectOutput.getOutput());
     }
 
     public Map<String, String> getTrackNames() {
@@ -121,8 +118,17 @@ public class Values {
 
         TeamRepository repository = new TeamRepositoryImpl();
 
-        String[] teamNamesStr = {"Mercedes-AMG Petronas", "Ferrari", "Red Bull Racing", "McLaren", "Alpine",
-                "AlphaTauri", "Aston Martin", "Alfa Romeo Racing", "Haas", "Williams"};
+        String[] teamNamesStr = {
+                "Mercedes-AMG Petronas",
+                "Ferrari",
+                "Red Bull Racing",
+                "McLaren",
+                "Alpine",
+                "AlphaTauri",
+                "Aston Martin",
+                "Alfa Romeo Racing",
+                "Haas",
+                "Williams"};
 
         for (int i = 0; i < teamNamesStr.length; i++) {
             repository.insert(new Team(UUID.randomUUID(), teamNamesStr[i]));

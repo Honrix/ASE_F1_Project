@@ -122,7 +122,7 @@ public class ShowRaceAction implements UserOptions {
         printRace(selectedRace);
         System.out.println("Select A Driver To Edit: [1-" + this.driverInformations.size() + "] ");
         String input = this.scanner.next();
-        while(!this.showRaceUseCase.validateSelection(input, this.driverInformations.size())){
+        while(!this.showRaceUseCase.getInputValidator().validateSelection(input, this.driverInformations.size())){
             input = this.scanner.next();
         };
         this.editSeletionKey = Integer.parseInt(input);
@@ -163,10 +163,5 @@ public class ShowRaceAction implements UserOptions {
     @Override
     public String getDescription() {
         return "Show/Edit An Existing Race";
-    }
-
-    @Override
-    public void closeAction() {
-
     }
 }

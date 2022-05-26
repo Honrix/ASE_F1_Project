@@ -6,6 +6,4 @@ public interface UserOptions {
 
     String getDescription();
 
-    void closeAction();
-
 }
