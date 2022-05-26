@@ -124,7 +124,7 @@ public class ShowRaceAction implements UserOptions {
         String input = this.scanner.next();
         while(!this.showRaceUseCase.getInputValidator().validateSelection(input, this.driverInformations.size())){
             input = this.scanner.next();
-        };
+        }
         this.editSeletionKey = Integer.parseInt(input);
         return this.driverInformations.get(Integer.parseInt(input));
     }
