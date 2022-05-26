@@ -6,6 +6,7 @@ import dhbw.projects.data.nation.Nation;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class NationRepositoryImpl implements NationRepository {
 
@@ -22,6 +23,6 @@ public class NationRepositoryImpl implements NationRepository {
 
     @Override
     public Nation getById(UUID nationId) {
-        return nations.stream().filter(nation -> nation.getNationId() == nationId).toList().get(0);
+        return nations.stream().filter(nation -> nation.getNationId() == nationId).collect(Collectors.toList()).get(0);
     }
 }
