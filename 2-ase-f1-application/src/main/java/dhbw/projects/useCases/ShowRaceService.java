@@ -4,7 +4,6 @@ import dhbw.projects.RaceRepository;
 import dhbw.projects.data.race.Race;
 
 import java.util.List;
-import java.util.Map;
 
 public class ShowRaceService {
 
@@ -13,6 +12,10 @@ public class ShowRaceService {
     public ShowRaceService(RaceRepository raceRepository) {
         this.raceRepository = raceRepository;
 
+    }
+
+    public RaceRepository getRaceRepository() {
+        return raceRepository;
     }
 
     public List<Race> getExistingRaces(){
