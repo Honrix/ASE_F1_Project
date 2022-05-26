@@ -1,6 +1,5 @@
 package dhbw.projects.useCases;
 
-import dhbw.projects.Driver.DriverStats;
 import dhbw.projects.data.Date;
 import dhbw.projects.data.driver.DriverInformations;
 import dhbw.projects.data.race.Race;
@@ -10,11 +9,11 @@ import java.util.List;
 import java.util.UUID;
 
 
-public class RaceService {
+public class CreateRaceService {
 
     private final Race race;
 
-    public RaceService(Track trackName, List<DriverInformations> scoreboard, int lengthTime, Date date, UUID uuid) throws Exception {
+    public CreateRaceService(Track trackName, List<DriverInformations> scoreboard, int lengthTime, Date date, UUID uuid) throws Exception {
         if(!validateLengthTime(lengthTime)) {
             throw new IllegalArgumentException("Error by creating the result of a certain race");
         }

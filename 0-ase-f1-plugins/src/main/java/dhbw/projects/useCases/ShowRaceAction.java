@@ -148,22 +148,16 @@ public class ShowRaceAction implements UserOptions {
     }
 
     private boolean handleInput(String userInput){
-        if (userInput.equals("Y")) {
-            return true;
-        } else if (userInput.equals("N")) {
-            return false;
-        } else {
-            while (true) {
-                if (userInput.equals("Y")) {
-                    return true;
-                } else if (userInput.equals("N")) {
-                    return false;
-                } else {
-                    System.out.println("Please enter \"Y\" or \"N\"");
-                }
-                userInput = scanner.next();
+        do {
+            if (userInput.equals("Y")) {
+                return true;
+            } else if (userInput.equals("N")) {
+                return false;
+            } else {
+                System.out.println("Please enter \"Y\" or \"N\"");
             }
-        }
+            userInput = scanner.next();
+        } while (true);
     }
 
     @Override

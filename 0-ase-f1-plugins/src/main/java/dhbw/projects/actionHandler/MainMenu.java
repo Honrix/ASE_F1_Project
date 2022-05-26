@@ -3,6 +3,7 @@ package dhbw.projects.actionHandler;
 import dhbw.projects.RaceRepository;
 import dhbw.projects.race.RaceRepositoryImpl;
 import dhbw.projects.useCases.CreateRaceAction;
+import dhbw.projects.useCases.GetReportAction;
 import dhbw.projects.useCases.ObjectView;
 import dhbw.projects.useCases.ShowRaceAction;
 
@@ -15,5 +16,6 @@ public class MainMenu extends Menu {
         this.insertUserOption("1", new ObjectView());
         this.insertUserOption("2", new CreateRaceAction(raceRepository));
         this.insertUserOption("3", new ShowRaceAction(raceRepository));
+        this.insertUserOption("4", new GetReportAction(raceRepository));
     }
 }
