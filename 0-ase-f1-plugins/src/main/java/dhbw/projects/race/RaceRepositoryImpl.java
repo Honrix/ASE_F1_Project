@@ -9,7 +9,7 @@ import java.util.UUID;
 
 public class RaceRepositoryImpl implements RaceRepository {
 
-    private final List<Race> races = new ArrayList<>();
+    private List<Race> races = new ArrayList<>();
 
     @Override
     public void insert(Race race) {
@@ -24,5 +24,10 @@ public class RaceRepositoryImpl implements RaceRepository {
     @Override
     public Race getById(UUID raceId) {
         return races.stream().filter(race -> race.getRaceId() == raceId).toList().get(0);
+    }
+
+    @Override
+    public void insertRaceList(List<Race> races) {
+        this.races = races;
     }
 }

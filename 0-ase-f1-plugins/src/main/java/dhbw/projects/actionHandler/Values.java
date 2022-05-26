@@ -1,10 +1,7 @@
 package dhbw.projects.actionHandler;
 
+import dhbw.projects.*;
 import dhbw.projects.Driver.DriverStats;
-import dhbw.projects.DriverRepository;
-import dhbw.projects.NationRepository;
-import dhbw.projects.TeamRepository;
-import dhbw.projects.TrackRepository;
 import dhbw.projects.data.driver.Driver;
 import dhbw.projects.data.driver.DriverId;
 import dhbw.projects.data.nation.Nation;
@@ -33,30 +30,22 @@ public class Values {
     private Map<String, String> driverNames = new HashMap<>();
     private Map<String, Driver> allDrivers = new HashMap<>();
 
-    //private List<Map<String, Object>> allValues = new ArrayList<>();
     private List<String> headers = new ArrayList<>();
+
+    private final ValuesService valuesService;
 
     public Values() {
         this.tracks = loadTracks();
         this.nations = loadNations();
         this.teams = loadTeams();
         this.drivers = loadDrivers(teams, nations);
-
-        /*allValues.add(trackNames);
-        allValues.add(nationalities);
-        allValues.add(teamNames);
-        allValues.add(driverNames);*/
+        this.valuesService = new ValuesService();
 
     }
 
-    /*public List<List<String>> getAllValues() {
-        return allValues;
-    }*/
-
-    public List<String> getHeaders() {
-        return headers;
+    public void sortedOutput(Map<String, String> strings, String outputName){
+        System.out.print(this.valuesService.sortedOutput(strings, outputName));
     }
-
 
     public Map<String, String> getTrackNames() {
         return trackNames;
@@ -65,49 +54,6 @@ public class Values {
     public Map<String, Track> getAllTracks() {
         return allTracks;
     }
-
-    public List<Driver> getDrivers() {
-        return drivers.getAll();
-    }
-
-    public void sortedOutput(Map<String, String> strings, String outputName) {
-        StringBuilder header = new StringBuilder(outputName);
-        while (header.length() < 123) {
-            header = new StringBuilder("=" + header + "=");
-        }
-        if (header.length() == 123) {
-            header.append("=");
-        }
-        System.out.println(header);
-
-        double value = (strings.size()) / 5.0;
-        int maxColumn = (int) Math.floor(value) + 1;
-        int endObj = strings.size() % 5;
-
-        /*Set<String> keys = strings.keySet();
-        List<String> allKeys = new ArrayList<>(keys);
-        allKeys.sort();
-        for (String string: allKeys
-             ) {
-            System.out.println(string);
-        }*/
-
-        for (int i = 0; i < (Math.min(strings.size(), 5)); i++) {
-            if (i == endObj) {
-                maxColumn--;
-            }
-            for (int j = 0; j < maxColumn; j++) {
-                System.out.printf("%5s", "[" + (i + 1 + (5 * j)) + "] ");
-                System.out.printf("%-21s", strings.get(String.valueOf(i + (5 * j))));
-                //System.out.printf("%-21s", allKeys.get(i + (5 * j))+ ", " + strings.get(String.valueOf(allKeys.get(i + (5 * j)))));
-            }
-            if (i < (Math.min(strings.size(), 5) - 1)) {
-                System.out.println("");
-            }
-        }
-        System.out.println("\n" + String.join("", Collections.nCopies(124, "=")));
-    }
-
 
     private TrackRepository loadTracks() {
 

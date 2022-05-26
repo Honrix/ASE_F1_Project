@@ -8,6 +8,7 @@ import dhbw.projects.data.driver.Driver;
 import dhbw.projects.data.driver.DriverInformations;
 import dhbw.projects.data.race.Race;
 import dhbw.projects.data.track.Track;
+import dhbw.projects.driver.DriverInformationsService;
 
 import java.util.*;
 
@@ -104,65 +105,13 @@ public class CreateRaceAction implements UserOptions {
 
     }
 
-    private Driver enterDriver(Map<String, String> drivers, int finalPosition){
-        System.out.println("Select the Driver with the final Position " + (finalPosition) + ":");
-        this.values.sortedOutput(drivers, "All Drivers");
-        selectedDriverKey = this.scanner.next();
-        selectedDriverKey = validateSelection(selectedDriverKey, drivers.size());
-        return (this.drivers.get(String.valueOf(Integer.parseInt(selectedDriverKey)-1)));
-    }
-
-    private int enterGridPosition(Driver driver){
-        System.out.println("Enter the Grid-Position of " + (driver.getName()) + ":");
-        String input = validateSelection(this.scanner.next(), this.drivers.size());
-        return Integer.parseInt(input);
-    }
-
-    private double enterFastestLap(Driver driver){
-        System.out.println("Enter the Fastest Lap of " + (driver.getName()) + " (Format: XX.XXX):");
-        String input = this.scanner.next();
-        while(!this.createRaceUseCase.validateLaptime(input)){
-            System.out.println("Please Enter a valide Laptime (Format: XX.XXX)");
-            input = this.scanner.next();
-        }
-        return Double.parseDouble(input);
-    }
-
     private void enterScoreboard(){
         this.scoreboard = new ArrayList<>();
         this.drivers = values.getAllDrivers();
-        Map<String, String> remainingDrivers = new HashMap<>();
-        remainingDrivers = this.values.getDriverNames();
-        DriverInformations driverInformations;
-        Driver driver;
-        int startingPosition;
-        double fastestLap;
-
-        for (int i = 0; i < this.drivers.size(); i++) {
-            driver = enterDriver(remainingDrivers, i+1);
-            while(!confirmInput(driver.getName())){
-                driver = enterDriver(remainingDrivers, i+1);
-            }
-
-            startingPosition = enterGridPosition(driver);
-            while(!confirmInput(String.valueOf(startingPosition))){
-                startingPosition = enterGridPosition(driver);
-            }
-
-            fastestLap = enterFastestLap(driver);
-            while(!confirmInput(String.valueOf(fastestLap)+" in ms")){
-                fastestLap = enterFastestLap(driver);
-            }
-
-            driverInformations = new DriverInformations(
-                    driver,
-                    startingPosition,
-                    i+1,
-                    startingPosition-i+1,
-                    fastestLap
-            );
-
-            this.scoreboard.add(driverInformations);
+        DriverInformationsService driverInformationsService;
+        for (int i = 0; i < 3; i++) {
+            driverInformationsService = new DriverInformationsService(this.drivers, i+1);
+            this.scoreboard.add(driverInformationsService.getDriverInformations());
 
         }
 
