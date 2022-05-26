@@ -6,6 +6,7 @@ import dhbw.projects.data.race.Race;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class RaceRepositoryImpl implements RaceRepository {
 
@@ -23,7 +24,7 @@ public class RaceRepositoryImpl implements RaceRepository {
 
     @Override
     public Race getById(UUID raceId) {
-        return races.stream().filter(race -> race.getRaceId() == raceId).toList().get(0);
+        return races.stream().filter(race -> race.getRaceId() == raceId).collect(Collectors.toList()).get(0);
     }
 
     @Override

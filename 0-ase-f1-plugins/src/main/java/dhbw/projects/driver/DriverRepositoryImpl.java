@@ -25,7 +25,7 @@ public class DriverRepositoryImpl implements DriverRepository {
     @Override
     public Driver getById(DriverId driverId) {
         for (Driver driver: drivers){
-            if(driver.getDriverId().id() == driverId.id()){
+            if(driver.getDriverId().getId() == driverId.getId()){
                 return driver;
             }
         }

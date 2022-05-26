@@ -6,6 +6,7 @@ import dhbw.projects.data.team.Team;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class TeamRepositoryImpl implements TeamRepository {
 
@@ -23,6 +24,6 @@ public class TeamRepositoryImpl implements TeamRepository {
 
     @Override
     public Team getById(UUID teamId) {
-        return teams.stream().filter(team -> team.getTeamId() == teamId).toList().get(0);
+        return teams.stream().filter(team -> team.getTeamId() == teamId).collect(Collectors.toList()).get(0);
     }
 }

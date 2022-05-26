@@ -1,6 +1,7 @@
 package dhbw.projects.data.date;
 
 import java.time.LocalDate;
+import java.util.Objects;
 
 public class Date {
 
@@ -8,6 +9,7 @@ public class Date {
     private int month;
     private int day;
 
+    //TODO: AUUUUUSLAGERN, aka nicht als String, sondern als fertige Attribute eingeben lassen
     public Date(String dateAsString){
         LocalDate date = LocalDate.of(
                 Integer.parseInt(dateAsString.substring(0, 4)),
@@ -19,7 +21,33 @@ public class Date {
 
     }
 
+    public int getYear() {
+        return year;
+    }
+
+    public int getMonth() {
+        return month;
+    }
+
+    public int getDay() {
+        return day;
+    }
+
+    //TODO: Auslagern! In Adapterschicht
     public String toString(String seperator) {
         return (year + seperator + (month < 10? "0" + month : month)  + seperator + (day < 10? "0" + day : day));
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Date date = (Date) o;
+        return year == date.year && month == date.month && day == date.day;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(year, month, day);
     }
 }

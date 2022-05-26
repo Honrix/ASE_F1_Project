@@ -1,11 +1,17 @@
 package dhbw.projects.data.driver;
 
-public record DriverId(int id) {
+public class DriverId {
 
-    public DriverId {
+    private final int id;
+
+    public DriverId(int id) {
         if (id < 0 || id > 99) {
             throw new IllegalArgumentException("Illegal DriverId");
         }
+        this.id = id;
     }
 
+    public int getId() {
+        return id;
+    }
 }
