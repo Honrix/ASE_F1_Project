@@ -4,13 +4,11 @@ import java.util.UUID;
 
 public class Nation {
 
-    private String shortName;
-    private String fullName;
+    private String name;
     private UUID nationId;
 
-    public Nation (UUID uuid, String shortName, String nationName){
-        this.shortName = shortName;
-        this.fullName = nationName;
+    public Nation (UUID uuid, String name){
+        this.name = name;
         this.nationId = uuid;
     }
 
@@ -18,11 +16,7 @@ public class Nation {
         return nationId;
     }
 
-    public String getFullName() {
-        return fullName;
-    }
-
-    public String getShortName() {
-        return shortName;
+    public String getName() {
+        return name;
     }
 }

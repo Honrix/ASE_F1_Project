@@ -10,8 +10,6 @@ public class DriverIdTest {
     @Test
     public void getCorrectId(){
         DriverId driverId = new DriverId(50);
-        assertThrows(IllegalArgumentException.class, () -> new DriverId(100));
-        assertThrows(IllegalArgumentException.class, () -> new DriverId(0));
         assertEquals(driverId.getId(), 50);
     }
 

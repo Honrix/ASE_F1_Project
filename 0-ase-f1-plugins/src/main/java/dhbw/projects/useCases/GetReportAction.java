@@ -2,7 +2,7 @@ package dhbw.projects.useCases;
 
 import dhbw.projects.RaceRepository;
 import dhbw.projects.actionHandler.UserOptions;
-import dhbw.projects.actionHandler.Values;
+import dhbw.projects.values.ValuesImpl;
 import dhbw.projects.data.driver.Driver;
 
 import java.util.*;
@@ -12,7 +12,7 @@ public class GetReportAction implements UserOptions {
     private final GetReportUseCase getReportUseCase;
     private final Scanner scanner = new Scanner(System.in);
     private Object[] totalPoints;
-    private final Values values = new Values();
+    private final ValuesImpl valuesImpl = new ValuesImpl();
     private Map<String, Driver> drivers = new HashMap<>();
 
     public GetReportAction(RaceRepository raceRepository){
@@ -23,7 +23,7 @@ public class GetReportAction implements UserOptions {
     public void initializeOption() {
         System.out.println("Do You want to get a ranking of all drivers? [Y/N]");
         if(handleInput(this.scanner.next())){
-            this.drivers = values.getAllDrivers();
+            this.drivers = valuesImpl.getDrivers();
             getTotalPoints();
             printTotalPoints();
         }
