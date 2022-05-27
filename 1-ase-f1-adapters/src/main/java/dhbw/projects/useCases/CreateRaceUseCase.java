@@ -7,7 +7,6 @@ import dhbw.projects.data.race.Race;
 public class CreateRaceUseCase {
 
     private final CreateRaceService createRaceService;
-    private final InputValidator inputValidator = new InputValidator();
 
     public CreateRaceUseCase(RaceRepository raceRepository) {
         this.createRaceService = new CreateRaceService(raceRepository);
@@ -18,6 +17,6 @@ public class CreateRaceUseCase {
     }
 
     public InputValidator getInputValidator() {
-        return inputValidator;
+        return this.createRaceService.getInputValidator();
     }
 }

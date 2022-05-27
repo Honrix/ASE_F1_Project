@@ -2,7 +2,7 @@ package dhbw.projects.useCases;
 
 import dhbw.projects.RaceRepository;
 import dhbw.projects.actionHandler.UserOptions;
-import dhbw.projects.actionHandler.Values;
+import dhbw.projects.values.ValuesImpl;
 import dhbw.projects.data.date.Date;
 import dhbw.projects.data.driver.Driver;
 import dhbw.projects.data.driver.DriverInformations;
@@ -25,10 +25,26 @@ public class CreateRaceAction implements UserOptions {
     private Date date;
     private Track track;
     private int lengthOfRace;
-    private Values values;
+    private ValuesImpl valuesImpl;
 
     public CreateRaceAction(RaceRepository raceRepository){
         this.createRaceUseCase = new CreateRaceUseCase(raceRepository);
+    }
+
+    @Override
+    public void initializeOption() {
+        this.valuesImpl = new ValuesImpl();
+        enterHeader();
+        enterScoreboard();
+        this.race = new Race(this.track, this.scoreboard, this.lengthOfRace, this.date, UUID.randomUUID());
+        this.createRaceUseCase.insert(this.race);
+        System.out.println("You have entered all information. Your race of " + this.date.toString("") + " has been saved!\n\n\n");
+
+    }
+
+    @Override
+    public String getDescription() {
+        return "Create A New Race";
     }
 
     private Date enterDate(){
@@ -43,10 +59,11 @@ public class CreateRaceAction implements UserOptions {
 
     private Track enterTrack(){
         System.out.println("Select one of the following tracks:");
-        this.values.sortedOutput(this.values.getTrackNames(), "All Tracks");
+        System.out.println(
+                this.valuesImpl.getValuesAdapter().sortedOutput(this.valuesImpl.getTrackNames(), "All Tracks"));
         String input = this.createRaceUseCase.getInputValidator().validateCertainSelection(
-                this.scanner.next(), this.values.getTrackNames().size());
-        return(this.values.getAllTracks().get(String.valueOf(Integer.parseInt(input)-1)));
+                this.scanner.next(), this.valuesImpl.getTrackNames().size());
+        return(this.valuesImpl.getTracks().get(String.valueOf(Integer.parseInt(input)-1)));
     }
 
     private int enterLength(){
@@ -77,7 +94,7 @@ public class CreateRaceAction implements UserOptions {
 
     private void enterScoreboard(){
         this.scoreboard = new ArrayList<>();
-        this.drivers = values.getAllDrivers();
+        this.drivers = valuesImpl.getDrivers();
         DriverInformationsService driverInformationsService;
         for (int i = 0; i < 3; i++) {
             driverInformationsService = new DriverInformationsService(this.drivers, i+1);
@@ -85,19 +102,4 @@ public class CreateRaceAction implements UserOptions {
         }
     }
 
-    @Override
-    public void initializeOption() {
-        this.values = new Values();
-        enterHeader();
-        enterScoreboard();
-        this.race = new Race(this.track, this.scoreboard, this.lengthOfRace, this.date, UUID.randomUUID());
-        this.createRaceUseCase.insert(this.race);
-        System.out.println("You have entered all information. Your race of " + this.date.toString("") + " has been saved!\n\n\n");
-
-    }
-
-    @Override
-    public String getDescription() {
-        return "Create A New Race";
-    }
 }
