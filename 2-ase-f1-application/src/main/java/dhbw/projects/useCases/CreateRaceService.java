@@ -1,16 +1,18 @@
 package dhbw.projects.useCases;
 
-import dhbw.projects.InputValidator;
 import dhbw.projects.RaceRepository;
+import dhbw.projects.data.date.Date;
+import dhbw.projects.data.driver.DriverInformations;
 import dhbw.projects.data.race.Race;
+import dhbw.projects.data.track.Track;
 
 import java.util.List;
+import java.util.UUID;
 
 
 public class CreateRaceService {
 
     private final RaceRepository raceRepository;
-    private final InputValidator inputValidator = new InputValidator();
 
     public CreateRaceService(RaceRepository raceRepository) {
         this.raceRepository = raceRepository;
@@ -20,11 +22,8 @@ public class CreateRaceService {
         return this.raceRepository.getAll();
     }
 
-    public void insert(Race race) {
+    public void insert(Track track, List<DriverInformations> scoreboard, int length, Date date) {
+        Race race = new Race(track, scoreboard, length, date, UUID.randomUUID());
         this.raceRepository.insert(race);
-    }
-
-    public InputValidator getInputValidator() {
-        return inputValidator;
     }
 }

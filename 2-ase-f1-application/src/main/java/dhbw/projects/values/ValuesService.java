@@ -29,26 +29,52 @@ public class ValuesService {
         DriverId newDriverId = new DriverId(driverId);
         Nation nation = getNationByName(driverNation);
         Team team = getTeamByName(driverTeam);
-        this.drivers.put(String.valueOf(this.drivers.size()), new Driver(newDriverId, driverName, nation, team));
+        if(this.drivers.isEmpty()) {
+            this.drivers.put("1", new Driver(newDriverId, driverName, nation, team));
+        } else {
+            this.drivers.put(String.valueOf(this.drivers.size()+1), new Driver(newDriverId, driverName, nation, team));
+        }
 
     }
 
     public void insertTeam(String teamName){
-        this.teams.put(String.valueOf(teams.size()), new Team(UUID.randomUUID(), teamName));
+        if(teams.isEmpty()) {
+            this.teams.put("1", new Team(UUID.randomUUID(), teamName));
+        } else {
+            this.teams.put(String.valueOf(teams.size()+1), new Team(UUID.randomUUID(), teamName));
+
+        }
     }
 
     public void insertNation(String nationName) {
-        this.nations.put(String.valueOf(nations.size()), new Nation(UUID.randomUUID(), nationName));
+        if(nations.isEmpty()){
+            this.nations.put("1", new Nation(UUID.randomUUID(), nationName));
+        } else {
+            this.nations.put(String.valueOf(nations.size()+1), new Nation(UUID.randomUUID(), nationName));
+        }
     }
 
     public void insertTrack(String trackName) {
-        this.tracks.put(String.valueOf(tracks.size()), new Track(UUID.randomUUID(), trackName));
+        if(tracks.isEmpty()){
+            this.tracks.put("1", new Track(UUID.randomUUID(), trackName));
+        } else {
+            this.tracks.put(String.valueOf(tracks.size()+1), new Track(UUID.randomUUID(), trackName));
+        }
     }
 
     private Nation getNationByName(String nationName){
         for (int i = 0; i < this.nations.size(); i++) {
-            if(this.nations.get(String.valueOf(i)).getName().equals(nationName)){
-                return this.nations.get(String.valueOf(i));
+            if(this.nations.get(String.valueOf(i+1)).getName().equals(nationName)){
+                return this.nations.get(String.valueOf(i+1));
+            }
+        }
+        return null;
+    }
+
+    public Track getTrackByName(String trackName){
+        for (int i = 0; i < this.tracks.size(); i++) {
+            if(this.tracks.get(String.valueOf(i+1)).toString().equals(trackName)){
+                return this.tracks.get(String.valueOf(i+1));
             }
         }
         return null;
@@ -56,8 +82,8 @@ public class ValuesService {
 
     private Team getTeamByName(String teamName){
         for (int i = 0; i < this.teams.size(); i++) {
-            if(this.teams.get(String.valueOf(i)).toString().equals(teamName)){
-                return this.teams.get(String.valueOf(i));
+            if(this.teams.get(String.valueOf(i+1)).toString().equals(teamName)){
+                return this.teams.get(String.valueOf(i+1));
             }
         }
         return null;
@@ -82,7 +108,7 @@ public class ValuesService {
     public Map<String, String> getTrackNames() {
         Map<String, String> trackNames = new HashMap<>();
         for (int i = 0; i < this.tracks.size(); i++) {
-            trackNames.put(String.valueOf(i), this.tracks.get(String.valueOf(i)).toString());
+            trackNames.put(String.valueOf(i + 1), this.tracks.get(String.valueOf(i + 1)).toString());
         }
         return trackNames;
     }
@@ -90,7 +116,7 @@ public class ValuesService {
     public Map<String, String> getNationalities() {
         Map<String, String> nationalities = new HashMap<>();
         for (int i = 0; i < this.nations.size(); i++) {
-            nationalities.put(String.valueOf(i), this.nations.get(String.valueOf(i)).getName());
+            nationalities.put(String.valueOf(i + 1), this.nations.get(String.valueOf(i + 1)).getName());
         }
         return nationalities;
     }
@@ -98,7 +124,7 @@ public class ValuesService {
     public Map<String, String> getTeamNames() {
         Map<String, String> teamNames = new HashMap<>();
         for (int i = 0; i < this.teams.size(); i++) {
-            teamNames.put(String.valueOf(i), this.teams.get(String.valueOf(i)).toString());
+            teamNames.put(String.valueOf(i + 1), this.teams.get(String.valueOf(i + 1)).toString());
         }
         return teamNames;
     }
@@ -106,7 +132,7 @@ public class ValuesService {
     public Map<String, String> getDriverNames() {
         Map<String, String> driverNames = new HashMap<>();
         for (int i = 0; i < this.drivers.size(); i++) {
-            driverNames.put(String.valueOf(i), this.drivers.get(String.valueOf(i)).getName());
+            driverNames.put(String.valueOf(i + 1), this.drivers.get(String.valueOf(i + 1)).getName());
         }
         return driverNames;
     }

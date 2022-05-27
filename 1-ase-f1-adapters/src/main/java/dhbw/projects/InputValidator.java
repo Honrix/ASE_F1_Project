@@ -38,6 +38,7 @@ public class InputValidator {
     }
 
     public String validateCertainSelection(String input, int maxValue){
+
         while(!validateSelection(input, maxValue)){
             System.out.println("Select A Number between [1] and [" + maxValue + "]:");
             input = this.scanner.next();
@@ -49,4 +50,7 @@ public class InputValidator {
         return date.matches("^\\d{8}$");
     }
 
+    public boolean validateConfirmationInput(String input) {
+        return input.equals("Y") || input.equals("N");
+    }
 }

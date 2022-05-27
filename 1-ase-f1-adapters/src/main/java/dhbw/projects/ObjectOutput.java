@@ -37,7 +37,7 @@ public class ObjectOutput {
             }
             for (int j = 0; j < maxColumn; j++) {
                 output += String.format("%5s", "[" + (i + 1 + (5 * j)) + "] ");
-                output += String.format("%-21s", strings.get(String.valueOf(i + (5 * j))));
+                output += String.format("%-21s", strings.get(String.valueOf(i + 1 + (5 * j))));
             }
             if (i < (Math.min(strings.size(), 5) - 1)) {
                 output += "\n";

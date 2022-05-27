@@ -29,6 +29,10 @@ public class ValuesAdapter {
         return objectOutput.getOutput();
     }
 
+    public ValuesService getValuesService() {
+        return valuesService;
+    }
+
     private boolean validateDriverId(int id){
         if (id < 1 || id > 99) {
             return false;
