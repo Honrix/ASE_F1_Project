@@ -54,7 +54,6 @@ public class DriverInformationsService {
                 driver,
                 startingPosition,
                 finalPosition,
-                startingPosition-finalPosition,
                 fastestLap
         );
     }

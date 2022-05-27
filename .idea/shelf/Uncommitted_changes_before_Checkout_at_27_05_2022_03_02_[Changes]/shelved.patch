@@ -1,0 +1,126 @@
+Index: 3-ase-f1-domain/src/test/java/dhbw/projects/data/date/DateTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/3-ase-f1-domain/src/test/java/dhbw/projects/data/date/DateTest.java b/3-ase-f1-domain/src/test/java/dhbw/projects/data/date/DateTest.java
+deleted file mode 100644
+--- a/3-ase-f1-domain/src/test/java/dhbw/projects/data/date/DateTest.java	(revision 2b34783fb747a24a8f4c6f6e903bb33c641ac9e0)
++++ /dev/null	(revision 2b34783fb747a24a8f4c6f6e903bb33c641ac9e0)
+@@ -1,38 +0,0 @@
+-package dhbw.projects.data.date;
+-
+-
+-import org.junit.jupiter.api.Test;
+-
+-import java.time.DateTimeException;
+-
+-import static org.junit.jupiter.api.Assertions.*;
+-
+-class DateTest {
+-
+-    @Test
+-    public void throwExceptionWhenStringIsInvalid(){
+-        assertThrows(DateTimeException.class, ()-> new Date("22222222"));
+-        assertThrows(StringIndexOutOfBoundsException.class, ()-> new Date("1111111"));
+-        assertThrows(DateTimeException.class, ()-> new Date("111111111"));
+-    }
+-
+-    @Test
+-    public void assignAttributesOfDate(){
+-        Date date = new Date("12341231");
+-        assertEquals(date.getYear(), 1234);
+-        assertEquals(date.getMonth(), 12);
+-        assertEquals(date.getDay(), 31);
+-
+-    }
+-
+-    @Test
+-    public void compareObjects(){
+-        Date date  = new Date("20220202");
+-        Date correctDate  = new Date("20220202");
+-        Date wrongDate  = new Date("20220203");
+-
+-        assertEquals(date, correctDate);
+-        assertNotEquals(date, wrongDate);
+-    }
+-
+-}
+\ No newline at end of file
+Index: x-ase-f1-project-codecoverage/pom.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/x-ase-f1-project-codecoverage/pom.xml b/x-ase-f1-project-codecoverage/pom.xml
+deleted file mode 100644
+--- a/x-ase-f1-project-codecoverage/pom.xml	(revision 2b34783fb747a24a8f4c6f6e903bb33c641ac9e0)
++++ /dev/null	(revision 2b34783fb747a24a8f4c6f6e903bb33c641ac9e0)
+@@ -1,66 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project xmlns="http://maven.apache.org/POM/4.0.0"
+-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+-    <parent>
+-        <artifactId>ASE_F1_Project</artifactId>
+-        <groupId>org.example</groupId>
+-        <version>1.0-SNAPSHOT</version>
+-    </parent>
+-    <modelVersion>4.0.0</modelVersion>
+-
+-    <artifactId>x-ase-f1-project-codecoverage</artifactId>
+-
+-    <properties>
+-        <maven.compiler.source>18</maven.compiler.source>
+-        <maven.compiler.target>18</maven.compiler.target>
+-    </properties>
+-    <dependencies>
+-        <dependency>
+-            <groupId>dhbw.projects</groupId>
+-            <artifactId>ase-f1-plugins</artifactId>
+-            <version>1.0-SNAPSHOT</version>
+-        </dependency>
+-        <dependency>
+-            <groupId>dhbw.projects</groupId>
+-            <artifactId>ase-f1-adapters</artifactId>
+-            <version>1.0-SNAPSHOT</version>
+-        </dependency>
+-        <dependency>
+-            <groupId>dhbw.projects</groupId>
+-            <artifactId>ase-f1-application</artifactId>
+-            <version>1.0-SNAPSHOT</version>
+-        </dependency>
+-        <dependency>
+-            <groupId>dhbw.projects</groupId>
+-            <artifactId>ase-f1-domain</artifactId>
+-            <version>1.0-SNAPSHOT</version>
+-        </dependency>
+-    </dependencies>
+-    <profiles>
+-        <profile>
+-            <id>jacoco</id>
+-            <activation>
+-                <activeByDefault>false</activeByDefault>
+-            </activation>
+-            <build>
+-                <plugins>
+-                    <plugin>
+-                        <groupId>org.jacoco</groupId>
+-                        <artifactId>jacoco-maven-plugin</artifactId>
+-                        <version>0.8.2</version>
+-                        <executions>
+-                            <execution>
+-                                <phase>verify</phase>
+-                                <goals>
+-                                    <goal>report-aggregate</goal>
+-                                </goals>
+-                            </execution>
+-                        </executions>
+-                    </plugin>
+-                </plugins>
+-            </build>
+-        </profile>
+-    </profiles>
+-
+-</project>
+\ No newline at end of file

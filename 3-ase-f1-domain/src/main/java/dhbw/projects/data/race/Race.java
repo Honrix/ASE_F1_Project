@@ -23,7 +23,7 @@ public class Race {
         this.raceId = uuid;
     }
 
-    public Track getTrackName() {
+    public Track getTrack() {
         return trackName;
     }
 
