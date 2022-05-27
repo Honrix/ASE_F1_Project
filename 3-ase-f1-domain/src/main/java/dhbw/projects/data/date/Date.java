@@ -21,7 +21,7 @@ public class Date {
 
     }
 
-    public int getYear() {
+    /*public int getYear() {
         return year;
     }
 
@@ -31,7 +31,7 @@ public class Date {
 
     public int getDay() {
         return day;
-    }
+    }*/
 
     //TODO: Auslagern! In Adapterschicht
     public String toString(String seperator) {
@@ -44,10 +44,5 @@ public class Date {
         if (o == null || getClass() != o.getClass()) return false;
         Date date = (Date) o;
         return year == date.year && month == date.month && day == date.day;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(year, month, day);
     }
 }
