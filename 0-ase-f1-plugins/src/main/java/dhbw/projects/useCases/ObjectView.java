@@ -1,22 +1,26 @@
 package dhbw.projects.useCases;
 
 import dhbw.projects.actionHandler.UserOptions;
-import dhbw.projects.actionHandler.Values;
+import dhbw.projects.values.ValuesImpl;
 
 public class ObjectView implements UserOptions {
 
-    private final Values values;
+    private final ValuesImpl valuesImpl;
 
     public ObjectView (){
-        this.values = new Values();
+        this.valuesImpl = new ValuesImpl();
     }
 
     @Override
     public void initializeOption() {
-        this.values.sortedOutput(values.getTrackNames(), "All Tracks");
-        this.values.sortedOutput(values.getNationalities(), "All Nations");
-        this.values.sortedOutput(values.getTeamNames(), "All Teams");
-        this.values.sortedOutput(values.getDriverNames(), "All Drivers");
+        System.out.println(
+                this.valuesImpl.getValuesAdapter().sortedOutput(valuesImpl.getTrackNames(), "All Tracks"));
+        System.out.println(
+                this.valuesImpl.getValuesAdapter().sortedOutput(valuesImpl.getNationalities(), "All Nations"));
+        System.out.println(
+                this.valuesImpl.getValuesAdapter().sortedOutput(valuesImpl.getTeamNames(), "All Teams"));
+        System.out.println(
+                this.valuesImpl.getValuesAdapter().sortedOutput(valuesImpl.getDriverNames(), "All Drivers"));
 
     }
 

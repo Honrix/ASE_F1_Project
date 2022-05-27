@@ -2,7 +2,7 @@ package dhbw.projects.useCases;
 
 import dhbw.projects.RaceRepository;
 import dhbw.projects.actionHandler.UserOptions;
-import dhbw.projects.actionHandler.Values;
+import dhbw.projects.values.ValuesImpl;
 import dhbw.projects.data.driver.DriverInformations;
 import dhbw.projects.data.race.Race;
 import dhbw.projects.driver.DriverInformationsService;
@@ -18,7 +18,7 @@ public class ShowRaceAction implements UserOptions {
     private Race selectedRace;
     private int selectedRaceKey;
     private int editSeletionKey;
-    private final Values values = new Values();
+    private final ValuesImpl valuesImpl = new ValuesImpl();
 
     public ShowRaceAction(RaceRepository raceRepository) {
         this.showRaceUseCase = new ShowRaceUseCase(raceRepository);
@@ -131,7 +131,7 @@ public class ShowRaceAction implements UserOptions {
 
     private void editSelectedDriverInformations(){
         DriverInformationsService driverInformationsService = new DriverInformationsService(
-                this.values.getAllDrivers(), editSeletionKey);
+                this.valuesImpl.getDrivers(), editSeletionKey);
         this.driverInformations.replace(editSeletionKey, driverInformationsService.getDriverInformations());
     }
 

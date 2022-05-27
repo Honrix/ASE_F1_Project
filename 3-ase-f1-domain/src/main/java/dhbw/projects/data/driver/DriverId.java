@@ -5,9 +5,6 @@ public class DriverId {
     private final int id;
 
     public DriverId(int id) {
-        if (id < 0 || id > 99) {
-            throw new IllegalArgumentException("Illegal DriverId");
-        }
         this.id = id;
     }
 

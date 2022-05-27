@@ -11,12 +11,10 @@ public class NationTest {
     @Test
     public void assignAttributesOfNation(){
         UUID uuid = UUID.randomUUID();
-        String shortName = "GER";
-        String fullName = "Germany";
-        Nation nation = new Nation(uuid, shortName, fullName);
+        String name = "Germany";
+        Nation nation = new Nation(uuid, name);
         assertEquals(nation.getNationId(), uuid);
-        assertEquals(nation.getFullName(), fullName);
-        assertEquals(nation.getShortName(), shortName);
+        assertEquals(nation.getName(), name);
     }
 
 }
