@@ -20,34 +20,20 @@ class DateTest {
         Date date  = new Date("20220202");
         Date correctDate  = new Date("20220202");
         Date wrongDate  = new Date("20220203");
+        Object object = new Object();
 
         assertEquals(date, correctDate);
         assertNotEquals(date, wrongDate);
+        assertNotEquals(object, date);
+
     }
 
     @Test
     public void dateToString(){
         Date date = new Date("12341212");
+        Date date1 = new Date("12340101");
         assertEquals(date.toString("-"), "1234-12-12");
+        assertEquals(date1.toString("-"), "1234-01-01");
     }
-
-    /*@Test
-    public void assignAttributesOfDate(){
-        Date date = new Date(1234,12,31);
-        assertEquals(date.getYear(), 1234);
-        assertEquals(date.getMonth(), 12);
-        assertEquals(date.getDay(), 31);
-
-    }
-
-    @Test
-    public void compareObjects(){
-        Date date  = new Date(2022,02,02);
-        Date correctDate  = new Date(2022,02,02);
-        Date wrongDate  = new Date(2022,02,03);
-
-        assertEquals(date, correctDate);
-        assertNotEquals(date, wrongDate);
-    }*/
 
 }

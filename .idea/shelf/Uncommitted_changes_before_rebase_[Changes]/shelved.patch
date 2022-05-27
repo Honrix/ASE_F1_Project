@@ -1,0 +1,633 @@
+Index: 3-ase-f1-domain/src/main/java/dhbw/projects/ValuesRepository.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package dhbw.projects;\r\n\r\nimport dhbw.projects.data.driver.Driver;\r\nimport dhbw.projects.data.nation.Nation;\r\nimport dhbw.projects.data.team.Team;\r\nimport dhbw.projects.data.track.Track;\r\n\r\nimport java.util.Map;\r\n\r\npublic interface ValuesRepository {\r\n\r\n    void setTracks();\r\n    Map<String, Track> getTracks();\r\n\r\n    void setTeams();\r\n    Map<String, Team> getTeams();\r\n\r\n    void setNations();\r\n    Map<String, Nation> getNations();\r\n\r\n    void setDrivers();\r\n    Map<String, Driver> getDrivers();\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/3-ase-f1-domain/src/main/java/dhbw/projects/ValuesRepository.java b/3-ase-f1-domain/src/main/java/dhbw/projects/ValuesRepository.java
+--- a/3-ase-f1-domain/src/main/java/dhbw/projects/ValuesRepository.java	(revision e2746a1f3c968f7eb1dc7577249edd7effea2969)
++++ b/3-ase-f1-domain/src/main/java/dhbw/projects/ValuesRepository.java	(date 1653672068205)
+@@ -21,5 +21,11 @@
+     void setDrivers();
+     Map<String, Driver> getDrivers();
+ 
++    void insertDriver(int driverId, String driverName, String nation, String team);
++
++    void insertTeam(String team);
+ 
++    void insertNation(String nation);
++
++    void insertTrack(String track);
+ }
+Index: 0-ase-f1-plugins/src/main/java/dhbw/projects/values/ValuesImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package dhbw.projects.values;\r\n\r\nimport dhbw.projects.*;\r\nimport dhbw.projects.data.driver.Driver;\r\nimport dhbw.projects.data.driver.DriverId;\r\nimport dhbw.projects.data.nation.Nation;\r\nimport dhbw.projects.data.team.Team;\r\nimport dhbw.projects.data.track.Track;\r\nimport dhbw.projects.driver.DriverRepositoryImpl;\r\nimport dhbw.projects.nation.NationRepositoryImpl;\r\nimport dhbw.projects.track.TrackRepositoryImpl;\r\n\r\nimport java.util.*;\r\n\r\npublic class ValuesImpl implements ValuesRepository {\r\n\r\n    private final ValuesAdapter valuesAdapter;\r\n\r\n    public ValuesImpl() {\r\n        this.valuesAdapter = new ValuesAdapter();\r\n        setTracks();\r\n        setNations();\r\n        setTeams();\r\n        setDrivers();\r\n    }\r\n\r\n    public ValuesAdapter getValuesAdapter() {\r\n        return valuesAdapter;\r\n    }\r\n\r\n    @Override\r\n    public void setTracks() {\r\n        String[] tracks = {\"Bahrain\", \"Imola\", \"Portugal\", \"Spain\", \"Monaco\", \"Azerbaijan\", \"Canada\", \"France\",\r\n                \"Austria\", \"Great Britain\", \"Hungary\", \"Belgium\", \"Netherlands\", \"Italy\", \"Russia\", \"Singapore\", \"Japan\",\r\n                \"USA\", \"Mexico\", \"Brazil\", \"Australia\", \"Saudi Arabia\", \"Abu Dhabi\", \"China\"};\r\n        for (String track : tracks) {\r\n            this.valuesAdapter.insertTrack(track);\r\n        }\r\n    }\r\n\r\n    @Override\r\n    public Map<String, Track> getTracks() {\r\n        return this.valuesAdapter.getTracks();\r\n    }\r\n\r\n    public Map<String, String> getTrackNames(){\r\n        return this.valuesAdapter.getTrackNames();\r\n    }\r\n\r\n    @Override\r\n    public void setNations() {\r\n        String[] nations = {\"Australia\", \"Canada\", \"Spain\", \"Finland\", \"France\", \"Great Britain\", \"Germany\", \"Italy\",\r\n                \"Japan\", \"Mexico\", \"Monaco\", \"Netherlands\", \"Russia\"};\r\n        for (String nation : nations) {\r\n            this.valuesAdapter.insertNation(nation);\r\n        }\r\n    }\r\n\r\n    @Override\r\n    public Map<String, Nation> getNations() {\r\n        return this.valuesAdapter.getNations();\r\n    }\r\n\r\n    @Override\r\n    public void setTeams() {\r\n        String[] teams = {\r\n                \"Mercedes-AMG Petronas\",\r\n                \"Ferrari\",\r\n                \"Red Bull Racing\",\r\n                \"McLaren\",\r\n                \"Alpine\",\r\n                \"AlphaTauri\",\r\n                \"Aston Martin\",\r\n                \"Alfa Romeo Racing\",\r\n                \"Haas\",\r\n                \"Williams\"};\r\n        for (String team : teams) {\r\n            this.valuesAdapter.insertTeam(team);\r\n        }\r\n\r\n    }\r\n\r\n    @Override\r\n    public Map<String, Team> getTeams() {\r\n        return this.valuesAdapter.getTeams();\r\n    }\r\n\r\n    @Override\r\n    public void setDrivers() {\r\n        int[] driverIds = {33, 44, 77, 14, 5, 16, 4, 55, 3, 31, 10, 22, 11, 18, 7, 99, 9, 47, 63, 6};\r\n        String[] driverNames = {\"Max Verstappen\", \"Lewis Hamilton\", \"Valtteri Bottas\", \"Fernando Alonso\",\r\n                \"Sebastian Vettel\", \"Charles Leclerc\", \"Lando Norris\", \"Carlos Sainz\", \"Daniel Ricciardo\",\r\n                \"Esteban Ocon\", \"Pierre Gasly\", \"Yuki Tsunoda\", \"Sergio Perez\", \"Lance Stroll\", \"Kimi Raikkonen\",\r\n                \"Antonio Giovinazzi\", \"Nikita Mazepin\", \"Mick Schumacher\", \"George Russell\", \"Nicholas Latifi\"};\r\n        String[] driverNations = {\r\n                \"Netherlands\",\r\n                \"Great Britain\",\r\n                \"Finland\",\r\n                \"Spain\",\r\n                \"Germany\",\r\n                \"Monaco\",\r\n                \"Great Britain\",\r\n                \"Spain\",\r\n                \"Australia\",\r\n                \"France\",\r\n                \"France\",\r\n                \"Japan\",\r\n                \"Mexico\",\r\n                \"Canada\",\r\n                \"Finland\",\r\n                \"Italy\",\r\n                \"Russia\",\r\n                \"Germany\",\r\n                \"Great Britain\",\r\n                \"Canada\"};\r\n        String[] driverTeams = {\r\n                \"Red Bull Racing\",\r\n                \"Mercedes-AMG Petronas\",\r\n                \"Mercedes-AMG Petronas\",\r\n                \"Alpine\",\r\n                \"Aston Martin\",\r\n                \"Ferrari\",\r\n                \"McLaren\",\r\n                \"Ferrari\",\r\n                \"McLaren\",\r\n                \"Alpine\",\r\n                \"AlphaTauri\",\r\n                \"AlphaTauri\",\r\n                \"Red Bull Racing\",\r\n                \"Aston Martin\",\r\n                \"Alfa Romeo Racing\",\r\n                \"Alfa Romeo Racing\",\r\n                \"Haas\",\r\n                \"Haas\",\r\n                \"Williams\",\r\n                \"Williams\"};\r\n        for (int i = 0; i < driverNames.length; i++) {\r\n            this.valuesAdapter.insertDriver(driverIds[i], driverNames[i], driverNations[i], driverTeams[i]);\r\n        }\r\n\r\n    }\r\n\r\n    @Override\r\n    public Map<String, Driver> getDrivers() {\r\n        return this.valuesAdapter.getDrivers();\r\n    }\r\n\r\n    public Map<String, String> getNationalities() {\r\n        return this.valuesAdapter.getNationalities();\r\n    }\r\n\r\n    public Map<String, String> getTeamNames() {\r\n        return this.valuesAdapter.getTeamNames();\r\n    }\r\n\r\n    public Map<String, String> getDriverNames() {\r\n        return this.valuesAdapter.getDriverNames();\r\n    }\r\n}\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/0-ase-f1-plugins/src/main/java/dhbw/projects/values/ValuesImpl.java b/0-ase-f1-plugins/src/main/java/dhbw/projects/values/ValuesImpl.java
+--- a/0-ase-f1-plugins/src/main/java/dhbw/projects/values/ValuesImpl.java	(revision e2746a1f3c968f7eb1dc7577249edd7effea2969)
++++ b/0-ase-f1-plugins/src/main/java/dhbw/projects/values/ValuesImpl.java	(date 1653672460221)
+@@ -6,9 +6,6 @@
+ import dhbw.projects.data.nation.Nation;
+ import dhbw.projects.data.team.Team;
+ import dhbw.projects.data.track.Track;
+-import dhbw.projects.driver.DriverRepositoryImpl;
+-import dhbw.projects.nation.NationRepositoryImpl;
+-import dhbw.projects.track.TrackRepositoryImpl;
+ 
+ import java.util.*;
+ 
+@@ -34,7 +31,7 @@
+                 "Austria", "Great Britain", "Hungary", "Belgium", "Netherlands", "Italy", "Russia", "Singapore", "Japan",
+                 "USA", "Mexico", "Brazil", "Australia", "Saudi Arabia", "Abu Dhabi", "China"};
+         for (String track : tracks) {
+-            this.valuesAdapter.insertTrack(track);
++            insertTrack(track);
+         }
+     }
+ 
+@@ -52,7 +49,7 @@
+         String[] nations = {"Australia", "Canada", "Spain", "Finland", "France", "Great Britain", "Germany", "Italy",
+                 "Japan", "Mexico", "Monaco", "Netherlands", "Russia"};
+         for (String nation : nations) {
+-            this.valuesAdapter.insertNation(nation);
++            insertNation(nation);
+         }
+     }
+ 
+@@ -75,7 +72,7 @@
+                 "Haas",
+                 "Williams"};
+         for (String team : teams) {
+-            this.valuesAdapter.insertTeam(team);
++            insertTeam(team);
+         }
+ 
+     }
+@@ -135,7 +132,7 @@
+                 "Williams",
+                 "Williams"};
+         for (int i = 0; i < driverNames.length; i++) {
+-            this.valuesAdapter.insertDriver(driverIds[i], driverNames[i], driverNations[i], driverTeams[i]);
++            insertDriver(driverIds[i], driverNames[i], driverNations[i], driverTeams[i]);
+         }
+ 
+     }
+@@ -145,6 +142,26 @@
+         return this.valuesAdapter.getDrivers();
+     }
+ 
++    @Override
++    public void insertDriver(int driverId, String driverName, String nation, String team) {
++        this.valuesAdapter.insertDriver(driverId, driverName, nation, team);
++    }
++
++    @Override
++    public void insertTeam(String team) {
++        this.valuesAdapter.insertTeam(team);
++    }
++
++    @Override
++    public void insertNation(String nation) {
++        this.valuesAdapter.insertNation(nation);
++    }
++
++    @Override
++    public void insertTrack(String track) {
++        this.valuesAdapter.insertTrack(track);
++    }
++
+     public Map<String, String> getNationalities() {
+         return this.valuesAdapter.getNationalities();
+     }
+Index: 2-ase-f1-application/src/main/java/dhbw/projects/values/ValuesService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package dhbw.projects.values;\r\n\r\nimport dhbw.projects.data.driver.Driver;\r\nimport dhbw.projects.data.driver.DriverId;\r\nimport dhbw.projects.data.nation.Nation;\r\nimport dhbw.projects.data.team.Team;\r\nimport dhbw.projects.data.track.Track;\r\n\r\nimport java.util.HashMap;\r\nimport java.util.Map;\r\nimport java.util.UUID;\r\n\r\npublic class ValuesService {\r\n\r\n    private final Map<String, Driver> drivers  = new HashMap<>();\r\n    private final Map<String, Track> tracks  = new HashMap<>();\r\n    private final Map<String, Team> teams  = new HashMap<>();\r\n    private final Map<String, Nation> nations  = new HashMap<>();\r\n\r\n    public ValuesService(){\r\n\r\n    }\r\n\r\n\r\n    public void insertDriver(int driverId, String driverName, String driverNation, String driverTeam) {\r\n        DriverId newDriverId = new DriverId(driverId);\r\n        Nation nation = getNationByName(driverNation);\r\n        Team team = getTeamByName(driverTeam);\r\n        this.drivers.put(String.valueOf(this.drivers.size()), new Driver(newDriverId, driverName, nation, team));\r\n\r\n    }\r\n\r\n    public void insertTeam(String teamName){\r\n        this.teams.put(String.valueOf(teams.size()), new Team(UUID.randomUUID(), teamName));\r\n    }\r\n\r\n    public void insertNation(String nationName) {\r\n        this.nations.put(String.valueOf(nations.size()), new Nation(UUID.randomUUID(), nationName));\r\n    }\r\n\r\n    public void insertTrack(String trackName) {\r\n        this.tracks.put(String.valueOf(tracks.size()), new Track(UUID.randomUUID(), trackName));\r\n    }\r\n\r\n    private Nation getNationByName(String nationName){\r\n        for (int i = 0; i < this.nations.size(); i++) {\r\n            if(this.nations.get(String.valueOf(i)).getName().equals(nationName)){\r\n                return this.nations.get(String.valueOf(i));\r\n            }\r\n        }\r\n        return null;\r\n    }\r\n\r\n    private Team getTeamByName(String teamName){\r\n        for (int i = 0; i < this.teams.size(); i++) {\r\n            if(this.teams.get(String.valueOf(i)).toString().equals(teamName)){\r\n                return this.teams.get(String.valueOf(i));\r\n            }\r\n        }\r\n        return null;\r\n    }\r\n\r\n    public Map<String, Team> getTeams() {\r\n        return this.teams;\r\n    }\r\n\r\n    public Map<String, Nation> getNations() {\r\n        return this.nations;\r\n    }\r\n\r\n    public Map<String, Driver> getDrivers() {\r\n        return drivers;\r\n    }\r\n\r\n    public Map<String, Track> getTracks() {\r\n        return tracks;\r\n    }\r\n\r\n    public Map<String, String> getTrackNames() {\r\n        Map<String, String> trackNames = new HashMap<>();\r\n        for (int i = 0; i < this.tracks.size(); i++) {\r\n            trackNames.put(String.valueOf(i), this.tracks.get(String.valueOf(i)).toString());\r\n        }\r\n        return trackNames;\r\n    }\r\n\r\n    public Map<String, String> getNationalities() {\r\n        Map<String, String> nationalities = new HashMap<>();\r\n        for (int i = 0; i < this.nations.size(); i++) {\r\n            nationalities.put(String.valueOf(i), this.nations.get(String.valueOf(i)).getName());\r\n        }\r\n        return nationalities;\r\n    }\r\n\r\n    public Map<String, String> getTeamNames() {\r\n        Map<String, String> teamNames = new HashMap<>();\r\n        for (int i = 0; i < this.teams.size(); i++) {\r\n            teamNames.put(String.valueOf(i), this.teams.get(String.valueOf(i)).toString());\r\n        }\r\n        return teamNames;\r\n    }\r\n\r\n    public Map<String, String> getDriverNames() {\r\n        Map<String, String> driverNames = new HashMap<>();\r\n        for (int i = 0; i < this.drivers.size(); i++) {\r\n            driverNames.put(String.valueOf(i), this.drivers.get(String.valueOf(i)).getName());\r\n        }\r\n        return driverNames;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/2-ase-f1-application/src/main/java/dhbw/projects/values/ValuesService.java b/2-ase-f1-application/src/main/java/dhbw/projects/values/ValuesService.java
+--- a/2-ase-f1-application/src/main/java/dhbw/projects/values/ValuesService.java	(revision e2746a1f3c968f7eb1dc7577249edd7effea2969)
++++ b/2-ase-f1-application/src/main/java/dhbw/projects/values/ValuesService.java	(date 1653671265194)
+@@ -12,13 +12,16 @@
+ 
+ public class ValuesService {
+ 
+-    private final Map<String, Driver> drivers  = new HashMap<>();
+-    private final Map<String, Track> tracks  = new HashMap<>();
+-    private final Map<String, Team> teams  = new HashMap<>();
+-    private final Map<String, Nation> nations  = new HashMap<>();
++    private final Map<String, Driver> drivers;
++    private final Map<String, Track> tracks;
++    private final Map<String, Team> teams;
++    private final Map<String, Nation> nations;
+ 
+     public ValuesService(){
+-
++        this.drivers = new HashMap<>();
++        this.tracks = new HashMap<>();
++        this.teams = new HashMap<>();
++        this.nations = new HashMap<>();
+     }
+ 
+ 
+Index: 0-ase-f1-plugins/src/main/java/dhbw/projects/track/TrackRepositoryImpl.java
+===================================================================
+diff --git a/0-ase-f1-plugins/src/main/java/dhbw/projects/track/TrackRepositoryImpl.java b/0-ase-f1-plugins/src/main/java/dhbw/projects/track/TrackRepositoryImpl.java
+deleted file mode 100644
+--- a/0-ase-f1-plugins/src/main/java/dhbw/projects/track/TrackRepositoryImpl.java	(revision e2746a1f3c968f7eb1dc7577249edd7effea2969)
++++ /dev/null	(revision e2746a1f3c968f7eb1dc7577249edd7effea2969)
+@@ -1,28 +0,0 @@
+-package dhbw.projects.track;
+-
+-import dhbw.projects.TrackRepository;
+-import dhbw.projects.data.track.Track;
+-
+-import java.util.ArrayList;
+-import java.util.List;
+-import java.util.UUID;
+-import java.util.stream.Collectors;
+-
+-public class TrackRepositoryImpl implements TrackRepository {
+-
+-    private final List<Track> tracks = new ArrayList<>();
+-    @Override
+-    public void insert(Track track) {
+-        tracks.add(track);
+-    }
+-
+-    @Override
+-    public List<Track> getAll() {
+-        return tracks;
+-    }
+-
+-    @Override
+-    public Track getById(UUID trackId) {
+-        return tracks.stream().filter(track -> track.getTrackId() == trackId).collect(Collectors.toList()).get(0);
+-    }
+-}
+Index: 0-ase-f1-plugins/src/main/java/dhbw/projects/team/TeamRepositoryImpl.java
+===================================================================
+diff --git a/0-ase-f1-plugins/src/main/java/dhbw/projects/team/TeamRepositoryImpl.java b/0-ase-f1-plugins/src/main/java/dhbw/projects/team/TeamRepositoryImpl.java
+deleted file mode 100644
+--- a/0-ase-f1-plugins/src/main/java/dhbw/projects/team/TeamRepositoryImpl.java	(revision e2746a1f3c968f7eb1dc7577249edd7effea2969)
++++ /dev/null	(revision e2746a1f3c968f7eb1dc7577249edd7effea2969)
+@@ -1,29 +0,0 @@
+-package dhbw.projects.team;
+-
+-import dhbw.projects.TeamRepository;
+-import dhbw.projects.data.team.Team;
+-
+-import java.util.ArrayList;
+-import java.util.List;
+-import java.util.UUID;
+-import java.util.stream.Collectors;
+-
+-public class TeamRepositoryImpl implements TeamRepository {
+-
+-    private final List<Team> teams = new ArrayList<>();
+-
+-    @Override
+-    public void insert(Team team) {
+-        teams.add(team);
+-    }
+-
+-    @Override
+-    public List<Team> getAll() {
+-        return teams;
+-    }
+-
+-    @Override
+-    public Team getById(UUID teamId) {
+-        return teams.stream().filter(team -> team.getTeamId() == teamId).collect(Collectors.toList()).get(0);
+-    }
+-}
+Index: 3-ase-f1-domain/src/main/java/dhbw/projects/DriverRepository.java
+===================================================================
+diff --git a/3-ase-f1-domain/src/main/java/dhbw/projects/DriverRepository.java b/3-ase-f1-domain/src/main/java/dhbw/projects/DriverRepository.java
+deleted file mode 100644
+--- a/3-ase-f1-domain/src/main/java/dhbw/projects/DriverRepository.java	(revision e2746a1f3c968f7eb1dc7577249edd7effea2969)
++++ /dev/null	(revision e2746a1f3c968f7eb1dc7577249edd7effea2969)
+@@ -1,12 +0,0 @@
+-package dhbw.projects;
+-
+-import dhbw.projects.data.driver.Driver;
+-import dhbw.projects.data.driver.DriverId;
+-
+-import java.util.List;
+-
+-public interface DriverRepository {
+-    void insert(Driver driver);
+-    List<Driver> getAll();
+-    Driver getById(DriverId driverId);
+-}
+Index: 3-ase-f1-domain/src/main/java/dhbw/projects/NationRepository.java
+===================================================================
+diff --git a/3-ase-f1-domain/src/main/java/dhbw/projects/NationRepository.java b/3-ase-f1-domain/src/main/java/dhbw/projects/NationRepository.java
+deleted file mode 100644
+--- a/3-ase-f1-domain/src/main/java/dhbw/projects/NationRepository.java	(revision e2746a1f3c968f7eb1dc7577249edd7effea2969)
++++ /dev/null	(revision e2746a1f3c968f7eb1dc7577249edd7effea2969)
+@@ -1,12 +0,0 @@
+-package dhbw.projects;
+-
+-import dhbw.projects.data.nation.Nation;
+-
+-import java.util.List;
+-import java.util.UUID;
+-
+-public interface NationRepository {
+-    void insert(Nation nation);
+-    List<Nation> getAll();
+-    Nation getById(UUID nationId);
+-}
+Index: 3-ase-f1-domain/src/main/java/dhbw/projects/TeamRepository.java
+===================================================================
+diff --git a/3-ase-f1-domain/src/main/java/dhbw/projects/TeamRepository.java b/3-ase-f1-domain/src/main/java/dhbw/projects/TeamRepository.java
+deleted file mode 100644
+--- a/3-ase-f1-domain/src/main/java/dhbw/projects/TeamRepository.java	(revision e2746a1f3c968f7eb1dc7577249edd7effea2969)
++++ /dev/null	(revision e2746a1f3c968f7eb1dc7577249edd7effea2969)
+@@ -1,12 +0,0 @@
+-package dhbw.projects;
+-
+-import dhbw.projects.data.team.Team;
+-
+-import java.util.List;
+-import java.util.UUID;
+-
+-public interface TeamRepository {
+-    void insert(Team team);
+-    List<Team> getAll();
+-    Team getById(UUID teamId);
+-}
+Index: 0-ase-f1-plugins/src/main/java/dhbw/projects/driver/DriverRepositoryImpl.java
+===================================================================
+diff --git a/0-ase-f1-plugins/src/main/java/dhbw/projects/driver/DriverRepositoryImpl.java b/0-ase-f1-plugins/src/main/java/dhbw/projects/driver/DriverRepositoryImpl.java
+deleted file mode 100644
+--- a/0-ase-f1-plugins/src/main/java/dhbw/projects/driver/DriverRepositoryImpl.java	(revision e2746a1f3c968f7eb1dc7577249edd7effea2969)
++++ /dev/null	(revision e2746a1f3c968f7eb1dc7577249edd7effea2969)
+@@ -1,35 +0,0 @@
+-package dhbw.projects.driver;
+-
+-import dhbw.projects.DriverRepository;
+-import dhbw.projects.data.driver.Driver;
+-import dhbw.projects.data.driver.DriverId;
+-
+-import java.util.ArrayList;
+-import java.util.List;
+-
+-public class DriverRepositoryImpl implements DriverRepository {
+-
+-    private final List<Driver> drivers = new ArrayList<>();
+-
+-
+-    @Override
+-    public void insert(Driver driver) {
+-        drivers.add(driver);
+-    }
+-
+-    @Override
+-    public List<Driver> getAll() {
+-        return drivers;
+-    }
+-
+-    @Override
+-    public Driver getById(DriverId driverId) {
+-        for (Driver driver: drivers){
+-            if(driver.getDriverId().getId() == driverId.getId()){
+-                return driver;
+-            }
+-        }
+-        return null;
+-    }
+-
+-}
+Index: 0-ase-f1-plugins/src/main/java/dhbw/projects/nation/NationRepositoryImpl.java
+===================================================================
+diff --git a/0-ase-f1-plugins/src/main/java/dhbw/projects/nation/NationRepositoryImpl.java b/0-ase-f1-plugins/src/main/java/dhbw/projects/nation/NationRepositoryImpl.java
+deleted file mode 100644
+--- a/0-ase-f1-plugins/src/main/java/dhbw/projects/nation/NationRepositoryImpl.java	(revision e2746a1f3c968f7eb1dc7577249edd7effea2969)
++++ /dev/null	(revision e2746a1f3c968f7eb1dc7577249edd7effea2969)
+@@ -1,28 +0,0 @@
+-package dhbw.projects.nation;
+-
+-import dhbw.projects.NationRepository;
+-import dhbw.projects.data.nation.Nation;
+-
+-import java.util.ArrayList;
+-import java.util.List;
+-import java.util.UUID;
+-import java.util.stream.Collectors;
+-
+-public class NationRepositoryImpl implements NationRepository {
+-
+-    private final List<Nation> nations = new ArrayList<>();
+-    @Override
+-    public void insert(Nation nation) {
+-        nations.add(nation);
+-    }
+-
+-    @Override
+-    public List<Nation> getAll() {
+-        return nations;
+-    }
+-
+-    @Override
+-    public Nation getById(UUID nationId) {
+-        return nations.stream().filter(nation -> nation.getNationId() == nationId).collect(Collectors.toList()).get(0);
+-    }
+-}
+Index: 3-ase-f1-domain/src/main/java/dhbw/projects/TrackRepository.java
+===================================================================
+diff --git a/3-ase-f1-domain/src/main/java/dhbw/projects/TrackRepository.java b/3-ase-f1-domain/src/main/java/dhbw/projects/TrackRepository.java
+deleted file mode 100644
+--- a/3-ase-f1-domain/src/main/java/dhbw/projects/TrackRepository.java	(revision e2746a1f3c968f7eb1dc7577249edd7effea2969)
++++ /dev/null	(revision e2746a1f3c968f7eb1dc7577249edd7effea2969)
+@@ -1,12 +0,0 @@
+-package dhbw.projects;
+-
+-import dhbw.projects.data.track.Track;
+-
+-import java.util.List;
+-import java.util.UUID;
+-
+-public interface TrackRepository {
+-    void insert(Track track);
+-    List<Track> getAll();
+-    Track getById(UUID trackId);
+-}
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"6872ced6-8124-4b6a-8f40-13a269cfecb3\" name=\"Changes\" comment=\"\">\r\n      <change afterPath=\"$PROJECT_DIR$/1-ase-f1-adapters/src/main/java/dhbw/projects/values/ValuesAdapter.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/2-ase-f1-application/src/main/java/dhbw/projects/values/ValuesService.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/3-ase-f1-domain/src/main/java/dhbw/projects/ValuesRepository.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/actionHandler/Values.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/values/ValuesImpl.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/useCases/CreateRaceAction.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/useCases/CreateRaceAction.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/useCases/GetReportAction.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/useCases/GetReportAction.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/useCases/ObjectView.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/useCases/ObjectView.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/useCases/ShowRaceAction.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/useCases/ShowRaceAction.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/1-ase-f1-adapters/src/main/java/dhbw/projects/InputValidator.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/2-ase-f1-application/src/main/java/dhbw/projects/InputValidator.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/1-ase-f1-adapters/src/main/java/dhbw/projects/useCases/CreateRaceUseCase.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/1-ase-f1-adapters/src/main/java/dhbw/projects/useCases/CreateRaceUseCase.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/2-ase-f1-application/src/main/java/dhbw/projects/useCases/CreateRaceService.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/2-ase-f1-application/src/main/java/dhbw/projects/useCases/CreateRaceService.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/3-ase-f1-domain/src/main/java/dhbw/projects/data/driver/DriverId.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/3-ase-f1-domain/src/main/java/dhbw/projects/data/driver/DriverId.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/3-ase-f1-domain/src/main/java/dhbw/projects/data/nation/Nation.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/3-ase-f1-domain/src/main/java/dhbw/projects/data/nation/Nation.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/3-ase-f1-domain/src/test/java/dhbw/projects/data/driver/DriverIdTest.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/3-ase-f1-domain/src/test/java/dhbw/projects/data/driver/DriverIdTest.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/3-ase-f1-domain/src/test/java/dhbw/projects/data/nation/NationTest.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/3-ase-f1-domain/src/test/java/dhbw/projects/data/nation/NationTest.java\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Record\" />\r\n        <option value=\"JUnit5 Test Class\" />\r\n        <option value=\"Interface\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"dev\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"29ZMnUdtEiif5Npzp75dsUs1Z37\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\">\r\n    <OptionsSetting value=\"false\" id=\"Update\" />\r\n  </component>\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,\r\n    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,\r\n    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-18&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;C:/Users/henry/IdeaProjects/ASE_F1_Project/2-ase-f1-application/src/test/java&quot;,\r\n    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,\r\n    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,\r\n    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\henry\\IdeaProjects\\ASE_F1_Project\\2-ase-f1-application\\src\\test\\java\" />\r\n      <recent name=\"C:\\Users\\henry\\IdeaProjects\\ASE_F1_Project\\2-ase-f1-application\\src\\main\\java\\dhbw\\projects\" />\r\n      <recent name=\"C:\\Users\\henry\\IdeaProjects\\ASE_F1_Project\\3-ase-f1-domain\\src\\main\\java\\dhbw\\projects\\data\" />\r\n      <recent name=\"C:\\Users\\henry\\IdeaProjects\\ASE_F1_Project\\3-cleanproject-domain\" />\r\n      <recent name=\"C:\\Users\\henry\\IdeaProjects\\ASE_F1_Project\\2-cleanproject-application\" />\r\n    </key>\r\n    <key name=\"CreateTestDialog.Recents.Supers\">\r\n      <recent name=\"\" />\r\n    </key>\r\n    <key name=\"MoveClassesOrPackagesDialog.RECENTS_KEY\">\r\n      <recent name=\"dhbw.projects\" />\r\n      <recent name=\"dhbw.projects.useCases\" />\r\n      <recent name=\"\" />\r\n      <recent name=\"dhbw.projects.data.driver\" />\r\n    </key>\r\n    <key name=\"CreateTestDialog.RecentsKey\">\r\n      <recent name=\"dhbw.projects.data.date\" />\r\n    </key>\r\n    <key name=\"CopyClassDialog.RECENTS_KEY\">\r\n      <recent name=\"dhbw.projects.values\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunAnythingCache\">\r\n    <option name=\"myCommands\">\r\n      <command value=\"mvn clean verify -Pjacoco\" />\r\n    </option>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"Application.dhbw.projects.Main\">\r\n    <configuration name=\"dhbw.projects.Main\" type=\"Application\" factoryName=\"Application\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"dhbw.projects.Main\" />\r\n      <module name=\"ase-f1-plugins\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\".*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"DateTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"ase-f1-domain\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"dhbw.projects.data.date.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"dhbw.projects.data.date\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"dhbw.projects.data.date.DateTest\" />\r\n      <option name=\"TEST_OBJECT\" value=\"class\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"DateTest.dateToString\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"ase-f1-domain\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"dhbw.projects.data.date.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"dhbw.projects.data.date\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"dhbw.projects.data.date.DateTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"dateToString\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"DriverIdTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"ase-f1-domain\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"dhbw.projects.data.driver.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"dhbw.projects.data.driver\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"dhbw.projects.data.driver.DriverIdTest\" />\r\n      <option name=\"TEST_OBJECT\" value=\"class\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"NationTest.assignAttributesOfNation\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"ase-f1-domain\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"dhbw.projects.data.nation.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"dhbw.projects.data.nation\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"dhbw.projects.data.nation.NationTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"assignAttributesOfNation\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"ASE_F1_Project\" type=\"MavenRunConfiguration\" factoryName=\"Maven\" nameIsGenerated=\"true\">\r\n      <MavenSettings>\r\n        <option name=\"myGeneralSettings\" />\r\n        <option name=\"myRunnerSettings\" />\r\n        <option name=\"myRunnerParameters\">\r\n          <MavenRunnerParameters>\r\n            <option name=\"profiles\">\r\n              <set />\r\n            </option>\r\n            <option name=\"goals\">\r\n              <list />\r\n            </option>\r\n            <option name=\"pomFileName\" />\r\n            <option name=\"profilesMap\">\r\n              <map />\r\n            </option>\r\n            <option name=\"resolveToWorkspace\" value=\"false\" />\r\n            <option name=\"workingDirPath\" value=\"$PROJECT_DIR$\" />\r\n          </MavenRunnerParameters>\r\n        </option>\r\n      </MavenSettings>\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"Application.dhbw.projects.Main\" />\r\n        <item itemvalue=\"JUnit.NationTest.assignAttributesOfNation\" />\r\n        <item itemvalue=\"JUnit.DateTest.dateToString\" />\r\n        <item itemvalue=\"JUnit.DriverIdTest\" />\r\n        <item itemvalue=\"JUnit.DateTest\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"6872ced6-8124-4b6a-8f40-13a269cfecb3\" name=\"Changes\" comment=\"\" />\r\n      <created>1653316322476</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1653316322476</updated>\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision e2746a1f3c968f7eb1dc7577249edd7effea2969)
++++ b/.idea/workspace.xml	(date 1653672460107)
+@@ -5,22 +5,20 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="6872ced6-8124-4b6a-8f40-13a269cfecb3" name="Changes" comment="">
+-      <change afterPath="$PROJECT_DIR$/1-ase-f1-adapters/src/main/java/dhbw/projects/values/ValuesAdapter.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/2-ase-f1-application/src/main/java/dhbw/projects/values/ValuesService.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/3-ase-f1-domain/src/main/java/dhbw/projects/ValuesRepository.java" afterDir="false" />
++      <change afterPath="$PROJECT_DIR$/2-ase-f1-application/src/test/java/dhbw/projects/values/ValuesServiceTest.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/actionHandler/Values.java" beforeDir="false" afterPath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/values/ValuesImpl.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/useCases/CreateRaceAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/useCases/CreateRaceAction.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/useCases/GetReportAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/useCases/GetReportAction.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/useCases/ObjectView.java" beforeDir="false" afterPath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/useCases/ObjectView.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/useCases/ShowRaceAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/useCases/ShowRaceAction.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/1-ase-f1-adapters/src/main/java/dhbw/projects/InputValidator.java" beforeDir="false" afterPath="$PROJECT_DIR$/2-ase-f1-application/src/main/java/dhbw/projects/InputValidator.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/1-ase-f1-adapters/src/main/java/dhbw/projects/useCases/CreateRaceUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/1-ase-f1-adapters/src/main/java/dhbw/projects/useCases/CreateRaceUseCase.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/2-ase-f1-application/src/main/java/dhbw/projects/useCases/CreateRaceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/2-ase-f1-application/src/main/java/dhbw/projects/useCases/CreateRaceService.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/3-ase-f1-domain/src/main/java/dhbw/projects/data/driver/DriverId.java" beforeDir="false" afterPath="$PROJECT_DIR$/3-ase-f1-domain/src/main/java/dhbw/projects/data/driver/DriverId.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/3-ase-f1-domain/src/main/java/dhbw/projects/data/nation/Nation.java" beforeDir="false" afterPath="$PROJECT_DIR$/3-ase-f1-domain/src/main/java/dhbw/projects/data/nation/Nation.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/3-ase-f1-domain/src/test/java/dhbw/projects/data/driver/DriverIdTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/3-ase-f1-domain/src/test/java/dhbw/projects/data/driver/DriverIdTest.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/3-ase-f1-domain/src/test/java/dhbw/projects/data/nation/NationTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/3-ase-f1-domain/src/test/java/dhbw/projects/data/nation/NationTest.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/driver/DriverRepositoryImpl.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/nation/NationRepositoryImpl.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/team/TeamRepositoryImpl.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/track/TrackRepositoryImpl.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/values/ValuesImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/values/ValuesImpl.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/2-ase-f1-application/src/main/java/dhbw/projects/values/ValuesService.java" beforeDir="false" afterPath="$PROJECT_DIR$/2-ase-f1-application/src/main/java/dhbw/projects/values/ValuesService.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/3-ase-f1-domain/src/main/java/dhbw/projects/DriverRepository.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/3-ase-f1-domain/src/main/java/dhbw/projects/NationRepository.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/3-ase-f1-domain/src/main/java/dhbw/projects/TeamRepository.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/3-ase-f1-domain/src/main/java/dhbw/projects/TrackRepository.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/3-ase-f1-domain/src/main/java/dhbw/projects/ValuesRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/3-ase-f1-domain/src/main/java/dhbw/projects/ValuesRepository.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/3-ase-f1-domain/src/test/java/dhbw/projects/data/date/DateTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/3-ase-f1-domain/src/test/java/dhbw/projects/data/date/DateTest.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -31,9 +29,9 @@
+     <option name="RECENT_TEMPLATES">
+       <list>
+         <option value="Record" />
+-        <option value="JUnit5 Test Class" />
+         <option value="Interface" />
+         <option value="Class" />
++        <option value="JUnit5 Test Class" />
+       </list>
+     </option>
+   </component>
+@@ -88,6 +86,7 @@
+       <recent name="dhbw.projects.data.driver" />
+     </key>
+     <key name="CreateTestDialog.RecentsKey">
++      <recent name="dhbw.projects.values" />
+       <recent name="dhbw.projects.data.date" />
+     </key>
+     <key name="CopyClassDialog.RECENTS_KEY">
+@@ -99,13 +98,13 @@
+       <command value="mvn clean verify -Pjacoco" />
+     </option>
+   </component>
+-  <component name="RunManager" selected="Application.dhbw.projects.Main">
+-    <configuration name="dhbw.projects.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
++  <component name="RunManager" selected="Application.Main">
++    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+       <option name="MAIN_CLASS_NAME" value="dhbw.projects.Main" />
+       <module name="ase-f1-plugins" />
+       <extension name="coverage">
+         <pattern>
+-          <option name="PATTERN" value=".*" />
++          <option name="PATTERN" value="dhbw.projects.*" />
+           <option name="ENABLED" value="true" />
+         </pattern>
+       </extension>
+@@ -113,7 +112,7 @@
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="DateTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++    <configuration name="DateTest.dateToString" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="ase-f1-domain" />
+       <extension name="coverage">
+         <pattern>
+@@ -123,53 +122,54 @@
+       </extension>
+       <option name="PACKAGE_NAME" value="dhbw.projects.data.date" />
+       <option name="MAIN_CLASS_NAME" value="dhbw.projects.data.date.DateTest" />
+-      <option name="TEST_OBJECT" value="class" />
++      <option name="METHOD_NAME" value="dateToString" />
++      <option name="TEST_OBJECT" value="method" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="DateTest.dateToString" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+-      <module name="ase-f1-domain" />
++    <configuration name="ValuesServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++      <module name="ase-f1-application" />
+       <extension name="coverage">
+         <pattern>
+-          <option name="PATTERN" value="dhbw.projects.data.date.*" />
++          <option name="PATTERN" value="dhbw.projects.values.*" />
+           <option name="ENABLED" value="true" />
+         </pattern>
+       </extension>
+-      <option name="PACKAGE_NAME" value="dhbw.projects.data.date" />
+-      <option name="MAIN_CLASS_NAME" value="dhbw.projects.data.date.DateTest" />
+-      <option name="METHOD_NAME" value="dateToString" />
+-      <option name="TEST_OBJECT" value="method" />
++      <option name="PACKAGE_NAME" value="dhbw.projects.values" />
++      <option name="MAIN_CLASS_NAME" value="dhbw.projects.values.ValuesServiceTest" />
++      <option name="TEST_OBJECT" value="class" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="DriverIdTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+-      <module name="ase-f1-domain" />
++    <configuration name="ValuesServiceTest.insertObjectTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++      <module name="ase-f1-application" />
+       <extension name="coverage">
+         <pattern>
+-          <option name="PATTERN" value="dhbw.projects.data.driver.*" />
++          <option name="PATTERN" value="dhbw.projects.values.*" />
+           <option name="ENABLED" value="true" />
+         </pattern>
+       </extension>
+-      <option name="PACKAGE_NAME" value="dhbw.projects.data.driver" />
+-      <option name="MAIN_CLASS_NAME" value="dhbw.projects.data.driver.DriverIdTest" />
+-      <option name="TEST_OBJECT" value="class" />
++      <option name="PACKAGE_NAME" value="dhbw.projects.values" />
++      <option name="MAIN_CLASS_NAME" value="dhbw.projects.values.ValuesServiceTest" />
++      <option name="METHOD_NAME" value="insertObjectTest" />
++      <option name="TEST_OBJECT" value="method" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="NationTest.assignAttributesOfNation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+-      <module name="ase-f1-domain" />
++    <configuration name="ValuesServiceTest.insertTestDriver" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++      <module name="ase-f1-application" />
+       <extension name="coverage">
+         <pattern>
+-          <option name="PATTERN" value="dhbw.projects.data.nation.*" />
++          <option name="PATTERN" value="dhbw.projects.values.*" />
+           <option name="ENABLED" value="true" />
+         </pattern>
+       </extension>
+-      <option name="PACKAGE_NAME" value="dhbw.projects.data.nation" />
+-      <option name="MAIN_CLASS_NAME" value="dhbw.projects.data.nation.NationTest" />
+-      <option name="METHOD_NAME" value="assignAttributesOfNation" />
++      <option name="PACKAGE_NAME" value="dhbw.projects.values" />
++      <option name="MAIN_CLASS_NAME" value="dhbw.projects.values.ValuesServiceTest" />
++      <option name="METHOD_NAME" value="insertTestDriver" />
+       <option name="TEST_OBJECT" value="method" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+@@ -200,11 +200,11 @@
+     </configuration>
+     <recent_temporary>
+       <list>
+-        <item itemvalue="Application.dhbw.projects.Main" />
+-        <item itemvalue="JUnit.NationTest.assignAttributesOfNation" />
++        <item itemvalue="Application.Main" />
++        <item itemvalue="JUnit.ValuesServiceTest.insertObjectTest" />
++        <item itemvalue="JUnit.ValuesServiceTest" />
++        <item itemvalue="JUnit.ValuesServiceTest.insertTestDriver" />
+         <item itemvalue="JUnit.DateTest.dateToString" />
+-        <item itemvalue="JUnit.DriverIdTest" />
+-        <item itemvalue="JUnit.DateTest" />
+       </list>
+     </recent_temporary>
+   </component>
+Index: 2-ase-f1-application/src/test/java/dhbw/projects/values/ValuesServiceTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/2-ase-f1-application/src/test/java/dhbw/projects/values/ValuesServiceTest.java b/2-ase-f1-application/src/test/java/dhbw/projects/values/ValuesServiceTest.java
+new file mode 100644
+--- /dev/null	(date 1653672287248)
++++ b/2-ase-f1-application/src/test/java/dhbw/projects/values/ValuesServiceTest.java	(date 1653672287248)
+@@ -0,0 +1,28 @@
++package dhbw.projects.values;
++
++import dhbw.projects.ValuesRepository;
++import org.junit.jupiter.api.Test;
++import static org.mockito.Mockito.*;
++
++class ValuesServiceTest {
++
++    @Test
++    public void insertObjectTest(){
++        ValuesRepository valuesRepository = mock(ValuesRepository.class);
++        String driverName = "TestDriver";
++        int driverId = 10;
++        String nation = "TestNation";
++        String team = "TestTeam";
++        String track = "TestTrack";
++        valuesRepository.insertTrack(track);
++        valuesRepository.insertTeam(team);
++        valuesRepository.insertNation(nation);
++        valuesRepository.insertDriver(driverId, driverName, nation, team);
++        verify(valuesRepository).insertDriver(driverId, driverName, nation, team);
++        verify(valuesRepository).insertTrack(track);
++        verify(valuesRepository).insertTeam(team);
++        verify(valuesRepository).insertNation(nation);
++
++    }
++
++}
+\ No newline at end of file
+Index: 3-ase-f1-domain/src/test/java/dhbw/projects/data/date/DateTest.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package dhbw.projects.data.date;\r\n\r\n\r\nimport org.junit.jupiter.api.Test;\r\n\r\nimport java.time.DateTimeException;\r\n\r\nimport static org.junit.jupiter.api.Assertions.*;\r\n\r\nclass DateTest {\r\n\r\n    @Test\r\n    public void assignAttributesOfDate(){\r\n        assertThrows(DateTimeException.class, () -> new Date(\"22222222\"));\r\n        assertThrows(StringIndexOutOfBoundsException.class, () -> new Date(\"2222111\"));\r\n    }\r\n\r\n    @Test\r\n    public void compareObjects(){\r\n        Date date  = new Date(\"20220202\");\r\n        Date correctDate  = new Date(\"20220202\");\r\n        Date wrongDate  = new Date(\"20220203\");\r\n\r\n        assertEquals(date, correctDate);\r\n        assertNotEquals(date, wrongDate);\r\n    }\r\n\r\n    @Test\r\n    public void dateToString(){\r\n        Date date = new Date(\"12341212\");\r\n        assertEquals(date.toString(\"-\"), \"1234-12-12\");\r\n    }\r\n\r\n    /*@Test\r\n    public void assignAttributesOfDate(){\r\n        Date date = new Date(1234,12,31);\r\n        assertEquals(date.getYear(), 1234);\r\n        assertEquals(date.getMonth(), 12);\r\n        assertEquals(date.getDay(), 31);\r\n\r\n    }\r\n\r\n    @Test\r\n    public void compareObjects(){\r\n        Date date  = new Date(2022,02,02);\r\n        Date correctDate  = new Date(2022,02,02);\r\n        Date wrongDate  = new Date(2022,02,03);\r\n\r\n        assertEquals(date, correctDate);\r\n        assertNotEquals(date, wrongDate);\r\n    }*/\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/3-ase-f1-domain/src/test/java/dhbw/projects/data/date/DateTest.java b/3-ase-f1-domain/src/test/java/dhbw/projects/data/date/DateTest.java
+--- a/3-ase-f1-domain/src/test/java/dhbw/projects/data/date/DateTest.java	(revision e2746a1f3c968f7eb1dc7577249edd7effea2969)
++++ b/3-ase-f1-domain/src/test/java/dhbw/projects/data/date/DateTest.java	(date 1653670816194)
+@@ -20,34 +20,20 @@
+         Date date  = new Date("20220202");
+         Date correctDate  = new Date("20220202");
+         Date wrongDate  = new Date("20220203");
++        Object object = new Object();
+ 
+         assertEquals(date, correctDate);
+         assertNotEquals(date, wrongDate);
++        assertNotEquals(object, date);
++
+     }
+ 
+     @Test
+     public void dateToString(){
+         Date date = new Date("12341212");
++        Date date1 = new Date("12340101");
+         assertEquals(date.toString("-"), "1234-12-12");
++        assertEquals(date1.toString("-"), "1234-01-01");
+     }
+ 
+-    /*@Test
+-    public void assignAttributesOfDate(){
+-        Date date = new Date(1234,12,31);
+-        assertEquals(date.getYear(), 1234);
+-        assertEquals(date.getMonth(), 12);
+-        assertEquals(date.getDay(), 31);
+-
+-    }
+-
+-    @Test
+-    public void compareObjects(){
+-        Date date  = new Date(2022,02,02);
+-        Date correctDate  = new Date(2022,02,02);
+-        Date wrongDate  = new Date(2022,02,03);
+-
+-        assertEquals(date, correctDate);
+-        assertNotEquals(date, wrongDate);
+-    }*/
+-
+ }
+\ No newline at end of file

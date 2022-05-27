@@ -21,5 +21,11 @@ public interface ValuesRepository {
     void setDrivers();
     Map<String, Driver> getDrivers();
 
+    void insertDriver(int driverId, String driverName, String nation, String team);
 
+    void insertTeam(String team);
+
+    void insertNation(String nation);
+
+    void insertTrack(String track);
 }

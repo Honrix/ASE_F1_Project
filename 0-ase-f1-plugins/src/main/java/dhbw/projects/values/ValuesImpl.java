@@ -6,9 +6,6 @@ import dhbw.projects.data.driver.DriverId;
 import dhbw.projects.data.nation.Nation;
 import dhbw.projects.data.team.Team;
 import dhbw.projects.data.track.Track;
-import dhbw.projects.driver.DriverRepositoryImpl;
-import dhbw.projects.nation.NationRepositoryImpl;
-import dhbw.projects.track.TrackRepositoryImpl;
 
 import java.util.*;
 
@@ -34,7 +31,7 @@ public class ValuesImpl implements ValuesRepository {
                 "Austria", "Great Britain", "Hungary", "Belgium", "Netherlands", "Italy", "Russia", "Singapore", "Japan",
                 "USA", "Mexico", "Brazil", "Australia", "Saudi Arabia", "Abu Dhabi", "China"};
         for (String track : tracks) {
-            this.valuesAdapter.insertTrack(track);
+            insertTrack(track);
         }
     }
 
@@ -52,7 +49,7 @@ public class ValuesImpl implements ValuesRepository {
         String[] nations = {"Australia", "Canada", "Spain", "Finland", "France", "Great Britain", "Germany", "Italy",
                 "Japan", "Mexico", "Monaco", "Netherlands", "Russia"};
         for (String nation : nations) {
-            this.valuesAdapter.insertNation(nation);
+            insertNation(nation);
         }
     }
 
@@ -75,7 +72,7 @@ public class ValuesImpl implements ValuesRepository {
                 "Haas",
                 "Williams"};
         for (String team : teams) {
-            this.valuesAdapter.insertTeam(team);
+            insertTeam(team);
         }
 
     }
@@ -135,7 +132,7 @@ public class ValuesImpl implements ValuesRepository {
                 "Williams",
                 "Williams"};
         for (int i = 0; i < driverNames.length; i++) {
-            this.valuesAdapter.insertDriver(driverIds[i], driverNames[i], driverNations[i], driverTeams[i]);
+            insertDriver(driverIds[i], driverNames[i], driverNations[i], driverTeams[i]);
         }
 
     }
@@ -143,6 +140,26 @@ public class ValuesImpl implements ValuesRepository {
     @Override
     public Map<String, Driver> getDrivers() {
         return this.valuesAdapter.getDrivers();
+    }
+
+    @Override
+    public void insertDriver(int driverId, String driverName, String nation, String team) {
+        this.valuesAdapter.insertDriver(driverId, driverName, nation, team);
+    }
+
+    @Override
+    public void insertTeam(String team) {
+        this.valuesAdapter.insertTeam(team);
+    }
+
+    @Override
+    public void insertNation(String nation) {
+        this.valuesAdapter.insertNation(nation);
+    }
+
+    @Override
+    public void insertTrack(String track) {
+        this.valuesAdapter.insertTrack(track);
     }
 
     public Map<String, String> getNationalities() {

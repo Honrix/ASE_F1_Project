@@ -12,13 +12,16 @@ import java.util.UUID;
 
 public class ValuesService {
 
-    private final Map<String, Driver> drivers  = new HashMap<>();
-    private final Map<String, Track> tracks  = new HashMap<>();
-    private final Map<String, Team> teams  = new HashMap<>();
-    private final Map<String, Nation> nations  = new HashMap<>();
+    private final Map<String, Driver> drivers;
+    private final Map<String, Track> tracks;
+    private final Map<String, Team> teams;
+    private final Map<String, Nation> nations;
 
     public ValuesService(){
-
+        this.drivers = new HashMap<>();
+        this.tracks = new HashMap<>();
+        this.teams = new HashMap<>();
+        this.nations = new HashMap<>();
     }
 
 
