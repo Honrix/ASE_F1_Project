@@ -84,7 +84,7 @@ public class ShowRaceUseCase {
     public void raceToString(Race race) {
         String dateFormated = race.getDate().toString("-");
         String length = String.valueOf(race.getLengthTime());
-        String trackName = race.getTrackName().toString();
+        String trackName = race.getTrack().toString();
 
         String output = " " + String.join("", Collections.nCopies(49, "_")) + "\n";
         output += "|  " + String.format("%-47s", dateFormated + ", " + length + "% " + trackName + ": ") + "|\n";

@@ -33,7 +33,7 @@ public class ShowRaceAction implements UserOptions {
             String body;
             for (int i = 0; i < races.size(); i++) {
                 race = races.get(i);
-                body = race.getDate().toString("-") + ", " + race.getLengthTime() + "% " + race.getTrackName();
+                body = race.getDate().toString("-") + ", " + race.getLengthTime() + "% " + race.getTrack();
                 System.out.printf("%5s", "\n[" + (i + 1) + "] ");
                 System.out.print(body);
             }
@@ -137,7 +137,7 @@ public class ShowRaceAction implements UserOptions {
 
     private void overwriteRace(Race oldRace, List<DriverInformations> driverInformations){
         Race race = new Race(
-                oldRace.getTrackName(),
+                oldRace.getTrack(),
                 driverInformations,
                 oldRace.getLengthTime(),
                 oldRace.getDate(),

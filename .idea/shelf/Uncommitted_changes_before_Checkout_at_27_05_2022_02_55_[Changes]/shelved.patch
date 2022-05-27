@@ -1,0 +1,426 @@
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"6872ced6-8124-4b6a-8f40-13a269cfecb3\" name=\"Changes\" comment=\"\">\r\n      <change afterPath=\"$PROJECT_DIR$/2-ase-f1-application/src/test/java/dhbw/projects/useCases/CreateRaceServiceTest.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/3-ase-f1-domain/src/test/java/dhbw/projects/data/date/DateTest.java\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/x-ase-f1-project-codecoverage/pom.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/misc.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/misc.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/2-ase-f1-application/src/main/java/dhbw/projects/useCases/CreateRaceService.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/2-ase-f1-application/src/main/java/dhbw/projects/useCases/CreateRaceService.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/2-ase-f1-application/src/main/java/dhbw/projects/useCases/ShowRaceService.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/2-ase-f1-application/src/main/java/dhbw/projects/useCases/ShowRaceService.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/3-ase-f1-domain/src/main/java/dhbw/projects/data/date/Date.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/3-ase-f1-domain/src/main/java/dhbw/projects/data/date/Date.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/pom.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/pom.xml\" afterDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Record\" />\r\n        <option value=\"Interface\" />\r\n        <option value=\"JUnit5 Test Class\" />\r\n        <option value=\"Class\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"29ZMnUdtEiif5Npzp75dsUs1Z37\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"hideEmptyMiddlePackages\" value=\"true\" />\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\">{\r\n  &quot;keyToString&quot;: {\r\n    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,\r\n    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,\r\n    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,\r\n    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary&quot;: &quot;JUnit5&quot;,\r\n    &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,\r\n    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-18&quot;,\r\n    &quot;last_opened_file_path&quot;: &quot;C:/Users/henry/IdeaProjects/ASE_F1_Project/2-ase-f1-application/src/test/java&quot;,\r\n    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,\r\n    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,\r\n    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;\r\n  }\r\n}</component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"C:\\Users\\henry\\IdeaProjects\\ASE_F1_Project\\2-ase-f1-application\\src\\test\\java\" />\r\n      <recent name=\"C:\\Users\\henry\\IdeaProjects\\ASE_F1_Project\\2-ase-f1-application\\src\\main\\java\\dhbw\\projects\" />\r\n      <recent name=\"C:\\Users\\henry\\IdeaProjects\\ASE_F1_Project\\3-ase-f1-domain\\src\\main\\java\\dhbw\\projects\\data\" />\r\n      <recent name=\"C:\\Users\\henry\\IdeaProjects\\ASE_F1_Project\\3-cleanproject-domain\" />\r\n      <recent name=\"C:\\Users\\henry\\IdeaProjects\\ASE_F1_Project\\2-cleanproject-application\" />\r\n    </key>\r\n    <key name=\"CreateTestDialog.Recents.Supers\">\r\n      <recent name=\"\" />\r\n    </key>\r\n    <key name=\"CreateTestDialog.RecentsKey\">\r\n      <recent name=\"dhbw.projects.data.date\" />\r\n    </key>\r\n    <key name=\"CopyClassDialog.RECENTS_KEY\">\r\n      <recent name=\"dhbw.projects.values\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunAnythingCache\">\r\n    <option name=\"myCommands\">\r\n      <command value=\"mvn clean verify -Pjacoco\" />\r\n    </option>\r\n  </component>\r\n  <component name=\"RunManager\" selected=\"JUnit.CreateRaceServiceTest.getRacesTest\">\r\n    <configuration name=\"CreateRaceServiceTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"ase-f1-application\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"dhbw.projects.useCases.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"dhbw.projects.useCases\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"dhbw.projects.useCases.CreateRaceServiceTest\" />\r\n      <option name=\"TEST_OBJECT\" value=\"class\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"CreateRaceServiceTest.getRacesTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"ase-f1-application\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"dhbw.projects.useCases.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"dhbw.projects.useCases\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"dhbw.projects.useCases.CreateRaceServiceTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"getRacesTest\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"CreateRaceServiceTest.insertRaceTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"ase-f1-application\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"dhbw.projects.useCases.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"dhbw.projects.useCases\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"dhbw.projects.useCases.CreateRaceServiceTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"insertRaceTest\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"DateTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"ase-f1-domain\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"dhbw.projects.data.date.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"dhbw.projects.data.date\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"dhbw.projects.data.date.DateTest\" />\r\n      <option name=\"TEST_OBJECT\" value=\"class\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"DateTest.compareObjects\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\r\n      <module name=\"ase-f1-domain\" />\r\n      <extension name=\"coverage\">\r\n        <pattern>\r\n          <option name=\"PATTERN\" value=\"dhbw.projects.data.date.*\" />\r\n          <option name=\"ENABLED\" value=\"true\" />\r\n        </pattern>\r\n      </extension>\r\n      <option name=\"PACKAGE_NAME\" value=\"dhbw.projects.data.date\" />\r\n      <option name=\"MAIN_CLASS_NAME\" value=\"dhbw.projects.data.date.DateTest\" />\r\n      <option name=\"METHOD_NAME\" value=\"compareObjects\" />\r\n      <option name=\"TEST_OBJECT\" value=\"method\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"ASE_F1_Project\" type=\"MavenRunConfiguration\" factoryName=\"Maven\" nameIsGenerated=\"true\">\r\n      <MavenSettings>\r\n        <option name=\"myGeneralSettings\" />\r\n        <option name=\"myRunnerSettings\" />\r\n        <option name=\"myRunnerParameters\">\r\n          <MavenRunnerParameters>\r\n            <option name=\"profiles\">\r\n              <set />\r\n            </option>\r\n            <option name=\"goals\">\r\n              <list />\r\n            </option>\r\n            <option name=\"pomFileName\" />\r\n            <option name=\"profilesMap\">\r\n              <map />\r\n            </option>\r\n            <option name=\"resolveToWorkspace\" value=\"false\" />\r\n            <option name=\"workingDirPath\" value=\"$PROJECT_DIR$\" />\r\n          </MavenRunnerParameters>\r\n        </option>\r\n      </MavenSettings>\r\n      <method v=\"2\" />\r\n    </configuration>\r\n    <recent_temporary>\r\n      <list>\r\n        <item itemvalue=\"JUnit.CreateRaceServiceTest.getRacesTest\" />\r\n        <item itemvalue=\"JUnit.CreateRaceServiceTest\" />\r\n        <item itemvalue=\"JUnit.CreateRaceServiceTest.insertRaceTest\" />\r\n        <item itemvalue=\"JUnit.DateTest.compareObjects\" />\r\n        <item itemvalue=\"JUnit.DateTest\" />\r\n      </list>\r\n    </recent_temporary>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"6872ced6-8124-4b6a-8f40-13a269cfecb3\" name=\"Changes\" comment=\"\" />\r\n      <created>1653316322476</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1653316322476</updated>\r\n    </task>\r\n    <servers />\r\n  </component>\r\n  <component name=\"Vcs.Log.Tabs.Properties\">\r\n    <option name=\"TAB_STATES\">\r\n      <map>\r\n        <entry key=\"MAIN\">\r\n          <value>\r\n            <State />\r\n          </value>\r\n        </entry>\r\n      </map>\r\n    </option>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -5,15 +5,22 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="6872ced6-8124-4b6a-8f40-13a269cfecb3" name="Changes" comment="">
+-      <change afterPath="$PROJECT_DIR$/2-ase-f1-application/src/test/java/dhbw/projects/useCases/CreateRaceServiceTest.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/3-ase-f1-domain/src/test/java/dhbw/projects/data/date/DateTest.java" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/x-ase-f1-project-codecoverage/pom.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/2-ase-f1-application/src/main/java/dhbw/projects/useCases/CreateRaceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/2-ase-f1-application/src/main/java/dhbw/projects/useCases/CreateRaceService.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/2-ase-f1-application/src/main/java/dhbw/projects/useCases/ShowRaceService.java" beforeDir="false" afterPath="$PROJECT_DIR$/2-ase-f1-application/src/main/java/dhbw/projects/useCases/ShowRaceService.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/Main.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/actionHandler/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/actionHandler/Menu.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/actionHandler/UserOptions.java" beforeDir="false" afterPath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/actionHandler/UserOptions.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/race/RaceRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/race/RaceRepositoryImpl.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/useCases/CreateRaceAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/useCases/CreateRaceAction.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/useCases/ShowRaceAction.java" beforeDir="false" afterPath="$PROJECT_DIR$/0-ase-f1-plugins/src/main/java/dhbw/projects/useCases/ShowRaceAction.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/1-ase-f1-adapters/src/main/java/dhbw/projects/ValuesService.java" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/1-ase-f1-adapters/src/main/java/dhbw/projects/driver/DriverInformationsService.java" beforeDir="false" afterPath="$PROJECT_DIR$/1-ase-f1-adapters/src/main/java/dhbw/projects/driver/DriverInformationsService.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/1-ase-f1-adapters/src/main/java/dhbw/projects/useCases/ShowRaceUseCase.java" beforeDir="false" afterPath="$PROJECT_DIR$/1-ase-f1-adapters/src/main/java/dhbw/projects/useCases/ShowRaceUseCase.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/2-ase-f1-application/src/test/java/dhbw/projects/useCases/CreateRaceServiceTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/2-ase-f1-application/src/test/java/dhbw/projects/useCases/CreateRaceServiceTest.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/3-ase-f1-domain/src/main/java/dhbw/projects/RaceRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/3-ase-f1-domain/src/main/java/dhbw/projects/RaceRepository.java" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/3-ase-f1-domain/src/main/java/dhbw/projects/data/date/Date.java" beforeDir="false" afterPath="$PROJECT_DIR$/3-ase-f1-domain/src/main/java/dhbw/projects/data/date/Date.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/3-ase-f1-domain/src/main/java/dhbw/projects/data/driver/DriverId.java" beforeDir="false" afterPath="$PROJECT_DIR$/3-ase-f1-domain/src/main/java/dhbw/projects/data/driver/DriverId.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/3-ase-f1-domain/src/main/java/dhbw/projects/data/driver/DriverInformations.java" beforeDir="false" afterPath="$PROJECT_DIR$/3-ase-f1-domain/src/main/java/dhbw/projects/data/driver/DriverInformations.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/3-ase-f1-domain/src/main/java/dhbw/projects/data/race/Race.java" beforeDir="false" afterPath="$PROJECT_DIR$/3-ase-f1-domain/src/main/java/dhbw/projects/data/race/Race.java" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -24,13 +31,19 @@
+     <option name="RECENT_TEMPLATES">
+       <list>
+         <option value="Record" />
+-        <option value="Interface" />
++        <option value="Enum" />
+         <option value="JUnit5 Test Class" />
+         <option value="Class" />
++        <option value="Interface" />
+       </list>
+     </option>
+   </component>
+   <component name="Git.Settings">
++    <option name="RECENT_BRANCH_BY_REPOSITORY">
++      <map>
++        <entry key="$PROJECT_DIR$" value="downgrade_java" />
++      </map>
++    </option>
+     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+   </component>
+   <component name="MarkdownSettingsMigration">
+@@ -68,6 +81,10 @@
+       <recent name="" />
+     </key>
+     <key name="CreateTestDialog.RecentsKey">
++      <recent name="dhbw.projects.data.driver" />
++      <recent name="dhbw.projects.data.race" />
++      <recent name="dhbw.projects.data.team" />
++      <recent name="dhbw.projects.data.track" />
+       <recent name="dhbw.projects.data.date" />
+     </key>
+     <key name="CopyClassDialog.RECENTS_KEY">
+@@ -79,81 +96,82 @@
+       <command value="mvn clean verify -Pjacoco" />
+     </option>
+   </component>
+-  <component name="RunManager" selected="JUnit.CreateRaceServiceTest.getRacesTest">
+-    <configuration name="CreateRaceServiceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+-      <module name="ase-f1-application" />
++  <component name="RunManager" selected="JUnit.DriverInformationsTest.assignAttributesOfDriverInformations">
++    <configuration name="DriverInformationsTest.assignAttributesOfDriverInformations" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++      <module name="ase-f1-domain" />
+       <extension name="coverage">
+         <pattern>
+-          <option name="PATTERN" value="dhbw.projects.useCases.*" />
++          <option name="PATTERN" value="dhbw.projects.data.driver.*" />
+           <option name="ENABLED" value="true" />
+         </pattern>
+       </extension>
+-      <option name="PACKAGE_NAME" value="dhbw.projects.useCases" />
+-      <option name="MAIN_CLASS_NAME" value="dhbw.projects.useCases.CreateRaceServiceTest" />
+-      <option name="TEST_OBJECT" value="class" />
++      <option name="PACKAGE_NAME" value="dhbw.projects.data.driver" />
++      <option name="MAIN_CLASS_NAME" value="dhbw.projects.data.driver.DriverInformationsTest" />
++      <option name="METHOD_NAME" value="assignAttributesOfDriverInformations" />
++      <option name="TEST_OBJECT" value="method" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="CreateRaceServiceTest.getRacesTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+-      <module name="ase-f1-application" />
++    <configuration name="DriverTest.assignAttributesOfDriver" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++      <module name="ase-f1-domain" />
+       <extension name="coverage">
+         <pattern>
+-          <option name="PATTERN" value="dhbw.projects.useCases.*" />
++          <option name="PATTERN" value="dhbw.projects.data.driver.*" />
+           <option name="ENABLED" value="true" />
+         </pattern>
+       </extension>
+-      <option name="PACKAGE_NAME" value="dhbw.projects.useCases" />
+-      <option name="MAIN_CLASS_NAME" value="dhbw.projects.useCases.CreateRaceServiceTest" />
+-      <option name="METHOD_NAME" value="getRacesTest" />
++      <option name="PACKAGE_NAME" value="dhbw.projects.data.driver" />
++      <option name="MAIN_CLASS_NAME" value="dhbw.projects.data.driver.DriverTest" />
++      <option name="METHOD_NAME" value="assignAttributesOfDriver" />
+       <option name="TEST_OBJECT" value="method" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="CreateRaceServiceTest.insertRaceTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+-      <module name="ase-f1-application" />
++    <configuration name="NationTest.assignAttributesOfNation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++      <module name="ase-f1-domain" />
+       <extension name="coverage">
+         <pattern>
+-          <option name="PATTERN" value="dhbw.projects.useCases.*" />
++          <option name="PATTERN" value="dhbw.projects.data.nation.*" />
+           <option name="ENABLED" value="true" />
+         </pattern>
+       </extension>
+-      <option name="PACKAGE_NAME" value="dhbw.projects.useCases" />
+-      <option name="MAIN_CLASS_NAME" value="dhbw.projects.useCases.CreateRaceServiceTest" />
+-      <option name="METHOD_NAME" value="insertRaceTest" />
++      <option name="PACKAGE_NAME" value="dhbw.projects.data.nation" />
++      <option name="MAIN_CLASS_NAME" value="dhbw.projects.data.nation.NationTest" />
++      <option name="METHOD_NAME" value="assignAttributesOfNation" />
+       <option name="TEST_OBJECT" value="method" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="DateTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++    <configuration name="RaceTest.assignAttributesOfRace" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="ase-f1-domain" />
+       <extension name="coverage">
+         <pattern>
+-          <option name="PATTERN" value="dhbw.projects.data.date.*" />
++          <option name="PATTERN" value="dhbw.projects.data.race.*" />
+           <option name="ENABLED" value="true" />
+         </pattern>
+       </extension>
+-      <option name="PACKAGE_NAME" value="dhbw.projects.data.date" />
+-      <option name="MAIN_CLASS_NAME" value="dhbw.projects.data.date.DateTest" />
+-      <option name="TEST_OBJECT" value="class" />
++      <option name="PACKAGE_NAME" value="dhbw.projects.data.race" />
++      <option name="MAIN_CLASS_NAME" value="dhbw.projects.data.race.RaceTest" />
++      <option name="METHOD_NAME" value="assignAttributesOfRace" />
++      <option name="TEST_OBJECT" value="method" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+     </configuration>
+-    <configuration name="DateTest.compareObjects" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
++    <configuration name="TeamTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+       <module name="ase-f1-domain" />
+       <extension name="coverage">
+         <pattern>
+-          <option name="PATTERN" value="dhbw.projects.data.date.*" />
++          <option name="PATTERN" value="dhbw.projects.data.team.*" />
+           <option name="ENABLED" value="true" />
+         </pattern>
+       </extension>
+-      <option name="PACKAGE_NAME" value="dhbw.projects.data.date" />
+-      <option name="MAIN_CLASS_NAME" value="dhbw.projects.data.date.DateTest" />
+-      <option name="METHOD_NAME" value="compareObjects" />
+-      <option name="TEST_OBJECT" value="method" />
++      <option name="PACKAGE_NAME" value="dhbw.projects.data.team" />
++      <option name="MAIN_CLASS_NAME" value="dhbw.projects.data.team.TeamTest" />
++      <option name="TEST_OBJECT" value="class" />
+       <method v="2">
+         <option name="Make" enabled="true" />
+       </method>
+@@ -183,11 +201,11 @@
+     </configuration>
+     <recent_temporary>
+       <list>
+-        <item itemvalue="JUnit.CreateRaceServiceTest.getRacesTest" />
+-        <item itemvalue="JUnit.CreateRaceServiceTest" />
+-        <item itemvalue="JUnit.CreateRaceServiceTest.insertRaceTest" />
+-        <item itemvalue="JUnit.DateTest.compareObjects" />
+-        <item itemvalue="JUnit.DateTest" />
++        <item itemvalue="JUnit.DriverInformationsTest.assignAttributesOfDriverInformations" />
++        <item itemvalue="JUnit.DriverTest.assignAttributesOfDriver" />
++        <item itemvalue="JUnit.NationTest.assignAttributesOfNation" />
++        <item itemvalue="JUnit.RaceTest.assignAttributesOfRace" />
++        <item itemvalue="JUnit.TeamTest" />
+       </list>
+     </recent_temporary>
+   </component>
+Index: 1-ase-f1-adapters/src/main/java/dhbw/projects/driver/DriverInformationsService.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package dhbw.projects.driver;\r\n\r\nimport dhbw.projects.InputValidator;\r\nimport dhbw.projects.ObjectOutput;\r\nimport dhbw.projects.data.driver.Driver;\r\nimport dhbw.projects.data.driver.DriverInformations;\r\n\r\nimport java.util.HashMap;\r\nimport java.util.Map;\r\nimport java.util.Scanner;\r\n\r\npublic class DriverInformationsService {\r\n\r\n    private DriverInformations driverInformations;\r\n    private final Map<String, Driver> drivers;\r\n    private final Scanner scanner = new Scanner(System.in);\r\n    private final InputValidator inputValidator = new InputValidator();\r\n\r\n    public DriverInformationsService(Map<String, Driver> drivers, int finalPosition){\r\n        this.drivers = drivers;\r\n        initialize(finalPosition);\r\n    }\r\n\r\n    public DriverInformations getDriverInformations() {\r\n        return driverInformations;\r\n    }\r\n\r\n    private Map<String, String> getDriverNames(Map<String, Driver> drivers){\r\n        Map<String, String> driverNames = new HashMap<>();\r\n        for (int i = 0; i < drivers.size(); i++) {\r\n            driverNames.put(String.valueOf(i), drivers.get(String.valueOf(i)).getName());\r\n        }\r\n        return driverNames;\r\n    }\r\n\r\n    private void initialize(int finalPosition){\r\n        Map<String, String> driverNames = getDriverNames(this.drivers);\r\n        Driver driver;\r\n        int startingPosition;\r\n        double fastestLap;\r\n        driver = enterDriver(driverNames, finalPosition);\r\n        while(!this.inputValidator.confirmInput(driver.getName())){\r\n            driver = enterDriver(driverNames, finalPosition);\r\n        }\r\n        startingPosition = enterGridPosition(driver);\r\n        while(!this.inputValidator.confirmInput(String.valueOf(startingPosition))){\r\n            startingPosition = enterGridPosition(driver);\r\n        }\r\n        fastestLap = enterFastestLap(driver);\r\n        while(!this.inputValidator.confirmInput(fastestLap +\" in ms\")){\r\n            fastestLap = enterFastestLap(driver);\r\n        }\r\n        driverInformations = new DriverInformations(\r\n                driver,\r\n                startingPosition,\r\n                finalPosition,\r\n                startingPosition-finalPosition,\r\n                fastestLap\r\n        );\r\n    }\r\n\r\n    private Driver enterDriver(Map<String, String> drivers, int finalPosition){\r\n        System.out.println(\"Select the Driver with the final Position \" + (finalPosition) + \":\");\r\n        System.out.println(printDrivers(drivers));\r\n        String selectedDriverKey = this.inputValidator.validateCertainSelection(this.scanner.next(), drivers.size());\r\n        return (this.drivers.get(String.valueOf(Integer.parseInt(selectedDriverKey)-1)));\r\n    }\r\n\r\n    private String printDrivers(Map<String, String> drivers){\r\n        ObjectOutput objectOutput = new ObjectOutput(drivers, \"All Drivers\");\r\n        return objectOutput.getOutput();\r\n    }\r\n\r\n    private int enterGridPosition(Driver driver){\r\n        System.out.println(\"Enter the Grid-Position of \" + (driver.getName()) + \":\");\r\n        String input = this.inputValidator.validateCertainSelection(this.scanner.next(), this.drivers.size());\r\n        return Integer.parseInt(input);\r\n    }\r\n\r\n    private double enterFastestLap(Driver driver){\r\n        System.out.println(\"Enter the Fastest Lap of \" + (driver.getName()) + \" (Format: XX.XXX):\");\r\n        String input = this.scanner.next();\r\n        while(!this.inputValidator.validateLaptime(input)){\r\n            System.out.println(\"Please Enter a valide Laptime (Format: XX.XXX)\");\r\n            input = this.scanner.next();\r\n        }\r\n        return Double.parseDouble(input);\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/1-ase-f1-adapters/src/main/java/dhbw/projects/driver/DriverInformationsService.java b/1-ase-f1-adapters/src/main/java/dhbw/projects/driver/DriverInformationsService.java
+--- a/1-ase-f1-adapters/src/main/java/dhbw/projects/driver/DriverInformationsService.java	
++++ b/1-ase-f1-adapters/src/main/java/dhbw/projects/driver/DriverInformationsService.java	
+@@ -54,7 +54,6 @@
+                 driver,
+                 startingPosition,
+                 finalPosition,
+-                startingPosition-finalPosition,
+                 fastestLap
+         );
+     }
+Index: 0-ase-f1-plugins/src/main/java/dhbw/projects/actionHandler/UserOptions.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package dhbw.projects.actionHandler;\r\n\r\npublic interface UserOptions {\r\n\r\n    void initializeOption();\r\n\r\n    String getDescription();\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/0-ase-f1-plugins/src/main/java/dhbw/projects/actionHandler/UserOptions.java b/0-ase-f1-plugins/src/main/java/dhbw/projects/actionHandler/UserOptions.java
+--- a/0-ase-f1-plugins/src/main/java/dhbw/projects/actionHandler/UserOptions.java	
++++ b/0-ase-f1-plugins/src/main/java/dhbw/projects/actionHandler/UserOptions.java	
+@@ -2,7 +2,7 @@
+ 
+ public interface UserOptions {
+ 
+-    void initializeOption();
++    void initializeOption() throws Exception;
+ 
+     String getDescription();
+ 
+Index: 3-ase-f1-domain/src/main/java/dhbw/projects/data/driver/DriverId.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package dhbw.projects.data.driver;\r\n\r\npublic record DriverId(int id) {\r\n\r\n    public DriverId {\r\n        if (id < 0 || id > 99) {\r\n            throw new IllegalArgumentException(\"Illegal DriverId\");\r\n        }\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/3-ase-f1-domain/src/main/java/dhbw/projects/data/driver/DriverId.java b/3-ase-f1-domain/src/main/java/dhbw/projects/data/driver/DriverId.java
+--- a/3-ase-f1-domain/src/main/java/dhbw/projects/data/driver/DriverId.java	
++++ b/3-ase-f1-domain/src/main/java/dhbw/projects/data/driver/DriverId.java	
+@@ -1,11 +1,13 @@
+ package dhbw.projects.data.driver;
+ 
+-public record DriverId(int id) {
++public class DriverId {
+ 
+-    public DriverId {
++    private final int driverId;
++
++    public DriverId (int id){
+         if (id < 0 || id > 99) {
+             throw new IllegalArgumentException("Illegal DriverId");
+         }
++        this.driverId = id;
+     }
+-
+ }
+Index: 3-ase-f1-domain/src/main/java/dhbw/projects/data/driver/DriverInformations.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package dhbw.projects.data.driver;\r\n\r\npublic class DriverInformations {\r\n\r\n    private final Driver driver;\r\n    private final int startPosition;        // = Grid-Position\r\n    private final int finalPosition;        // = Position at the end of the race\r\n    private final int positionsGained;      // Difference between Grid-Position to Position after race\r\n    private final double fastestLap;        //Save in seconds and milliseconds (e.g.: \"90.684\" instead of \"1,30.684\")\r\n\r\n    public DriverInformations(Driver driver, int startPosition, int finalPosition, int positionsGained, double fastestLap) {\r\n        this.driver = driver;\r\n        this.startPosition = startPosition;\r\n        this.finalPosition = finalPosition;\r\n        this.positionsGained = positionsGained;\r\n        this.fastestLap = fastestLap;\r\n    }\r\n\r\n    public Driver getDriver() {\r\n        return driver;\r\n    }\r\n\r\n    public int getStartPosition() {\r\n        return startPosition;\r\n    }\r\n\r\n    public int getFinalPosition() {\r\n        return finalPosition;\r\n    }\r\n\r\n    public double getFastestLap() {\r\n        return fastestLap;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/3-ase-f1-domain/src/main/java/dhbw/projects/data/driver/DriverInformations.java b/3-ase-f1-domain/src/main/java/dhbw/projects/data/driver/DriverInformations.java
+--- a/3-ase-f1-domain/src/main/java/dhbw/projects/data/driver/DriverInformations.java	
++++ b/3-ase-f1-domain/src/main/java/dhbw/projects/data/driver/DriverInformations.java	
+@@ -4,15 +4,13 @@
+ 
+     private final Driver driver;
+     private final int startPosition;        // = Grid-Position
+-    private final int finalPosition;        // = Position at the end of the race
+-    private final int positionsGained;      // Difference between Grid-Position to Position after race
++    private final int finalPosition;        // Difference between Grid-Position to Position after race
+     private final double fastestLap;        //Save in seconds and milliseconds (e.g.: "90.684" instead of "1,30.684")
+ 
+-    public DriverInformations(Driver driver, int startPosition, int finalPosition, int positionsGained, double fastestLap) {
++    public DriverInformations(Driver driver, int startPosition, int finalPosition, double fastestLap) {
+         this.driver = driver;
+         this.startPosition = startPosition;
+         this.finalPosition = finalPosition;
+-        this.positionsGained = positionsGained;
+         this.fastestLap = fastestLap;
+     }
+ 
+Index: 3-ase-f1-domain/src/main/java/dhbw/projects/data/date/Date.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package dhbw.projects.data.date;\r\n\r\nimport java.time.LocalDate;\r\nimport java.util.Objects;\r\n\r\npublic class Date {\r\n\r\n    private int year;\r\n    private int month;\r\n    private int day;\r\n\r\n    //TODO: AUUUUUSLAGERN, aka nicht als String, sondern als fertige Attribute eingeben lassen\r\n    public Date(String dateAsString){\r\n        LocalDate date = LocalDate.of(\r\n                Integer.parseInt(dateAsString.substring(0, 4)),\r\n                Integer.parseInt(dateAsString.substring(4, 6)),\r\n                Integer.parseInt(dateAsString.substring(6, 8)));\r\n        this.year = date.getYear();\r\n        this.month = date.getMonthValue();\r\n        this.day = date.getDayOfMonth();\r\n\r\n    }\r\n\r\n    public int getYear() {\r\n        return year;\r\n    }\r\n\r\n    public int getMonth() {\r\n        return month;\r\n    }\r\n\r\n    public int getDay() {\r\n        return day;\r\n    }\r\n\r\n    //TODO: Auslagern! In Adapterschicht\r\n    public String toString(String seperator) {\r\n        return (year + seperator + (month < 10? \"0\" + month : month)  + seperator + (day < 10? \"0\" + day : day));\r\n    }\r\n\r\n    @Override\r\n    public boolean equals(Object o) {\r\n        if (this == o) return true;\r\n        if (o == null || getClass() != o.getClass()) return false;\r\n        Date date = (Date) o;\r\n        return year == date.year && month == date.month && day == date.day;\r\n    }\r\n\r\n    @Override\r\n    public int hashCode() {\r\n        return Objects.hash(year, month, day);\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/3-ase-f1-domain/src/main/java/dhbw/projects/data/date/Date.java b/3-ase-f1-domain/src/main/java/dhbw/projects/data/date/Date.java
+--- a/3-ase-f1-domain/src/main/java/dhbw/projects/data/date/Date.java	
++++ b/3-ase-f1-domain/src/main/java/dhbw/projects/data/date/Date.java	
+@@ -1,6 +1,5 @@
+ package dhbw.projects.data.date;
+ 
+-import java.time.LocalDate;
+ import java.util.Objects;
+ 
+ public class Date {
+@@ -9,16 +8,10 @@
+     private int month;
+     private int day;
+ 
+-    //TODO: AUUUUUSLAGERN, aka nicht als String, sondern als fertige Attribute eingeben lassen
+-    public Date(String dateAsString){
+-        LocalDate date = LocalDate.of(
+-                Integer.parseInt(dateAsString.substring(0, 4)),
+-                Integer.parseInt(dateAsString.substring(4, 6)),
+-                Integer.parseInt(dateAsString.substring(6, 8)));
+-        this.year = date.getYear();
+-        this.month = date.getMonthValue();
+-        this.day = date.getDayOfMonth();
+-
++    public Date(int year, int month, int day){
++        this.year = year;
++        this.month = month;
++        this.day = day;
+     }
+ 
+     public int getYear() {
+@@ -33,11 +26,6 @@
+         return day;
+     }
+ 
+-    //TODO: Auslagern! In Adapterschicht
+-    public String toString(String seperator) {
+-        return (year + seperator + (month < 10? "0" + month : month)  + seperator + (day < 10? "0" + day : day));
+-    }
+-
+     @Override
+     public boolean equals(Object o) {
+         if (this == o) return true;
+Index: 0-ase-f1-plugins/src/main/java/dhbw/projects/race/RaceRepositoryImpl.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package dhbw.projects.race;\r\n\r\nimport dhbw.projects.RaceRepository;\r\nimport dhbw.projects.data.race.Race;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\nimport java.util.UUID;\r\n\r\npublic class RaceRepositoryImpl implements RaceRepository {\r\n\r\n    private List<Race> races = new ArrayList<>();\r\n\r\n    @Override\r\n    public void insert(Race race) {\r\n        races.add(race);\r\n    }\r\n\r\n    @Override\r\n    public List<Race> getAll() {\r\n        return races;\r\n    }\r\n\r\n    @Override\r\n    public Race getById(UUID raceId) {\r\n        return races.stream().filter(race -> race.getRaceId() == raceId).toList().get(0);\r\n    }\r\n\r\n    @Override\r\n    public void insertRaceList(List<Race> races) {\r\n        this.races = races;\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/0-ase-f1-plugins/src/main/java/dhbw/projects/race/RaceRepositoryImpl.java b/0-ase-f1-plugins/src/main/java/dhbw/projects/race/RaceRepositoryImpl.java
+--- a/0-ase-f1-plugins/src/main/java/dhbw/projects/race/RaceRepositoryImpl.java	
++++ b/0-ase-f1-plugins/src/main/java/dhbw/projects/race/RaceRepositoryImpl.java	
+@@ -6,6 +6,7 @@
+ import java.util.ArrayList;
+ import java.util.List;
+ import java.util.UUID;
++import java.util.stream.Collectors;
+ 
+ public class RaceRepositoryImpl implements RaceRepository {
+ 
+@@ -23,7 +24,7 @@
+ 
+     @Override
+     public Race getById(UUID raceId) {
+-        return races.stream().filter(race -> race.getRaceId() == raceId).toList().get(0);
++        return races.stream().filter(race -> race.getRaceId() == raceId).collect(Collectors.toList()).get(0);
+     }
+ 
+     @Override
+Index: 0-ase-f1-plugins/src/main/java/dhbw/projects/actionHandler/Menu.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package dhbw.projects.actionHandler;\r\n\r\nimport java.util.Collections;\r\nimport java.util.HashMap;\r\nimport java.util.Map;\r\nimport java.util.Scanner;\r\n\r\npublic class Menu implements Observer {\r\n\r\n    private final Map<String, UserOptions> userOptions = new HashMap<>();\r\n    private final Scanner scanner;\r\n    private final String seperator = String.join(\"\", Collections.nCopies(124, \"=\"));\r\n    private String description;\r\n\r\n    public Menu(String descriptionOfMenu){\r\n        this.scanner = new Scanner(System.in);\r\n        initializeMenu(descriptionOfMenu);\r\n    }\r\n\r\n    private void initializeMenu(String description){\r\n        this.description = description;\r\n    }\r\n\r\n    public void insertUserOption(String key, UserOptions userOption){\r\n        this.userOptions.put(key, userOption);\r\n    }\r\n\r\n    private UserOptions getUserOption(String key){\r\n        return this.userOptions.get(key);\r\n    }\r\n\r\n    private void printUserOptions(){\r\n        addExitOption();\r\n        this.userOptions.forEach((key, userOptions) ->\r\n                System.out.println(\"    [\" + key + \"] \" + userOptions.getDescription()));\r\n    }\r\n\r\n    public void start(){\r\n        while(true){\r\n            printUserOptions();\r\n            System.out.println(this.seperator);\r\n            String input = this.scanner.next();\r\n            if(input.equals(\"E\")){\r\n                break;\r\n            }\r\n            UserOptions selectedOption = getUserOption(input);\r\n            if(selectedOption != null){\r\n                selectedOption.initializeOption();\r\n            }\r\n        }\r\n    }\r\n\r\n    @Override\r\n    public void addExitOption() {\r\n        System.out.println(\"Select an Option\" +\r\n                String.join(\"\", Collections.nCopies(96, \"=\")) + \"[E] for Exit\");\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/0-ase-f1-plugins/src/main/java/dhbw/projects/actionHandler/Menu.java b/0-ase-f1-plugins/src/main/java/dhbw/projects/actionHandler/Menu.java
+--- a/0-ase-f1-plugins/src/main/java/dhbw/projects/actionHandler/Menu.java	
++++ b/0-ase-f1-plugins/src/main/java/dhbw/projects/actionHandler/Menu.java	
+@@ -35,7 +35,7 @@
+                 System.out.println("    [" + key + "] " + userOptions.getDescription()));
+     }
+ 
+-    public void start(){
++    public void start() throws Exception {
+         while(true){
+             printUserOptions();
+             System.out.println(this.seperator);
+Index: 0-ase-f1-plugins/src/main/java/dhbw/projects/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package dhbw.projects;\r\n\r\nimport dhbw.projects.actionHandler.MainMenu;\r\n\r\npublic class Main {\r\n\r\n    public static void main(String[] args) {\r\n        MainMenu menu = new MainMenu(\"MainMenu\");\r\n        menu.start();\r\n    }\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/0-ase-f1-plugins/src/main/java/dhbw/projects/Main.java b/0-ase-f1-plugins/src/main/java/dhbw/projects/Main.java
+--- a/0-ase-f1-plugins/src/main/java/dhbw/projects/Main.java	
++++ b/0-ase-f1-plugins/src/main/java/dhbw/projects/Main.java	
+@@ -4,7 +4,7 @@
+ 
+ public class Main {
+ 
+-    public static void main(String[] args) {
++    public static void main(String[] args) throws Exception {
+         MainMenu menu = new MainMenu("MainMenu");
+         menu.start();
+     }
+Index: 3-ase-f1-domain/src/main/java/dhbw/projects/RaceRepository.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package dhbw.projects;\r\n\r\n\r\nimport dhbw.projects.data.race.Race;\r\n\r\nimport java.util.List;\r\nimport java.util.UUID;\r\n\r\npublic interface RaceRepository {\r\n\r\n    void insert(Race race);\r\n    List<Race> getAll();\r\n    Race getById(UUID nationId);\r\n\r\n    void insertRaceList(List<Race> races);\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/3-ase-f1-domain/src/main/java/dhbw/projects/RaceRepository.java b/3-ase-f1-domain/src/main/java/dhbw/projects/RaceRepository.java
+--- a/3-ase-f1-domain/src/main/java/dhbw/projects/RaceRepository.java	
++++ b/3-ase-f1-domain/src/main/java/dhbw/projects/RaceRepository.java	
+@@ -13,4 +13,4 @@
+     Race getById(UUID nationId);
+ 
+     void insertRaceList(List<Race> races);
+-}
++}
+\ No newline at end of file
