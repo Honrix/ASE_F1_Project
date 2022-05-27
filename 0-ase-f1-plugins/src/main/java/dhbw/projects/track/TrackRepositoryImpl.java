@@ -6,6 +6,7 @@ import dhbw.projects.data.track.Track;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 public class TrackRepositoryImpl implements TrackRepository {
 
@@ -22,6 +23,6 @@ public class TrackRepositoryImpl implements TrackRepository {
 
     @Override
     public Track getById(UUID trackId) {
-        return tracks.stream().filter(track -> track.getTrackId() == trackId).toList().get(0);
+        return tracks.stream().filter(track -> track.getTrackId() == trackId).collect(Collectors.toList()).get(0);
     }
 }
