@@ -25,7 +25,7 @@ public class Menu implements Observer {
         this.userOptions.put(key, userOption);
     }
 
-    private UserOptions getUserOption(String key){
+    public UserOptions getUserOption(String key){
         return this.userOptions.get(key);
     }
 
