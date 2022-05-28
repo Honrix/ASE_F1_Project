@@ -71,11 +71,9 @@ public class ValuesService {
         return null;
     }
 
-    public Track getTrackByName(String trackName){
-        for (int i = 0; i < this.tracks.size(); i++) {
-            if(this.tracks.get(String.valueOf(i+1)).toString().equals(trackName)){
-                return this.tracks.get(String.valueOf(i+1));
-            }
+    public Track getTrackById(String trackName){
+        if(this.tracks.containsKey(trackName)){
+            return this.tracks.get(trackName);
         }
         return null;
     }
