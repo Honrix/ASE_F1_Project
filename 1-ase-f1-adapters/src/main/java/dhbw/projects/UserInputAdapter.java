@@ -9,7 +9,7 @@ public class UserInputAdapter {
     }
 
     public Boolean validateDateInput(String input) {
-        Boolean valid = input.matches("^\\d{8}$");;
+        Boolean valid = input.matches("^\\d{8}$");
         if(!valid){
             this.outputString = "Please Enter a valide Date (Format: YYYYMMDD)";
         } else {

@@ -36,4 +36,11 @@ class DateTest {
         assertEquals(date1.toString("-"), "1234-01-01");
     }
 
+    @Test
+    public void hashCodeTest(){
+        Date date  = new Date("20220202");
+        assertEquals(1972997, date.hashCode());
+
+    }
+
 }
