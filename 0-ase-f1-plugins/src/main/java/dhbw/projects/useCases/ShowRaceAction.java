@@ -1,11 +1,10 @@
 package dhbw.projects.useCases;
 
 import dhbw.projects.RaceRepository;
+import dhbw.projects.UserInputHandler;
 import dhbw.projects.actionHandler.UserOptions;
-import dhbw.projects.values.ValuesImpl;
 import dhbw.projects.data.driver.DriverInformations;
 import dhbw.projects.data.race.Race;
-import dhbw.projects.driver.DriverInformationsService;
 
 import java.util.*;
 
@@ -13,15 +12,16 @@ public class ShowRaceAction implements UserOptions {
 
     private final ShowRaceUseCase showRaceUseCase;
     private final Scanner scanner = new Scanner(System.in);
+    private final UserInputHandler userInputHandler;
     private Map<Integer, Race> races;
     private Map<Integer, DriverInformations> driverInformations = new HashMap<>();
     private Race selectedRace;
     private int selectedRaceKey;
     private int editSeletionKey;
-    private final ValuesImpl valuesImpl = new ValuesImpl();
 
     public ShowRaceAction(RaceRepository raceRepository) {
         this.showRaceUseCase = new ShowRaceUseCase(raceRepository);
+        this.userInputHandler = new UserInputHandler();
     }
 
     private void showRace(){
@@ -50,21 +50,21 @@ public class ShowRaceAction implements UserOptions {
     }
 
     private Race getSelectedRace() {
-        this.selectedRaceKey = this.scanner.nextInt()-1;
-        this.selectedRace = this.races.get(this.selectedRaceKey);
+        this.selectedRaceKey = Integer.parseInt(this.userInputHandler.getValidInputOfRange(this.races.size()));
+        this.selectedRace = this.races.get(this.selectedRaceKey-1);
         return selectedRace;
     }
 
 
     @Override
     public void initializeOption() {
-        this.races = showRaceUseCase.getExistingRaces();
+        this.races = showRaceUseCase.getShowRaceService().getExistingRaces();
         showRace();
     }
 
     private void addEditOption(){
         System.out.println("Do You Want To Edit This Race? [Y/N]");
-        if(handleInput(this.scanner.next())) {
+        if(this.userInputHandler.getUserInputAdapter().confirmUserInput(this.scanner.next())) {
             this.driverInformations = getDriverInformations();
             do {
                 DriverInformations selectedDriverInformation = getEditSelection();
@@ -74,17 +74,18 @@ public class ShowRaceAction implements UserOptions {
                 editSelectedDriverInformations();
                 System.out.println("Do You Want To Edit Another Driver? [Y/N]");
                 updateRaces();
-                this.selectedRace = this.races.get(this.selectedRaceKey);
-            } while (handleInput(this.scanner.next()));
+                this.selectedRace = this.races.get(this.selectedRaceKey - 1);
+            } while (this.userInputHandler.getUserInputAdapter().confirmUserInput(this.scanner.next()));
             endEditMode();
         }
     }
 
     private void endEditMode(){
         System.out.println("New Race: ");
+
         printRace(selectedRace);
         System.out.println("Do you want to go back to menu? [Y/N]");
-        if(!handleInput(this.scanner.next())){
+        if(!this.userInputHandler.getUserInputAdapter().confirmUserInput(this.scanner.next())){
             addEditOption();
         }
     }
@@ -115,24 +116,19 @@ public class ShowRaceAction implements UserOptions {
 
     private boolean confirmSelectedDriverInformation(String input) {
         System.out.println("Is that the Driver You Want To Edit: " + input + "? [Y/N]");
-        return handleInput(this.scanner.next());
+        return this.userInputHandler.getUserInputAdapter().confirmUserInput(this.scanner.next());
     }
 
     private DriverInformations getEditSelection(){
         printRace(selectedRace);
         System.out.println("Select A Driver To Edit: [1-" + this.driverInformations.size() + "] ");
-        String input = this.scanner.next();
-        while(!this.showRaceUseCase.getInputValidator().validateSelection(input, this.driverInformations.size())){
-            input = this.scanner.next();
-        }
+        String input = this.userInputHandler.getValidInputOfRange(this.driverInformations.size());
         this.editSeletionKey = Integer.parseInt(input);
         return this.driverInformations.get(Integer.parseInt(input));
     }
 
     private void editSelectedDriverInformations(){
-        DriverInformationsService driverInformationsService = new DriverInformationsService(
-                this.valuesImpl.getDrivers(), editSeletionKey);
-        this.driverInformations.replace(editSeletionKey, driverInformationsService.getDriverInformations());
+        this.driverInformations.replace(editSeletionKey, userInputHandler.getDriverInformations(editSeletionKey));
     }
 
     private void overwriteRace(Race oldRace, List<DriverInformations> driverInformations){
@@ -143,21 +139,8 @@ public class ShowRaceAction implements UserOptions {
                 oldRace.getDate(),
                 oldRace.getRaceId()
         );
-        this.races.replace(this.selectedRaceKey, oldRace, race);
+        this.races.replace(this.selectedRaceKey-1, oldRace, race);
 
-    }
-
-    private boolean handleInput(String userInput){
-        do {
-            if (userInput.equals("Y")) {
-                return true;
-            } else if (userInput.equals("N")) {
-                return false;
-            } else {
-                System.out.println("Please enter \"Y\" or \"N\"");
-            }
-            userInput = scanner.next();
-        } while (true);
     }
 
     @Override

@@ -11,6 +11,5 @@ public interface RaceRepository {
     void insert(Race race);
     List<Race> getAll();
     Race getById(UUID nationId);
-
     void insertRaceList(List<Race> races);
 }
