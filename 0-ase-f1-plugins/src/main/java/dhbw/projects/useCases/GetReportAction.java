@@ -30,7 +30,7 @@ public class GetReportAction implements UserOptions {
     }
 
     private void getTotalPoints(){
-        totalPoints = this.getReportUseCase.getTotalPoints();
+        totalPoints = this.getReportUseCase.listOfTotalPoints();
     }
 
     private void printTotalPoints() {

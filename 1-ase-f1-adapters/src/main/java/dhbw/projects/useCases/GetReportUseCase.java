@@ -18,7 +18,15 @@ public class GetReportUseCase {
         this.allRaces = this.getReportService.getAllRaces();
     }
 
-    public Object[] getTotalPoints(){
+    public ArrayList<Integer> getTotalPoints() {
+        return totalPoints;
+    }
+
+    public ArrayList<Driver> getDriverWithPoints() {
+        return driverWithPoints;
+    }
+
+    public Object[] listOfTotalPoints(){
         getPointsOfDrivers();
         Map<String, Integer> totalPoints = new HashMap<>();
         for (int i = 0; i < this.driverWithPoints.size(); i++) {

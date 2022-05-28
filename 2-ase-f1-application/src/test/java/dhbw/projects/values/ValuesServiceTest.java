@@ -9,8 +9,10 @@ import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.mockito.Mockito.*;
 
 class ValuesServiceTest {
@@ -49,6 +51,44 @@ class ValuesServiceTest {
         assertEquals(driverNames.getClass(), valuesService.getDriverNames().getClass());
         assertEquals(drivers.size(), valuesService.getDrivers().size());
         assertEquals(driverNames.getClass(), valuesService.getDriverNames().getClass());
+    }
+
+    @Test
+    public void getNationByName(){
+        ValuesService valuesService = new ValuesService();
+        Nation nation1 = mock(Nation.class);
+        Nation nation2 = mock(Nation.class);
+        when(nation1.getName()).thenReturn("Test1");
+        when(nation1.getName()).thenReturn("Test3");
+        valuesService.insertNation("Test1");
+        valuesService.insertNation("Test2");
+        assertEquals("Test1", valuesService.getNationByName("Test1").getName());
+        assertNull(valuesService.getNationByName("TestX"));
+    }
+
+    @Test
+    public void getTeamByName(){
+        ValuesService valuesService = new ValuesService();
+        Team team1 = mock(Team.class);
+        Team team2 = mock(Team.class);
+        when(team1.toString()).thenReturn("Test1");
+        when(team2.toString()).thenReturn("Test3");
+        valuesService.insertTeam("Test1");
+        valuesService.insertTeam("Test2");
+        assertEquals("Test1", valuesService.getTeamByName("Test1").toString());
+        assertNull(valuesService.getNationByName("TestX"));
+    }
+
+    @Test
+    public void getTrackById(){
+        ValuesService valuesService = new ValuesService();
+        Track track1 = mock(Track.class);
+        Track track2 = mock(Track.class);
+        valuesService.insertTrack("Test1");
+        valuesService.insertTrack("Test2");
+        assertEquals("Test1", valuesService.getTrackById("1").toString());
+        assertNull(valuesService.getTrackById("Test3"));
+
     }
 
     @Test
