@@ -1,22 +1,42 @@
 package dhbw.projects.useCases;
 
-import dhbw.projects.InputValidator;
 import dhbw.projects.RaceRepository;
-import dhbw.projects.data.race.Race;
+import dhbw.projects.data.date.Date;
+import dhbw.projects.data.driver.DriverInformations;
+import dhbw.projects.data.track.Track;
+
+import java.util.List;
 
 public class CreateRaceUseCase {
 
     private final CreateRaceService createRaceService;
+    private Date date;
+    private Track track;
+    private int length;
+    private List<DriverInformations> scoreboard;
+
 
     public CreateRaceUseCase(RaceRepository raceRepository) {
         this.createRaceService = new CreateRaceService(raceRepository);
     }
 
-    public void insert(Race race){
-        this.createRaceService.insert(race);
+    public void insertDate(String date){
+        this.date = new Date(date);
     }
 
-    public InputValidator getInputValidator() {
-        return this.createRaceService.getInputValidator();
+    public void insertTrack(Track track){
+        this.track = track;
+    }
+
+    public void insertLength(int length){
+        this.length = length;
+    }
+
+    public void insertScoreboard(List<DriverInformations> scoreboard){
+        this.scoreboard = scoreboard;
+    }
+
+    public void insertRace(){
+        this.createRaceService.insert(this.track, this.scoreboard, this.length, this.date);
     }
 }

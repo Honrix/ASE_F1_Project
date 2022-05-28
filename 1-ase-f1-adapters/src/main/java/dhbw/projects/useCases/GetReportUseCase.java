@@ -24,13 +24,7 @@ public class GetReportUseCase {
         for (int i = 0; i < this.driverWithPoints.size(); i++) {
             totalPoints.put(this.driverWithPoints.get(i).getName(), this.totalPoints.get(i));
         }
-        return getSortedList(totalPoints.entrySet().toArray());
-    }
-
-    private Object[] getSortedList(Object[] object){
-        Arrays.sort(object, (o1, o2) -> ((Map.Entry<String, Integer>) o2).getValue()
-                .compareTo(((Map.Entry<String, Integer>) o1).getValue()));
-        return object;
+        return this.getReportService.getSortedList(totalPoints.entrySet().toArray());
     }
 
     private void clearLists(){
@@ -43,9 +37,9 @@ public class GetReportUseCase {
         for (Race race: this.allRaces) {
             for (int i = 0; i < race.getScoreboard().size(); i++) {
                 Driver driver = race.getScoreboard().get(i).getDriver();
-                int points = getPointsOfPosition(i+1);
-                if(containsDriver(driver)){
-                    int driverPosition = getDriverPositionInList(driver);
+                int points = this.getReportService.getPointsOfPosition(i+1);
+                if(this.getReportService.containsDriver(this.driverWithPoints, driver)){
+                    int driverPosition = this.getReportService.getDriverPositionInList(this.driverWithPoints, driver);
                     this.totalPoints.set(driverPosition, this.totalPoints.get(driverPosition) + points);
                 }   else {
                     this.driverWithPoints.add(driver);
@@ -53,32 +47,6 @@ public class GetReportUseCase {
                 }
             }
         }
-    }
-
-    private boolean containsDriver(Driver driver){
-        for (Driver currentDriver: this.driverWithPoints) {
-            if(currentDriver.getDriverId().equals(driver.getDriverId())){
-                return true;
-            }
-        }
-        return false;
-    }
-
-    private int getDriverPositionInList(Driver driver){
-        for (int i = 0; i < this.driverWithPoints.size(); i++) {
-            if(this.driverWithPoints.get(i).getDriverId().equals(driver.getDriverId())) {
-                return i;
-            }
-        }
-        return 0;
-    }
-
-    private int getPointsOfPosition(int position){
-        int[] points = {25, 18, 15, 12, 10, 8, 6, 4, 2, 1};
-        if(position < 11){
-            return points[position-1];
-        }
-        return 0;
     }
 
 

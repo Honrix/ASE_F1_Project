@@ -1,6 +1,5 @@
 package dhbw.projects.useCases;
 
-import dhbw.projects.InputValidator;
 import dhbw.projects.RaceRepository;
 import dhbw.projects.data.driver.DriverInformations;
 import dhbw.projects.data.race.Race;
@@ -10,23 +9,9 @@ import java.util.*;
 public class ShowRaceUseCase {
 
     private final ShowRaceService showRaceService;
-    private final InputValidator inputValidator = new InputValidator();
 
     public ShowRaceUseCase(RaceRepository raceRepository) {
         this.showRaceService = new ShowRaceService(raceRepository);
-    }
-
-    public Map<Integer, Race> getExistingRaces(){
-        List<Race> races = showRaceService.getExistingRaces();
-        Map<Integer, Race> allRaces = new HashMap<>();
-        for (int i = 0; i < races.size(); i++) {
-            allRaces.put(i, races.get(i));
-        }
-        return allRaces;
-    }
-
-    public InputValidator getInputValidator() {
-        return inputValidator;
     }
 
     public ShowRaceService getShowRaceService() {
@@ -53,21 +38,8 @@ public class ShowRaceUseCase {
         return output;
     }
 
-    private int getDecimalDigits(double number){
-        int decimalDigits;
-        decimalDigits = (int)((number - Math.floor(number))*1000);
-        if(decimalDigits < 100) {
-            if (decimalDigits < 10) {
-                decimalDigits *= 100;
-            } else {
-                decimalDigits *= 10;
-            }
-        }
-        return decimalDigits;
-    }
-
     private String fastestLapToString(double fastestLap){
-        String decimalDigits = String.valueOf(getDecimalDigits(fastestLap));
+        String decimalDigits = String.valueOf(this.showRaceService.getDecimalDigits(fastestLap));
         String seconds = getSeconds(fastestLap);
         String minutes = String.valueOf((int) Math.floor(fastestLap/60));
         return minutes + ":" + seconds + "." + decimalDigits;
