@@ -4,8 +4,8 @@ import java.util.UUID;
 
 public class Track {
 
-    private String name;
-    private UUID trackId;
+    private final String name;
+    private final UUID trackId;
 
     public Track(UUID uuid, String name) {
 

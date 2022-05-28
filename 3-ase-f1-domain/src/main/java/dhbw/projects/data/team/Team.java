@@ -4,8 +4,8 @@ import java.util.UUID;
 
 public class Team {
 
-    private String name;
-    private UUID teamId;
+    private final String name;
+    private final UUID teamId;
 
     public Team(UUID uuid, String name) {
         this.teamId = uuid;

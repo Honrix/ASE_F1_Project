@@ -5,9 +5,9 @@ import java.util.Objects;
 
 public class Date {
 
-    private int year;
-    private int month;
-    private int day;
+    private final int year;
+    private final int month;
+    private final int day;
 
     public Date(String dateAsString){
         LocalDate date = LocalDate.of(

@@ -30,7 +30,6 @@ public class CreateRaceServiceTest {
         scoreboard.add(driverInformations2);
         int length = 50;
         Date date = mock(Date.class);
-        UUID uuid = UUID.randomUUID();
         createRaceService.insert(track, scoreboard, length, date);
         verify(raceRepository).insert(any());
     }

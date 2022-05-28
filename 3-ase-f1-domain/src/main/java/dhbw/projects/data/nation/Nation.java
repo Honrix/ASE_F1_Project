@@ -4,8 +4,8 @@ import java.util.UUID;
 
 public class Nation {
 
-    private String name;
-    private UUID nationId;
+    private final String name;
+    private final UUID nationId;
 
     public Nation (UUID uuid, String name){
         this.name = name;
