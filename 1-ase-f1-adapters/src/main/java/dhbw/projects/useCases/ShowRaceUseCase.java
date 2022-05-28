@@ -53,7 +53,7 @@ public class ShowRaceUseCase {
         return String.valueOf(seconds);
     }
 
-    public void raceToString(Race race) {
+    public String raceToString(Race race) {
         String dateFormated = race.getDate().toString("-");
         String length = String.valueOf(race.getLengthTime());
         String trackName = race.getTrack().toString();
@@ -64,6 +64,6 @@ public class ShowRaceUseCase {
         output += "|" + String.join("", Collections.nCopies(49, "_")) + "|";
 
 
-        System.out.println(output);
+        return output;
     }
 }

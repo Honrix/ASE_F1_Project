@@ -62,7 +62,7 @@ public class ValuesService {
         }
     }
 
-    private Nation getNationByName(String nationName){
+    public Nation getNationByName(String nationName){
         for (int i = 0; i < this.nations.size(); i++) {
             if(this.nations.get(String.valueOf(i+1)).getName().equals(nationName)){
                 return this.nations.get(String.valueOf(i+1));
@@ -78,7 +78,7 @@ public class ValuesService {
         return null;
     }
 
-    private Team getTeamByName(String teamName){
+    public Team getTeamByName(String teamName){
         for (int i = 0; i < this.teams.size(); i++) {
             if(this.teams.get(String.valueOf(i+1)).toString().equals(teamName)){
                 return this.teams.get(String.valueOf(i+1));

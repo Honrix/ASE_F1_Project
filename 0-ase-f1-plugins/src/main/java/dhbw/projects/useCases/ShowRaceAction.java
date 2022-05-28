@@ -45,7 +45,7 @@ public class ShowRaceAction implements UserOptions {
     }
 
     private void printRace(Race race){
-        this.showRaceUseCase.raceToString(race);
+        System.out.println(this.showRaceUseCase.raceToString(race));
 
     }
 

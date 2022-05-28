@@ -18,4 +18,6 @@ public class MainMenu extends Menu {
         this.insertUserOption("3", new ShowRaceAction(raceRepository));
         this.insertUserOption("4", new GetReportAction(raceRepository));
     }
+
+
 }
